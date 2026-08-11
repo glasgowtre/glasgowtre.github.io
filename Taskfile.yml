@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+  UV_TOOL_ID: mkdocs
+  UV_WITHS: >-
+    --with mkdocs-material
+    --with mkdocs-awesome-pages-plugin
+
+tasks:
+  proj/init:
+    desc: Initialize the project
+    cmds:
+      - uv tool install {{.UV_WITHS}} {{.UV_TOOL_ID}}
+
+  docs/serve:
+    desc: Run the local docs server
+    cmds:
+      - uv tool run {{.UV_TOOL_ID}} serve
+
+  docs/build:
+    desc: Build the static site (used by CI)
+    cmds:
+      - uv tool run {{.UV_TOOL_ID}} build --strict
+
+  docs/deploy:
+    desc: Build and deploy to GitHub Pages (gh-deploy)
+    cmds:
+      - uv tool run {{.UV_TOOL_ID}} gh-deploy --force --clean
