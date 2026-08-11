@@ -1,0 +1,123 @@
+/*
+ * University of Glasgow Brand Palette
+ *
+ * Primary colour
+ *   University Blue  #011451
+ *
+ * Secondary Dark
+ *   Dark Purple      #4C2683
+ *   Dark Pink        #A60367
+ *   Dark Green       #405D18
+ *   Dark Blue        #005398
+ *   Dark Red         #7D2239
+ *
+ * Secondary Light
+ *   Light Purple     #A5A1CE
+ *   Light Pink       #E98BAF
+ *   Light Green      #81C071
+ *   Light Blue       #4DBBC6
+ *   Light Yellow     #F2D25C
+ */
+
+/* ── Brand colour tokens ───────────────────────────────────────── */
+:root {
+  --gla-university-blue:  #011451;
+  --gla-dark-purple:      #4C2683;
+  --gla-dark-pink:        #A60367;
+  --gla-dark-green:       #405D18;
+  --gla-dark-blue:        #005398;
+  --gla-dark-red:         #7D2239;
+  --gla-light-purple:     #A5A1CE;
+  --gla-light-pink:       #E98BAF;
+  --gla-light-green:      #81C071;
+  --gla-light-blue:       #4DBBC6;
+  --gla-light-yellow:     #F2D25C;
+}
+
+/* ── Light mode overrides ──────────────────────────────────────── */
+/*
+ * University Blue (#011451) as primary on white: ~13.5:1 – WCAG AAA ✓
+ * Dark Blue (#005398) as accent on white:         ~7.5:1  – WCAG AAA ✓
+ */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        var(--gla-university-blue); /* #011451 */
+  --md-primary-fg-color--light: var(--gla-dark-blue);       /* #005398 – softer variant */
+  --md-primary-fg-color--dark:  var(--gla-university-blue);
+  /* Let Material handle primary-bg so the header renders correctly */
+
+  --md-accent-fg-color:              var(--gla-dark-blue);  /* #005398 on white ~7.5:1 */
+  --md-accent-fg-color--transparent: rgba(0, 83, 152, 0.1);
+}
+
+/* ── Dark mode overrides ───────────────────────────────────────── */
+/*
+ * Slate background ≈ #1e222a. Contrast ratios against it:
+ *   Light Blue   (#4DBBC6) → ~5.6:1 – WCAG AA ✓
+ *   Light Purple (#A5A1CE) → ~5.0:1 – WCAG AA ✓
+ *
+ * Colours to AVOID as foreground on dark bg (all fail AA):
+ *   University Blue (#011451) → ~1.1:1
+ *   Dark Blue       (#005398) → ~1.8:1
+ *   Dark Purple     (#4C2683) → ~1.4:1
+ */
+[data-md-color-scheme="slate"] {
+  /* Primary fg: light colours only, so text/icons are readable on dark surfaces */
+  --md-primary-fg-color:        var(--gla-light-blue);      /* #4DBBC6 – 5.6:1 ✓ */
+  --md-primary-fg-color--light: var(--gla-light-purple);    /* #A5A1CE – 5.0:1 ✓ */
+  --md-primary-fg-color--dark:  var(--gla-light-blue);
+  /* Let Material handle primary-bg for the slate header */
+
+  --md-accent-fg-color:              var(--gla-light-blue); /* #4DBBC6 – links, highlights */
+  --md-accent-fg-color--transparent: rgba(77, 187, 198, 0.1);
+}
+
+/* ── Header logo ───────────────────────────────────────────────── */
+/*
+ * Light mode: Boxed colour logo.svg — navy bg + white text self-contained,
+ *             no filter or modification needed.
+ * Dark mode:  Unboxed mono logo white.svg with brightness(0) invert(1)
+ *             to force fully white on the teal header.
+ *
+ * MkDocs Material only allows one logo: path in mkdocs.yml (set to the
+ * white SVG for dark mode). Light mode overrides it via background-image.
+ */
+.md-header__button.md-logo {
+  display: flex;
+  align-items: center;
+  /* Remove right padding; use margin-right for controlled gap to title */
+  padding: 4px 0 4px 4px;
+  margin-right: 1em;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 56px;
+  width: auto;
+  min-width: 130px;
+  max-width: 210px;
+}
+
+/* ── Light mode: boxed colour logo (no filter) ─────────────────── */
+[data-md-color-scheme="default"] .md-header__button.md-logo {
+  background-image: url('../images/uog_logos/Boxed colour logo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+  /* Match the logo's natural aspect ratio (235×127 ≈ 1.85:1) at 56px tall */
+  width: 104px;
+  height: 56px;
+}
+
+/* Hide the white SVG <img> in light mode; background-image handles it */
+[data-md-color-scheme="default"] .md-header__button.md-logo img,
+[data-md-color-scheme="default"] .md-header__button.md-logo svg {
+  opacity: 0;
+}
+
+/* ── Dark mode: white SVG forced fully white via filter ────────── */
+[data-md-color-scheme="slate"] .md-header__button.md-logo img,
+[data-md-color-scheme="slate"] .md-header__button.md-logo svg {
+  filter: brightness(0) invert(1);
+}
+
+
