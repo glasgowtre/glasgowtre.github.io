@@ -1,0 +1,1083 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for GlasgowTRE">
+      
+      
+        <meta name="author" content="GlasgowTRE">
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../how-to-connect-to-service/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/uog_logos/Unboxed mono logo blue.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>[DRAFT] How to connect to GlasgowTRE secure VPN and workstation - GlasgowTRE Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/palette.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#draft-how-to-connect-to-glasgowtre-secure-vpn-and-workstation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GlasgowTRE Handbook" class="md-header__button md-logo" aria-label="GlasgowTRE Handbook" data-md-component="logo">
+      
+  <img src="../../images/uog_logos/Unboxed mono logo white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GlasgowTRE Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [DRAFT] How to connect to GlasgowTRE secure VPN and workstation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GlasgowTRE Handbook" class="md-nav__button md-logo" aria-label="GlasgowTRE Handbook" data-md-component="logo">
+      
+  <img src="../../images/uog_logos/Unboxed mono logo white.svg" alt="logo">
+
+    </a>
+    GlasgowTRE Handbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to GlagowTRE Handbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DRAFT] How to connect to GlasgowTRE secure VPN and workstation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DRAFT] How to connect to GlasgowTRE secure VPN and workstation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-begin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you begin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-retrieve-your-login-password-from-keepass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Retrieve your login password from KeePass
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-download-and-install-forticlient-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Download and install FortiClient VPN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-configure-the-vpn-connection-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Configure the VPN connection profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-connect-to-the-vpn-with-two-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Connect to the VPN with Two-Factor Authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-download-the-secure-workstation-access-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Download the Secure Workstation Access package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-connect-to-the-tre-workstation-via-remote-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Connect to the TRE workstation via Remote Desktop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-sign-out-securely-and-disconnect-the-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Sign out securely and disconnect the VPN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-you-need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you need help
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="If you need help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-support-channel-uofg-helpdesk-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary support channel: UofG Helpdesk Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urgent-support-and-direct-email-contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Urgent support and direct email contact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-connect-to-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use GlasgowTRE secure web file transfer service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-begin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you begin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-retrieve-your-login-password-from-keepass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Retrieve your login password from KeePass
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-download-and-install-forticlient-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Download and install FortiClient VPN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-configure-the-vpn-connection-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Configure the VPN connection profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-connect-to-the-vpn-with-two-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Connect to the VPN with Two-Factor Authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-download-the-secure-workstation-access-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Download the Secure Workstation Access package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-connect-to-the-tre-workstation-via-remote-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Connect to the TRE workstation via Remote Desktop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-sign-out-securely-and-disconnect-the-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Sign out securely and disconnect the VPN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-you-need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you need help
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="If you need help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-support-channel-uofg-helpdesk-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary support channel: UofG Helpdesk Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urgent-support-and-direct-email-contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Urgent support and direct email contact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Welcome to GlagowTRE Handbook
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Guides
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="draft-how-to-connect-to-glasgowtre-secure-vpn-and-workstation">[DRAFT] How to connect to GlasgowTRE secure VPN and workstation<a class="headerlink" href="#draft-how-to-connect-to-glasgowtre-secure-vpn-and-workstation" title="Anchor link to this section">&para;</a></h1>
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Anchor link to this section">&para;</a></h2>
+<p>Use this guide to configure and establish a secure FortiClient VPN connection to GlasgowTRE, authenticate using two-factor authentication (2FA), access your remote TRE research workstation, and sign out securely at the end of your session.</p>
+<h2 id="before-you-begin">Before you begin<a class="headerlink" href="#before-you-begin" title="Anchor link to this section">&para;</a></h2>
+<p>Make sure you have:</p>
+<ul>
+<li>A <strong>University-owned, managed device</strong> with up-to-date operating system patches and active antivirus software.</li>
+<li>Administrative privileges on your device (or assistance from your local IT support team) to install software.</li>
+<li>Your KeePass database archive (<code>KeePass-2.61.1.zip</code> or similar) received via the University of Glasgow transfer system.</li>
+<li>Your master KeePass password delivered via Microsoft Teams.</li>
+<li>Your assigned GlasgowTRE username (formatted as <code>xxx.xxx.xxx@glasgowtre.ac.uk</code>) received via email from the TRE support team.</li>
+<li>The <code>FortiClientVPNInstaller.exe</code> installer file downloaded from the link provided in your onboarding materials.</li>
+<li>Access to your registered email inbox to receive time-sensitive two-factor authentication codes.</li>
+<li>A stable internet connection on a trusted network (such as the campus network, home broadband, or approved corporate connection).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Security Requirement: Managed Devices Only</p>
+<p>Access to the Glasgow Trusted Research Environment is strictly restricted to University-owned and centrally managed devices. The use of personal computers, unmanaged laptops, tablets, or mobile phones is strictly prohibited. Any connection attempt originating from an unmanaged device will fail network compliance checks and be blocked.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Distinct TRE Credentials</p>
+<p>Your GlasgowTRE credentials are dedicated to your specific research project and are completely separate from your standard University of Glasgow GUID and email credentials. Never attempt to log in using standard university single sign-on credentials, and never share your TRE login details.</p>
+</div>
+<hr />
+<h2 id="step-1-retrieve-your-login-password-from-keepass">Step 1: Retrieve your login password from KeePass<a class="headerlink" href="#step-1-retrieve-your-login-password-from-keepass" title="Anchor link to this section">&para;</a></h2>
+<p>Your GlasgowTRE passwords are transmitted inside an encrypted KeePass database file to prevent unauthorised exposure.</p>
+<ol>
+<li>Locate and extract the KeePass database package (<code>KeePass-2.61.1.zip</code>) received via the UofG file transfer service.</li>
+<li>Launch <code>KeePass.exe</code>.</li>
+<li>Open your project database file and enter the master password sent to you via Microsoft Teams when prompted.</li>
+<li>Locate the entries for your <strong>GlasgowTRE VPN</strong> and <strong>GlasgowTRE Workstation</strong> accounts.</li>
+<li>Copy or record your unique password. Note that your assigned TRE username (received via your onboarding email) remains constant across both services.</li>
+</ol>
+<p><img alt="KeePass password safe interface displaying GlasgowTRE credentials" src="../../images/vpn-workstation/image1.png" /></p>
+<hr />
+<h2 id="step-2-download-and-install-forticlient-vpn">Step 2: Download and install FortiClient VPN<a class="headerlink" href="#step-2-download-and-install-forticlient-vpn" title="Anchor link to this section">&para;</a></h2>
+<p>All network communication with the GlasgowTRE infrastructure must travel through an encrypted FortiClient SSL-VPN tunnel.</p>
+<ol>
+<li>Download the authorised installer file <code>FortiClientVPNInstaller.exe</code> from the onboarding link provided by the TRE support team.</li>
+<li>Run the installer and proceed through the setup wizard using the default installation settings.</li>
+<li>Open the <strong>FortiClient</strong> application once installation finishes.</li>
+<li>Select the menu icon (three horizontal lines) in the upper-right corner of the interface and select <strong>Add a new connection</strong>.</li>
+</ol>
+<p><img alt="FortiClient VPN interface showing the menu options and Add a new connection button" src="../../images/vpn-workstation/image2.png" /></p>
+<hr />
+<h2 id="step-3-configure-the-vpn-connection-profile">Step 3: Configure the VPN connection profile<a class="headerlink" href="#step-3-configure-the-vpn-connection-profile" title="Anchor link to this section">&para;</a></h2>
+<p>Configure a dedicated VPN profile for the GlasgowTRE secure gateway.</p>
+<ol>
+<li>In the <strong>New Connection</strong> dialogue, select <strong>SSL-VPN</strong>.</li>
+<li>Enter the connection parameters as specified in the table below:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Setting</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>VPN</strong></td>
+<td style="text-align: left;">SSL-VPN</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Connection Name</strong></td>
+<td style="text-align: left;"><code>GlasgowTRE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Description</strong></td>
+<td style="text-align: left;">Glasgow TRE Secure Access</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Remote Gateway</strong></td>
+<td style="text-align: left;"><code>vpn.glasgowtre.ac.uk</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Customize port</strong></td>
+<td style="text-align: left;">Checked (leave default <code>443</code> or as configured)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Enable Single Sign On (SSO) for VPN Tunnel</strong></td>
+<td style="text-align: left;">Unchecked</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Client Certificate</strong></td>
+<td style="text-align: left;"><code>None</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Authentication</strong></td>
+<td style="text-align: left;">Select <strong>Save Login</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Username</strong></td>
+<td style="text-align: left;">Enter your full TRE username (e.g. <code>xxx.xxx.xxx@glasgowtre.ac.uk</code>)</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Confirm that the configuration matches the expected gateway details before saving.</li>
+</ol>
+<p><img alt="FortiClient New Connection configuration dialog with empty fields" src="../../images/vpn-workstation/image3.png" /></p>
+<p><img alt="FortiClient New Connection configuration dialog populated with GlasgowTRE settings" src="../../images/vpn-workstation/image4.png" /></p>
+<ol>
+<li>Select <strong>Save</strong> to store the connection profile.</li>
+</ol>
+<hr />
+<h2 id="step-4-connect-to-the-vpn-with-two-factor-authentication">Step 4: Connect to the VPN with Two-Factor Authentication<a class="headerlink" href="#step-4-connect-to-the-vpn-with-two-factor-authentication" title="Anchor link to this section">&para;</a></h2>
+<p>Every VPN session requires multi-factor authentication using a dynamic verification code delivered to your registered email address.</p>
+<ol>
+<li>On the FortiClient home screen, select the <strong>GlasgowTRE</strong> profile from the <strong>VPN Name</strong> dropdown.</li>
+<li>Confirm your TRE username is entered correctly.</li>
+<li>Enter your TRE password retrieved from KeePass into the <strong>Password</strong> field.</li>
+<li>Select <strong>Connect</strong>.</li>
+</ol>
+<p><img alt="FortiClient login screen with username and password fields" src="../../images/vpn-workstation/image5.png" /></p>
+<ol>
+<li>When primary credentials are accepted, FortiClient will display a prompt requesting an authentication <strong>Token</strong>.</li>
+</ol>
+<p><img alt="FortiClient two-factor authentication prompt requesting token" src="../../images/vpn-workstation/image6.png" /></p>
+<ol>
+<li>Open your registered email inbox and check for a message containing your six-digit authentication code. This email is sent automatically when the token prompt appears.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Enter the Token Promptly</p>
+<p>The six-digit email token is time-limited. Enter the token into FortiClient immediately upon receipt. If the token expires or is rejected, restart the connection attempt from the FortiClient login screen to request a fresh token.</p>
+</div>
+<ol>
+<li>Return to FortiClient, type the six-digit code into the <strong>Token</strong> field, and select <strong>OK</strong>.</li>
+</ol>
+<p><img alt="FortiClient connection progress screen verifying the token" src="../../images/vpn-workstation/image7.png" /></p>
+<ol>
+<li>Wait for the connection progress to complete. Once established, the FortiClient dashboard displays a green checkmark, your assigned TRE internal IP address, connection duration, and an active <strong>Disconnect</strong> button.</li>
+</ol>
+<p><img alt="FortiClient VPN connected status display showing IP address and Disconnect button" src="../../images/vpn-workstation/image8.png" /></p>
+<hr />
+<h2 id="step-5-download-the-secure-workstation-access-package">Step 5: Download the Secure Workstation Access package<a class="headerlink" href="#step-5-download-the-secure-workstation-access-package" title="Anchor link to this section">&para;</a></h2>
+<p>With the VPN connection established, download the dedicated workstation access package to reach your allocated virtual environment.</p>
+<ol>
+<li>Ensure your FortiClient VPN is active and connected.</li>
+<li>Navigate to the Secure Workstation Access download link provided in your onboarding email.</li>
+<li>If prompted with a browser confirmation to connect to the service, confirm and proceed.</li>
+</ol>
+<p><img alt="Browser prompt to connect to and download the workstation package" src="../../images/vpn-workstation/image9.png" /></p>
+<ol>
+<li>If your web browser flags the download with a security warning stating that the file is not commonly downloaded or has an unknown publisher:</li>
+<li>Select the options menu (<code>...</code>) or review panel next to the download item.</li>
+<li>Choose <strong>Keep</strong> (or <strong>Keep anyway</strong>).</li>
+</ol>
+<p><img alt="Browser security warning showing download flagged as uncommon" src="../../images/vpn-workstation/image10.png" /></p>
+<p><img alt="Browser download menu with Keep option selected" src="../../images/vpn-workstation/image11.png" /></p>
+<ol>
+<li>Open your local <strong>Downloads</strong> folder and confirm that the workstation executable package is present.</li>
+</ol>
+<hr />
+<h2 id="step-6-connect-to-the-tre-workstation-via-remote-desktop">Step 6: Connect to the TRE workstation via Remote Desktop<a class="headerlink" href="#step-6-connect-to-the-tre-workstation-via-remote-desktop" title="Anchor link to this section">&para;</a></h2>
+<p>Launch the workstation connection package to open an encrypted Remote Desktop session into the TRE.</p>
+<ol>
+<li>Double-click the downloaded workstation executable package in your Downloads folder.</li>
+<li>When the <strong>Remote Desktop Connection</strong> security dialogue appears with the notice <em>"The publisher of this remote connection cannot be identified. Do you want to connect anyway?"</em>, select <strong>Connect</strong>.</li>
+</ol>
+<p><img alt="Remote Desktop connection security warning dialog with Connect button" src="../../images/vpn-workstation/image12.png" /></p>
+<ol>
+<li>On the <strong>Windows Security - RD Gateway Security Credentials</strong> prompt, select <strong>Use a different account</strong>.</li>
+</ol>
+<p><img alt="RD Gateway Windows Security credentials dialog prompting to use a different account" src="../../images/vpn-workstation/image13.png" /></p>
+<ol>
+<li>Enter your full GlasgowTRE credentials:</li>
+<li><strong>User name</strong>: Enter your complete TRE username in the format <code>xxx.xxx.xxx@glasgowtre.ac.uk</code>.</li>
+<li><strong>Password</strong>: Enter your TRE password retrieved from KeePass in Step 1.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+<p><img alt="RD Gateway credentials entry dialog with TRE username entered" src="../../images/vpn-workstation/image14.png" /></p>
+<ol>
+<li>When the certificate verification prompt appears stating <em>"The identity of the remote computer cannot be verified. Do you want to connect anyway?"</em>, select <strong>Yes</strong> to trust the connection.</li>
+</ol>
+<p><img alt="Remote Desktop Connection certificate verification prompt with Yes button" src="../../images/vpn-workstation/image15.png" /></p>
+<ol>
+<li>The GlasgowTRE workstation desktop will launch in full screen. You are now inside your secure research environment and can access your approved datasets and analytics tools.</li>
+</ol>
+<hr />
+<h2 id="step-7-sign-out-securely-and-disconnect-the-vpn">Step 7: Sign out securely and disconnect the VPN<a class="headerlink" href="#step-7-sign-out-securely-and-disconnect-the-vpn" title="Anchor link to this section">&para;</a></h2>
+<p>Always perform a full sign out from the workstation before disconnecting from the network. Simply closing the remote desktop window leaves active sessions and locks workstation resources.</p>
+<ol>
+<li>Inside the remote TRE workstation, click the <strong>Start</strong> button on the Windows taskbar (or press the Windows key).</li>
+<li>Select your <strong>User Profile</strong> icon at the top or side of the Start menu.</li>
+<li>Select <strong>Sign out</strong>.</li>
+</ol>
+<p><img alt="Windows Start menu in the TRE workstation highlighting the Sign out option on the user profile" src="../../images/vpn-workstation/image16.png" /></p>
+<ol>
+<li>Wait for the remote desktop session window to close cleanly.</li>
+<li>On your local device, open the <strong>FortiClient</strong> window.</li>
+<li>Select <strong>Disconnect</strong> to terminate the encrypted VPN tunnel.</li>
+</ol>
+<p><img alt="FortiClient VPN interface with Disconnect button highlighted" src="../../images/vpn-workstation/image17.png" /></p>
+<hr />
+<h2 id="if-you-need-help">If you need help<a class="headerlink" href="#if-you-need-help" title="Anchor link to this section">&para;</a></h2>
+<p>If you experience connection errors, need password resets, or encounter issues with two-factor authentication, contact the GlasgowTRE support team.</p>
+<h3 id="primary-support-channel-uofg-helpdesk-portal">Primary support channel: UofG Helpdesk Portal<a class="headerlink" href="#primary-support-channel-uofg-helpdesk-portal" title="Anchor link to this section">&para;</a></h3>
+<p>Log a support ticket through the central University of Glasgow Helpdesk service catalogue:</p>
+<ol>
+<li>Navigate to the <a href="https://www.gla.ac.uk/myglasgow/it/helpdesk/">UofG Helpdesk Portal</a>.</li>
+<li>Select <strong>Service Catalogue</strong>.</li>
+<li>Select <strong>Report Something</strong>.</li>
+<li>Choose <strong>Glasgow TRE Helpdesk and Technical Support</strong>.</li>
+</ol>
+<p><img alt="Glasgow TRE Helpdesk and Technical Support service catalogue card" src="../../images/vpn-workstation/image18.png" /></p>
+<ol>
+<li>Complete the support form with the following details:</li>
+<li><strong>Step affected</strong>: Specify the exact step number and process (e.g. FortiClient installation, 2FA code, RD Gateway login).</li>
+<li><strong>Error details</strong>: Include exact error messages, error codes, or screenshots of the failure.</li>
+<li><strong>Timestamp</strong>: Note the approximate date and time the incident occurred.</li>
+<li><strong>TRE Username</strong>: Provide your TRE username (e.g. <code>xxx.xxx.xxx@glasgowtre.ac.uk</code>).</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Do Not Share Passwords in Tickets</p>
+<p>Never include your KeePass master password, TRE login password, or two-factor authentication codes in support tickets or email correspondence.</p>
+</div>
+<h3 id="urgent-support-and-direct-email-contact">Urgent support and direct email contact<a class="headerlink" href="#urgent-support-and-direct-email-contact" title="Anchor link to this section">&para;</a></h3>
+<p>If the Helpdesk portal is unavailable, or if you are facing a critical project deadline, contact the TRE Support Team directly by email:</p>
+<ul>
+<li><strong>Email</strong>: <a href="mailto:tre@glasgow.ac.uk">tre@glasgow.ac.uk</a></li>
+</ul>
+<p><img alt="Glasgow TRE support contact details and email form" src="../../images/vpn-workstation/image19.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
