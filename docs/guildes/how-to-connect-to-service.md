@@ -17,7 +17,7 @@ Self-service password changes are not available. If you forget your password or 
 
 ## Step 1: Open the service
 
-1. Open the service URL: http://sftp.glasgowtre.ac.uk:2022/
+1. Open the service URL: http://sftp.glasgowtre.ac.uk/
 2. Enter your username and password.
 3. Select Sign In.
 
