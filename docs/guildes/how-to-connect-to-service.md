@@ -20,6 +20,7 @@ Self-service password changes are not available. If you forget your password or 
 1. Open the service URL: [http://sftp.glasgowtre.ac.uk/](http://sftp.glasgowtre.ac.uk/)
 2. Enter your username and password.
 3. Select Sign In.
+4. TEST TEST TEST
 
 ![The GlasgowTRE DataTransfer sign-in screen showing username and password fields](../images/image2.png)
 
