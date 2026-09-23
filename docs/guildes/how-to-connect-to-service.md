@@ -85,6 +85,6 @@ Once you are signed in:
 
 ## If you need help
 
-If you are unable to sign in, cannot use the authenticator app, or need a password reset, contact the UofG Helpdesk through the service catalogue and select the Data (incl. Data ingress/extraction) category. You can also contact the team directly at tre@glasgow.ac.uk.
+If you are unable to sign in, cannot use the authenticator app, or need a password reset, contact the UofG Helpdesk through the service catalogue and select the Data (incl. Data ingress/extraction) category. You can also contact the team directly at [tre@glasgow.ac.uk](mailto:tre@glasgow.ac.uk).
 
 ![The Glasgow TRE Helpdesk and Technical Support card in the service catalogue](../images/image10.png)
