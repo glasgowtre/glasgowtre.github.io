@@ -78,6 +78,9 @@ Once you are signed in:
 
 ![The file context menu showing Rename, Move or copy, and Delete options](../images/image9.png)
 
+!!! tip "Planning large or bulk file transfers (500GB+)?"
+    Uploading large datasets through a web browser is prone to tab crashes and network timeouts, and cannot be resumed if interrupted. For high-volume data transfers, we strongly recommend using native SFTP (Port 2022). See our [Data Transfer FAQ](../faq/data-transfer.md) for architecture details, concurrency limits, and recommended client settings.
+
 ## Step 5: End the session securely
 
 1. Select the profile icon in the top-right corner.
@@ -88,4 +91,18 @@ Once you are signed in:
 
 If you are unable to sign in, cannot use the authenticator app, or need a password reset, contact the UofG Helpdesk through the service catalogue and select the Data (incl. Data ingress/extraction) category. You can also contact the team directly at [tre@glasgow.ac.uk](mailto:tre@glasgow.ac.uk).
 
-![The Glasgow TRE Helpdesk and Technical Support card in the service catalogue](../images/image10.png)
+<!-- ![The Glasgow TRE Helpdesk and Technical Support card in the service catalogue](../images/image10.png) -->
+
+---
+
+### Quick Reference: Recommended SFTP Client Configuration
+
+When setting up your transfer client (Cyberduck, WinSCP, FileZilla, etc.) for large ingest workloads:
+
+| Setting | Recommended Value | Rationale |
+| :--- | :--- | :--- |
+| **Protocol** | `SFTP` (SSH File Transfer Protocol) | Direct protocol engine, supports byte-offset resuming. |
+| **Port** | `2022` | Dedicated native SFTP listener. |
+| **Maximum Concurrent Connections** | `1` | Avoids triggering multiple concurrent 2FA challenges. |
+| **Transfer Mode / Queue** | Sequential (1 file at a time) | Ensures reliable batch processing through large queues. |
+| **Existing Files / Interrupted Action** | `Resume` (or `Append`) | Prevents restarting 500GB+ files from 0% on disconnect. |
