@@ -16,6 +16,8 @@
         <link rel="prev" href="../how-to-access-secure-vpn-and-workstation/">
       
       
+        <link rel="next" href="../../faq/data-transfer/">
+      
       
         
       
@@ -494,12 +496,117 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="If you need help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-recommended-sftp-client-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference: Recommended SFTP Client Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FAQ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/data-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions: Data Transfer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -623,6 +730,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="If you need help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-recommended-sftp-client-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference: Recommended SFTP Client Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -757,6 +881,10 @@
 </ol>
 <p><img alt="A file listing showing the preview button highlighted on a file" src="../../images/image8.png" /></p>
 <p><img alt="The file context menu showing Rename, Move or copy, and Delete options" src="../../images/image9.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Planning large or bulk file transfers (500GB+)?</p>
+<p>Uploading large datasets through a web browser is prone to tab crashes and network timeouts, and cannot be resumed if interrupted. For high-volume data transfers, we strongly recommend using native SFTP (Port 2022). See our <a href="../../faq/data-transfer/">Data Transfer FAQ</a> for architecture details, concurrency limits, and recommended client settings.</p>
+</div>
 <h2 id="step-5-end-the-session-securely">Step 5: End the session securely<a class="headerlink" href="#step-5-end-the-session-securely" title="Anchor link to this section">&para;</a></h2>
 <ol>
 <li>Select the profile icon in the top-right corner.</li>
@@ -765,7 +893,47 @@
 </ol>
 <h2 id="if-you-need-help">If you need help<a class="headerlink" href="#if-you-need-help" title="Anchor link to this section">&para;</a></h2>
 <p>If you are unable to sign in, cannot use the authenticator app, or need a password reset, contact the UofG Helpdesk through the service catalogue and select the Data (incl. Data ingress/extraction) category. You can also contact the team directly at <a href="mailto:tre@glasgow.ac.uk">tre@glasgow.ac.uk</a>.</p>
-<p><img alt="The Glasgow TRE Helpdesk and Technical Support card in the service catalogue" src="../../images/image10.png" /></p>
+<!-- ![The Glasgow TRE Helpdesk and Technical Support card in the service catalogue](../images/image10.png) -->
+
+<hr />
+<h3 id="quick-reference-recommended-sftp-client-configuration">Quick Reference: Recommended SFTP Client Configuration<a class="headerlink" href="#quick-reference-recommended-sftp-client-configuration" title="Anchor link to this section">&para;</a></h3>
+<p>When setting up your transfer client (Cyberduck, WinSCP, FileZilla, etc.) for large ingest workloads:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Setting</th>
+<th style="text-align: left;">Recommended Value</th>
+<th style="text-align: left;">Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Protocol</strong></td>
+<td style="text-align: left;"><code>SFTP</code> (SSH File Transfer Protocol)</td>
+<td style="text-align: left;">Direct protocol engine, supports byte-offset resuming.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Port</strong></td>
+<td style="text-align: left;"><code>2022</code></td>
+<td style="text-align: left;">Dedicated native SFTP listener.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Maximum Concurrent Connections</strong></td>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Avoids triggering multiple concurrent 2FA challenges.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Transfer Mode / Queue</strong></td>
+<td style="text-align: left;">Sequential (1 file at a time)</td>
+<td style="text-align: left;">Ensures reliable batch processing through large queues.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Existing Files / Interrupted Action</strong></td>
+<td style="text-align: left;"><code>Resume</code> (or <code>Append</code>)</td>
+<td style="text-align: left;">Prevents restarting 500GB+ files from 0% on disconnect.</td>
+</tr>
+</tbody>
+</table>
 
 
 
