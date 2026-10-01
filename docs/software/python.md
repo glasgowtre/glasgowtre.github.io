@@ -1,74 +1,21 @@
 # Python Runtime & Package Management
 
-!!! info "Supported Python Versions"
-    Glasgow TRE analytics workstations support all Python versions between **`3.12.0`** and **`3.14.13`** (including beta, release candidate, and pre-release releases) across both **Windows** and **Linux**. You can install, use, and switch between multiple versions side-by-side in user space without requiring administrator privileges.
 
 ## Overview & Management
 
 - **Management Tool**: Astral [`uv`](https://github.com/astral-sh/uv) provides runtime and environment management in user space without requiring administrator rights (`C:\Program Files\uv` on Windows).
 - **Binary Upstream**: Standalone Python builds sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone) and hosted on internal Dell PowerScale S3 storage.
 - **Supported Versions**: Python `3.12.0` through `3.14.13` (including beta and pre-release/RC builds) on Windows (`x86_64-pc-windows-msvc`) and Linux (`x86_64-unknown-linux-gnu`).
-- **Runtime Isolation**: Enforced via `python-preference = "only-managed"` in `C:\ProgramData\uv\uv.toml` so workstations only use approved internal mirrored runtimes.
-- **Package Index**: Air-gapped PyPI mirror hosted on `repo.hlz.glasgowtre.ac.uk`. Pre-configured `C:\ProgramData\pip\pip.ini` (Windows) and `/etc/pip.conf` (Linux) allow standard `pip` and Jupyter `%pip` commands to resolve dependencies automatically.
+
+- **Package Index**: PyPA repository with [correct specifications](https://www.pypa.io/en/latest/specifications/#pypa-specifications) is hosted on-premises. `pip` and `uv` are pre-configured to use this repo.<br><br>
+  Jupyter notebooks using  `%pip` magic command are also configured to use this repo.
 
 ---
 
-## How-To: Common Workflows
-
-### Install a Python Runtime
-
-```powershell
-# List available runtimes on the internal mirror
-uv python list
-
-# Install target version (multiple versions can coexist)
-uv python install 3.12.13
-```
-
-### Initialize a Project & Virtual Environment
-
-```powershell
-mkdir C:\Users\<username>\Documents\analysis_project
-cd C:\Users\<username>\Documents\analysis_project
-
-# Initialize project config (pyproject.toml)
-uv init
-
-# Create virtual environment pinned to a specific Python version
-uv venv --python 3.12
-```
-
-### Install Packages
-
-- **Using `uv`** (recorded in `uv.lock`):
-  ```powershell
-  uv add pandas polars jupyterlab
-  uv pip install -r requirements.txt
-  ```
-- **Inside JupyterLab notebooks** (uses pre-configured `pip.ini`):
-  ```python
-  %pip install <package-name>
-  ```
-
-### Run Workloads
-
-```powershell
-# Execute a script inside the project environment
-uv run script.py
-
-# Launch JupyterLab within the project environment
-uv run jupyter lab
-
-# Run ad-hoc script with ephemeral packages without altering project dependencies
-uv run --python 3.12 --with pandas script.py
-```
-
-### IDE Integration
-
-- **VS Code & PyCharm**: Automatically detect virtual environments located in `.venv`.
-- **Interpreter Path**: Select `.venv\Scripts\python.exe` (Windows) or `.venv/bin/python` (Linux).
-
----
+!!! info "Supported Python Versions"
+    Glasgow TRE analytics workstations support **all** Python versions between **`3.12.0`** and **`3.14.13`** (including beta, release candidate, and pre-release releases) across both **Windows** and **Linux**. 
+    
+    You can install, use, and switch between multiple versions side-by-side in user space without requiring administrator privileges.
 
 ## Reference: Available PyPI Packages
 
