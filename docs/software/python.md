@@ -12,10 +12,57 @@
 
 ---
 
+## Supported Python Releases
+
 !!! info "Supported Python Versions"
-    Glasgow TRE analytics workstations support **all** Python versions between **`3.12.0`** and **`3.14.13`** (including beta, release candidate, and pre-release releases) across both **Windows** and **Linux**. 
-    
-    You can install, use, and switch between multiple versions side-by-side in user space without requiring administrator privileges.
+     
+    It is possible to  install, use, and switch between multiple python versions.
+
+| Minor Track | Release | Release Date | Release Type |
+| :--- | :--- | :--- | :--- |
+| Python 3.12 | `3.12.0` | 2023-10-02 | Major Feature Release |
+| Python 3.12 | `3.12.1` | 2023-12-07 | Bugfix |
+| Python 3.12 | `3.12.2` | 2024-02-06 | Bugfix |
+| Python 3.12 | `3.12.3` | 2024-04-09 | Bugfix |
+| Python 3.12 | `3.12.4` | 2024-06-06 | Bugfix |
+| Python 3.12 | `3.12.5` | 2024-08-06 | Bugfix |
+| Python 3.12 | `3.12.6` | 2024-09-06 | Bugfix |
+| Python 3.12 | `3.12.7` | 2024-10-01 | Bugfix |
+| Python 3.12 | `3.12.8` | 2024-12-03 | Bugfix |
+| Python 3.12 | `3.12.9` | 2025-02-04 | Bugfix |
+| Python 3.12 | `3.12.10` | 2025-04-08 | Bugfix |
+| Python 3.12 | `3.12.11` | 2025-06-03 | Security Fix |
+| Python 3.12 | `3.12.12` | 2025-10-09 | Security Fix |
+| Python 3.12 | `3.12.13` | 2026-03-03 | Security Fix |
+| Python 3.12 | `3.12.14` | 2026-08-12 | Security Fix |
+| Python 3.13 | `3.13.0` | 2024-10-07 | Major Feature Release |
+| Python 3.13 | `3.13.1` | 2024-12-03 | Bugfix |
+| Python 3.13 | `3.13.2` | 2025-02-04 | Bugfix |
+| Python 3.13 | `3.13.3` | 2025-04-08 | Bugfix |
+| Python 3.13 | `3.13.4` | 2025-06-03 | Bugfix |
+| Python 3.13 | `3.13.5` | 2025-06-11 | Hotfix |
+| Python 3.13 | `3.13.6` | 2025-08-06 | Bugfix |
+| Python 3.13 | `3.13.7` | 2025-08-14 | Bugfix |
+| Python 3.13 | `3.13.8` | 2025-10-07 | Bugfix |
+| Python 3.13 | `3.13.9` | 2025-10-14 | Bugfix |
+| Python 3.13 | `3.13.10` | 2025-12-02 | Bugfix |
+| Python 3.13 | `3.13.11` | 2025-12-05 | Bugfix |
+| Python 3.13 | `3.13.12` | 2026-02-03 | Bugfix |
+| Python 3.13 | `3.13.13` | 2026-04-07 | Bugfix |
+| Python 3.13 | `3.13.14` | 2026-06-10 | Bugfix |
+| Python 3.13 | `3.13.15` | 2026-08-05 | Bugfix |
+| Python 3.14 | `3.14.0` | 2025-10-07 | Major Feature Release |
+| Python 3.14 | `3.14.1` | 2025-12-02 | Bugfix |
+| Python 3.14 | `3.14.2` | 2025-12-05 | Bugfix |
+| Python 3.14 | `3.14.3` | 2026-02-03 | Bugfix |
+| Python 3.14 | `3.14.4` | 2026-04-07 | Bugfix |
+| Python 3.14 | `3.14.5` | 2026-05-10 | Bugfix |
+| Python 3.14 | `3.14.6` | 2026-06-10 | Bugfix |
+| Python 3.14 | `3.14.7` | 2026-08-05 | Bugfix |
+| Python 3.15 | `3.15.0rc1` | 2026-08-04 | Release Candidate 1 |
+| Python 3.15 | `3.15.0rc2` | 2026-09-01 | Release Candidate 2 |
+
+---
 
 ## Reference: Available PyPI Packages
 
