@@ -1,0 +1,2920 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for GlasgowTRE">
+      
+      
+        <meta name="author" content="GlasgowTRE">
+      
+      
+      
+        <link rel="prev" href="../../guildes/how-to-connect-to-service/">
+      
+      
+        <link rel="next" href="../../faq/data-transfer/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/uog_logos/Unboxed mono logo blue.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Python Runtime & Package Management - GlasgowTRE Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/palette.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-runtime--package-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GlasgowTRE Handbook" class="md-header__button md-logo" aria-label="GlasgowTRE Handbook" data-md-component="logo">
+      
+  <img src="../../images/uog_logos/Unboxed mono logo white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GlasgowTRE Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python Runtime &amp; Package Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GlasgowTRE Handbook" class="md-nav__button md-logo" aria-label="GlasgowTRE Handbook" data-md-component="logo">
+      
+  <img src="../../images/uog_logos/Unboxed mono logo white.svg" alt="logo">
+
+    </a>
+    GlasgowTRE Handbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to GlagowTRE Handbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guildes/how-to-access-secure-vpn-and-workstation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DRAFT] How to connect to GlasgowTRE secure VPN and workstation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guildes/how-to-connect-to-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use GlasgowTRE secure web file transfer service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Runtime &amp; Package Management
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Runtime &amp; Package Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview--management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview &amp; Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-available-pypi-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference: Available PyPI Packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference: Available PyPI Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jump-to-letter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jump to Letter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        J
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        K
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        U
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Y
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requesting-additional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting Additional Packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FAQ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/data-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions: Data Transfer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview--management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview &amp; Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-available-pypi-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference: Available PyPI Packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference: Available PyPI Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jump-to-letter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jump to Letter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        J
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        K
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        U
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Y
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requesting-additional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting Additional Packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Welcome to GlagowTRE Handbook
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Software
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-runtime--package-management">Python Runtime &amp; Package Management<a class="headerlink" href="#python-runtime--package-management" title="Anchor link to this section">&para;</a></h1>
+<h2 id="overview--management">Overview &amp; Management<a class="headerlink" href="#overview--management" title="Anchor link to this section">&para;</a></h2>
+<ul>
+<li><strong>Management Tool</strong>: Astral <a href="https://github.com/astral-sh/uv"><code>uv</code></a> provides runtime and environment management in user space without requiring administrator rights (<code>C:\Program Files\uv</code> on Windows).</li>
+<li><strong>Binary Upstream</strong>: Standalone Python builds sourced from <a href="https://github.com/astral-sh/python-build-standalone"><code>astral-sh/python-build-standalone</code></a> and hosted on internal Dell PowerScale S3 storage.</li>
+<li>
+<p><strong>Supported Versions</strong>: Python <code>3.12.0</code> through <code>3.14.13</code> (including beta and pre-release/RC builds) on Windows (<code>x86_64-pc-windows-msvc</code>) and Linux (<code>x86_64-unknown-linux-gnu</code>).</p>
+</li>
+<li>
+<p><strong>Package Index</strong>: PyPA repository with <a href="https://www.pypa.io/en/latest/specifications/#pypa-specifications">correct specifications</a> is hosted on-premises. <code>pip</code> and <code>uv</code> are pre-configured to use this repo.<br><br>
+  Jupyter notebooks using  <code>%pip</code> magic command are also configured to use this repo.</p>
+</li>
+</ul>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Supported Python Versions</p>
+<p>Glasgow TRE analytics workstations support <strong>all</strong> Python versions between <strong><code>3.12.0</code></strong> and <strong><code>3.14.13</code></strong> (including beta, release candidate, and pre-release releases) across both <strong>Windows</strong> and <strong>Linux</strong>. </p>
+<p>You can install, use, and switch between multiple versions side-by-side in user space without requiring administrator privileges.</p>
+</div>
+<h2 id="reference-available-pypi-packages">Reference: Available PyPI Packages<a class="headerlink" href="#reference-available-pypi-packages" title="Anchor link to this section">&para;</a></h2>
+<p>Inventory of <strong>301 approved packages</strong> available on the Glasgow TRE production mirror (Snapshot 3).</p>
+<h3 id="jump-to-letter">Jump to Letter<a class="headerlink" href="#jump-to-letter" title="Anchor link to this section">&para;</a></h3>
+<p><a href="#a">A</a> | <a href="#b">B</a> | <a href="#c">C</a> | <a href="#d">D</a> | <a href="#e">E</a> | <a href="#f">F</a> | <a href="#g">G</a> | <a href="#h">H</a> | <a href="#i">I</a> | <a href="#j">J</a> | <a href="#k">K</a> | <a href="#l">L</a> | <a href="#m">M</a> | <a href="#n">N</a> | <a href="#o">O</a> | <a href="#p">P</a> | <a href="#q">Q</a> | <a href="#r">R</a> | <a href="#s">S</a> | <a href="#t">T</a> | <a href="#u">U</a> | <a href="#w">W</a> | <a href="#x">X</a> | <a href="#y">Y</a> | <a href="#z">Z</a></p>
+<hr />
+<h3 id="a">A<a class="headerlink" href="#a" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>aiofiles</code></td>
+<td style="text-align: left;"><code>25.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>alembic</code></td>
+<td style="text-align: left;"><code>1.20.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>altair</code></td>
+<td style="text-align: left;"><code>6.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>anndata</code></td>
+<td style="text-align: left;"><code>0.13.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>annotated-doc</code></td>
+<td style="text-align: left;"><code>0.0.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>annotated-types</code></td>
+<td style="text-align: left;"><code>0.8.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>anycorn</code></td>
+<td style="text-align: left;"><code>0.20.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>anyio</code></td>
+<td style="text-align: left;"><code>4.15.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>appnope</code></td>
+<td style="text-align: left;"><code>1.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>argon2-cffi</code></td>
+<td style="text-align: left;"><code>25.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>argon2-cffi-bindings</code></td>
+<td style="text-align: left;"><code>26.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>array-api-compat</code></td>
+<td style="text-align: left;"><code>1.15.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>arrow</code></td>
+<td style="text-align: left;"><code>1.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asgiref</code></td>
+<td style="text-align: left;"><code>3.12.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asttokens</code></td>
+<td style="text-align: left;"><code>3.0.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>async-lru</code></td>
+<td style="text-align: left;"><code>2.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>attrs</code></td>
+<td style="text-align: left;"><code>26.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>audioop-lts</code></td>
+<td style="text-align: left;"><code>0.2.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>autobahn</code></td>
+<td style="text-align: left;"><code>26.7.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>autograd</code></td>
+<td style="text-align: left;"><code>1.9.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>autograd-gamma</code></td>
+<td style="text-align: left;"><code>0.5.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>automat</code></td>
+<td style="text-align: left;"><code>25.4.16</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>awscli</code></td>
+<td style="text-align: left;"><code>1.46.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="b">B<a class="headerlink" href="#b" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>babel</code></td>
+<td style="text-align: left;"><code>2.18.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>beautifulsoup4</code></td>
+<td style="text-align: left;"><code>4.15.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bidict</code></td>
+<td style="text-align: left;"><code>0.24.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>biopython</code></td>
+<td style="text-align: left;"><code>1.88</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>biosppy</code></td>
+<td style="text-align: left;"><code>2.2.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bleach</code></td>
+<td style="text-align: left;"><code>6.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>blis</code></td>
+<td style="text-align: left;"><code>1.3.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bokeh</code></td>
+<td style="text-align: left;"><code>3.10.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>brotli</code></td>
+<td style="text-align: left;"><code>1.2.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="c">C<a class="headerlink" href="#c" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>cachetools</code></td>
+<td style="text-align: left;"><code>7.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>catalogue</code></td>
+<td style="text-align: left;"><code>2.0.10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cbor2</code></td>
+<td style="text-align: left;"><code>5.9.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>certifi</code></td>
+<td style="text-align: left;"><code>2024.2.2</code>, <code>2026.7.22</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cffi</code></td>
+<td style="text-align: left;"><code>2.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>charset-normalizer</code></td>
+<td style="text-align: left;"><code>3.3.2</code>, <code>3.5.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>click</code></td>
+<td style="text-align: left;"><code>8.5.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cloudpathlib</code></td>
+<td style="text-align: left;"><code>0.25.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cloudpickle</code></td>
+<td style="text-align: left;"><code>3.1.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cmdstanpy</code></td>
+<td style="text-align: left;"><code>1.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>colorama</code></td>
+<td style="text-align: left;"><code>0.4.6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>colorlog</code></td>
+<td style="text-align: left;"><code>6.12.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>comm</code></td>
+<td style="text-align: left;"><code>0.2.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>confection</code></td>
+<td style="text-align: left;"><code>1.3.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>conllu</code></td>
+<td style="text-align: left;"><code>6.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>constantly</code></td>
+<td style="text-align: left;"><code>23.10.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>contourpy</code></td>
+<td style="text-align: left;"><code>1.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cryptography</code></td>
+<td style="text-align: left;"><code>50.0.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cycler</code></td>
+<td style="text-align: left;"><code>0.12.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cymem</code></td>
+<td style="text-align: left;"><code>2.0.13</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cython</code></td>
+<td style="text-align: left;"><code>3.1.8</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d">D<a class="headerlink" href="#d" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>daphne</code></td>
+<td style="text-align: left;"><code>4.2.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>darts</code></td>
+<td style="text-align: left;"><code>0.47.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>debugpy</code></td>
+<td style="text-align: left;"><code>1.8.22</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>defusedxml</code></td>
+<td style="text-align: left;"><code>0.7.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docutils</code></td>
+<td style="text-align: left;"><code>0.19</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>donfig</code></td>
+<td style="text-align: left;"><code>0.8.1.post1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duckdb</code></td>
+<td style="text-align: left;"><code>1.5.5</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="e">E<a class="headerlink" href="#e" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ecos</code></td>
+<td style="text-align: left;"><code>2.0.14</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>executing</code></td>
+<td style="text-align: left;"><code>2.2.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="f">F<a class="headerlink" href="#f" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>fast-array-utils</code></td>
+<td style="text-align: left;"><code>1.5.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fastapi</code></td>
+<td style="text-align: left;"><code>0.141.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fastjsonschema</code></td>
+<td style="text-align: left;"><code>2.22.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fhir-core</code></td>
+<td style="text-align: left;"><code>1.1.11</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fhir-resources</code></td>
+<td style="text-align: left;"><code>8.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>filelock</code></td>
+<td style="text-align: left;"><code>4.0.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fonttools</code></td>
+<td style="text-align: left;"><code>4.66.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>formulaic</code></td>
+<td style="text-align: left;"><code>1.2.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fqdn</code></td>
+<td style="text-align: left;"><code>1.5.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fsspec</code></td>
+<td style="text-align: left;"><code>2026.9.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="g">G<a class="headerlink" href="#g" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>google-crc32c</code></td>
+<td style="text-align: left;"><code>1.9.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gradio</code></td>
+<td style="text-align: left;"><code>6.28.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gradio-client</code></td>
+<td style="text-align: left;"><code>2.7.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>granian</code></td>
+<td style="text-align: left;"><code>2.8.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>great-expectations</code></td>
+<td style="text-align: left;"><code>1.23.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>groovy</code></td>
+<td style="text-align: left;"><code>0.1.2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h">H<a class="headerlink" href="#h" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>h11</code></td>
+<td style="text-align: left;"><code>0.16.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h2</code></td>
+<td style="text-align: left;"><code>4.4.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h5py</code></td>
+<td style="text-align: left;"><code>3.16.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hf-gradio</code></td>
+<td style="text-align: left;"><code>0.4.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hf-xet</code></td>
+<td style="text-align: left;"><code>1.6.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>holidays</code></td>
+<td style="text-align: left;"><code>0.105</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hpack</code></td>
+<td style="text-align: left;"><code>4.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>html5lib</code></td>
+<td style="text-align: left;"><code>1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>httpcore</code></td>
+<td style="text-align: left;"><code>1.0.9</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>httpx</code></td>
+<td style="text-align: left;"><code>0.28.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>huggingface-hub</code></td>
+<td style="text-align: left;"><code>1.33.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hypercorn</code></td>
+<td style="text-align: left;"><code>0.18.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hyperframe</code></td>
+<td style="text-align: left;"><code>6.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hyperlink</code></td>
+<td style="text-align: left;"><code>21.0.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="i">I<a class="headerlink" href="#i" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>icecream</code></td>
+<td style="text-align: left;"><code>2.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>idna</code></td>
+<td style="text-align: left;"><code>3.7</code>, <code>3.20</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>incremental</code></td>
+<td style="text-align: left;"><code>24.11.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>iniconfig</code></td>
+<td style="text-align: left;"><code>2.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>interface-meta</code></td>
+<td style="text-align: left;"><code>2.0.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ipykernel</code></td>
+<td style="text-align: left;"><code>7.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ipython</code></td>
+<td style="text-align: left;"><code>9.17.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ipython-pygments-lexers</code></td>
+<td style="text-align: left;"><code>1.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ipywidgets</code></td>
+<td style="text-align: left;"><code>8.1.9</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>isoduration</code></td>
+<td style="text-align: left;"><code>20.11.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="j">J<a class="headerlink" href="#j" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>jedi</code></td>
+<td style="text-align: left;"><code>0.20.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jinja2</code></td>
+<td style="text-align: left;"><code>3.1.6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jmespath</code></td>
+<td style="text-align: left;"><code>1.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>joblib</code></td>
+<td style="text-align: left;"><code>1.6.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>json5</code></td>
+<td style="text-align: left;"><code>0.15.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jsonpointer</code></td>
+<td style="text-align: left;"><code>3.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jsonschema</code></td>
+<td style="text-align: left;"><code>4.26.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jsonschema-specifications</code></td>
+<td style="text-align: left;"><code>2025.9.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter</code></td>
+<td style="text-align: left;"><code>1.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-builder</code></td>
+<td style="text-align: left;"><code>1.2.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-client</code></td>
+<td style="text-align: left;"><code>8.10.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-console</code></td>
+<td style="text-align: left;"><code>6.6.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-core</code></td>
+<td style="text-align: left;"><code>5.9.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-events</code></td>
+<td style="text-align: left;"><code>0.12.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-lsp</code></td>
+<td style="text-align: left;"><code>2.3.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-server</code></td>
+<td style="text-align: left;"><code>2.21.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyter-server-terminals</code></td>
+<td style="text-align: left;"><code>0.5.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyterlab</code></td>
+<td style="text-align: left;"><code>4.6.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyterlab-pygments</code></td>
+<td style="text-align: left;"><code>0.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyterlab-server</code></td>
+<td style="text-align: left;"><code>2.28.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jupyterlab-widgets</code></td>
+<td style="text-align: left;"><code>3.0.17</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="k">K<a class="headerlink" href="#k" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>kiwisolver</code></td>
+<td style="text-align: left;"><code>1.5.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="l">L<a class="headerlink" href="#l" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>lark</code></td>
+<td style="text-align: left;"><code>1.3.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>legacy-api-wrap</code></td>
+<td style="text-align: left;"><code>1.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lifelines</code></td>
+<td style="text-align: left;"><code>0.30.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>llvmlite</code></td>
+<td style="text-align: left;"><code>0.36.0</code>, <code>0.49.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>local-migrator</code></td>
+<td style="text-align: left;"><code>0.1.10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>loguru</code></td>
+<td style="text-align: left;"><code>0.7.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lxml</code></td>
+<td style="text-align: left;"><code>6.1.3</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="m">M<a class="headerlink" href="#m" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>mako</code></td>
+<td style="text-align: left;"><code>1.4.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>markdown-it-py</code></td>
+<td style="text-align: left;"><code>4.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>markupsafe</code></td>
+<td style="text-align: left;"><code>3.0.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>marshmallow</code></td>
+<td style="text-align: left;"><code>4.3.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>matplotlib</code></td>
+<td style="text-align: left;"><code>3.11.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>matplotlib-inline</code></td>
+<td style="text-align: left;"><code>0.2.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mdurl</code></td>
+<td style="text-align: left;"><code>0.1.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>medspacy</code></td>
+<td style="text-align: left;"><code>1.3.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>medspacy-quickumls</code></td>
+<td style="text-align: left;"><code>3.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>medspacy-unqlite</code></td>
+<td style="text-align: left;"><code>0.9.8</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mistune</code></td>
+<td style="text-align: left;"><code>3.3.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mock</code></td>
+<td style="text-align: left;"><code>5.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>msgpack</code></td>
+<td style="text-align: left;"><code>1.2.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>msgspec</code></td>
+<td style="text-align: left;"><code>0.21.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>murmurhash</code></td>
+<td style="text-align: left;"><code>1.0.15</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="n">N<a class="headerlink" href="#n" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>narwhals</code></td>
+<td style="text-align: left;"><code>2.26.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>natsort</code></td>
+<td style="text-align: left;"><code>8.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nbclient</code></td>
+<td style="text-align: left;"><code>0.11.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nbconvert</code></td>
+<td style="text-align: left;"><code>7.17.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nbformat</code></td>
+<td style="text-align: left;"><code>5.11.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nest-asyncio2</code></td>
+<td style="text-align: left;"><code>1.7.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>networkx</code></td>
+<td style="text-align: left;"><code>3.7</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>neurokit2</code></td>
+<td style="text-align: left;"><code>0.2.12</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nfoursid</code></td>
+<td style="text-align: left;"><code>1.0.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nibabel</code></td>
+<td style="text-align: left;"><code>5.4.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nltk</code></td>
+<td style="text-align: left;"><code>3.10.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nme</code></td>
+<td style="text-align: left;"><code>0.1.8</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nmslib</code></td>
+<td style="text-align: left;"><code>2.1.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>notebook</code></td>
+<td style="text-align: left;"><code>7.6.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>notebook-shim</code></td>
+<td style="text-align: left;"><code>0.2.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>numba</code></td>
+<td style="text-align: left;"><code>0.53.1</code>, <code>0.67.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>numcodecs</code></td>
+<td style="text-align: left;"><code>0.17.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>numexpr</code></td>
+<td style="text-align: left;"><code>2.14.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>numpy</code></td>
+<td style="text-align: left;"><code>1.26.4</code>, <code>2.5.3</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="o">O<a class="headerlink" href="#o" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>opencv-python</code></td>
+<td style="text-align: left;"><code>5.0.0.93</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>optuna</code></td>
+<td style="text-align: left;"><code>5.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>orjson</code></td>
+<td style="text-align: left;"><code>3.12.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>osqp</code></td>
+<td style="text-align: left;"><code>1.1.3</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="p">P<a class="headerlink" href="#p" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>packaging</code></td>
+<td style="text-align: left;"><code>26.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pandas</code></td>
+<td style="text-align: left;"><code>2.2.2</code>, <code>3.0.6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pandocfilters</code></td>
+<td style="text-align: left;"><code>1.5.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parso</code></td>
+<td style="text-align: left;"><code>0.8.7</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pathspec</code></td>
+<td style="text-align: left;"><code>1.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>patsy</code></td>
+<td style="text-align: left;"><code>1.0.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pendulum</code></td>
+<td style="text-align: left;"><code>3.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pexpect</code></td>
+<td style="text-align: left;"><code>4.9.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pillow</code></td>
+<td style="text-align: left;"><code>12.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pip</code></td>
+<td style="text-align: left;"><code>26.2.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>platformdirs</code></td>
+<td style="text-align: left;"><code>4.12.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pluggy</code></td>
+<td style="text-align: left;"><code>1.6.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>polars</code></td>
+<td style="text-align: left;"><code>1.44.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>polars-runtime-32</code></td>
+<td style="text-align: left;"><code>1.44.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>preshed</code></td>
+<td style="text-align: left;"><code>3.0.13</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>priority</code></td>
+<td style="text-align: left;"><code>2.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>prometheus-client</code></td>
+<td style="text-align: left;"><code>0.26.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>prompt-toolkit</code></td>
+<td style="text-align: left;"><code>3.0.53</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>prophet</code></td>
+<td style="text-align: left;"><code>1.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>psutil</code></td>
+<td style="text-align: left;"><code>7.2.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ptyprocess</code></td>
+<td style="text-align: left;"><code>0.7.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pure-eval</code></td>
+<td style="text-align: left;"><code>0.2.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyarrow</code></td>
+<td style="text-align: left;"><code>25.0.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyasn1</code></td>
+<td style="text-align: left;"><code>0.6.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pybind11</code></td>
+<td style="text-align: left;"><code>3.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pycparser</code></td>
+<td style="text-align: left;"><code>3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pydantic</code></td>
+<td style="text-align: left;"><code>2.13.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pydantic-core</code></td>
+<td style="text-align: left;"><code>2.46.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pydantic-settings</code></td>
+<td style="text-align: left;"><code>2.15.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pydicom</code></td>
+<td style="text-align: left;"><code>3.0.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pydub</code></td>
+<td style="text-align: left;"><code>0.25.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyfastner</code></td>
+<td style="text-align: left;"><code>1.0.10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pygments</code></td>
+<td style="text-align: left;"><code>2.21.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pynndescent</code></td>
+<td style="text-align: left;"><code>0.5.13</code>, <code>0.6.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyod</code></td>
+<td style="text-align: left;"><code>3.6.6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyopenssl</code></td>
+<td style="text-align: left;"><code>26.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyparsing</code></td>
+<td style="text-align: left;"><code>3.3.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyrush</code></td>
+<td style="text-align: left;"><code>1.0.13</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pysbd</code></td>
+<td style="text-align: left;"><code>0.3.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pysimstring</code></td>
+<td style="text-align: left;"><code>1.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pytest</code></td>
+<td style="text-align: left;"><code>9.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>python-dateutil</code></td>
+<td style="text-align: left;"><code>2.9.0.post0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>python-dotenv</code></td>
+<td style="text-align: left;"><code>1.2.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>python-json-logger</code></td>
+<td style="text-align: left;"><code>4.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>python-multipart</code></td>
+<td style="text-align: left;"><code>0.0.32</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pytz</code></td>
+<td style="text-align: left;"><code>2024.1</code>, <code>2026.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pywavelets</code></td>
+<td style="text-align: left;"><code>1.10.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pywinpty</code></td>
+<td style="text-align: left;"><code>3.0.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyyaml</code></td>
+<td style="text-align: left;"><code>6.0.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pyzmq</code></td>
+<td style="text-align: left;"><code>27.2.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="q">Q<a class="headerlink" href="#q" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>quicksectx</code></td>
+<td style="text-align: left;"><code>0.4.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="r">R<a class="headerlink" href="#r" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>referencing</code></td>
+<td style="text-align: left;"><code>0.37.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>regex</code></td>
+<td style="text-align: left;"><code>2026.9.10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>requests</code></td>
+<td style="text-align: left;"><code>2.31.0</code>, <code>2.34.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rfc3339-validator</code></td>
+<td style="text-align: left;"><code>0.1.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rfc3986-validator</code></td>
+<td style="text-align: left;"><code>0.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rfc3987-syntax</code></td>
+<td style="text-align: left;"><code>1.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rich</code></td>
+<td style="text-align: left;"><code>15.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rich-click</code></td>
+<td style="text-align: left;"><code>1.9.9</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rpds-py</code></td>
+<td style="text-align: left;"><code>2026.6.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rsa</code></td>
+<td style="text-align: left;"><code>4.7.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ruamel-yaml</code></td>
+<td style="text-align: left;"><code>0.19.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="s">S<a class="headerlink" href="#s" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>safehttpx</code></td>
+<td style="text-align: left;"><code>0.1.7</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scanpy</code></td>
+<td style="text-align: left;"><code>1.9.8</code>, <code>1.12.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scikit-learn</code></td>
+<td style="text-align: left;"><code>1.9.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scikit-survival</code></td>
+<td style="text-align: left;"><code>0.28.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scipy</code></td>
+<td style="text-align: left;"><code>1.18.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scispacy</code></td>
+<td style="text-align: left;"><code>0.2.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scverse-misc</code></td>
+<td style="text-align: left;"><code>0.1.6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>seaborn</code></td>
+<td style="text-align: left;"><code>0.13.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>semantic-version</code></td>
+<td style="text-align: left;"><code>2.10.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>send2trash</code></td>
+<td style="text-align: left;"><code>2.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>service-identity</code></td>
+<td style="text-align: left;"><code>26.1.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>session-info</code></td>
+<td style="text-align: left;"><code>1.0.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>session-info2</code></td>
+<td style="text-align: left;"><code>0.4.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>setuptools</code></td>
+<td style="text-align: left;"><code>84.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shap</code></td>
+<td style="text-align: left;"><code>0.52.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shellingham</code></td>
+<td style="text-align: left;"><code>1.5.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shortuuid</code></td>
+<td style="text-align: left;"><code>1.0.13</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>simpleitk</code></td>
+<td style="text-align: left;"><code>2.5.6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>six</code></td>
+<td style="text-align: left;"><code>1.16.0</code>, <code>1.17.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>slicer</code></td>
+<td style="text-align: left;"><code>0.0.8</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>smart-open</code></td>
+<td style="text-align: left;"><code>8.0.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sniffio</code></td>
+<td style="text-align: left;"><code>1.3.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>soupsieve</code></td>
+<td style="text-align: left;"><code>2.10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>spacy</code></td>
+<td style="text-align: left;"><code>3.8.16</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>spacy-legacy</code></td>
+<td style="text-align: left;"><code>3.0.12</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>spacy-loggers</code></td>
+<td style="text-align: left;"><code>1.0.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sqlalchemy</code></td>
+<td style="text-align: left;"><code>2.1.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>srsly</code></td>
+<td style="text-align: left;"><code>2.5.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>stack-data</code></td>
+<td style="text-align: left;"><code>0.6.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>stanio</code></td>
+<td style="text-align: left;"><code>0.5.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>starlette</code></td>
+<td style="text-align: left;"><code>1.7.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>statsmodels</code></td>
+<td style="text-align: left;"><code>0.15.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>stdlib-list</code></td>
+<td style="text-align: left;"><code>0.12.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="t">T<a class="headerlink" href="#t" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>terminado</code></td>
+<td style="text-align: left;"><code>0.18.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>thinc</code></td>
+<td style="text-align: left;"><code>8.3.13</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>threadpoolctl</code></td>
+<td style="text-align: left;"><code>3.7.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tinycss2</code></td>
+<td style="text-align: left;"><code>1.5.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tomlkit</code></td>
+<td style="text-align: left;"><code>0.14.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tornado</code></td>
+<td style="text-align: left;"><code>6.5.10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tqdm</code></td>
+<td style="text-align: left;"><code>4.70.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>traitlets</code></td>
+<td style="text-align: left;"><code>5.16.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>twisted</code></td>
+<td style="text-align: left;"><code>26.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>txaio</code></td>
+<td style="text-align: left;"><code>26.6.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>typer</code></td>
+<td style="text-align: left;"><code>0.27.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>typing-extensions</code></td>
+<td style="text-align: left;"><code>4.16.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>typing-inspection</code></td>
+<td style="text-align: left;"><code>0.4.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tzdata</code></td>
+<td style="text-align: left;"><code>2024.1</code>, <code>2026.4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tzlocal</code></td>
+<td style="text-align: left;"><code>5.4.4</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="u">U<a class="headerlink" href="#u" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>u-msgpack-python</code></td>
+<td style="text-align: left;"><code>2.8.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ujson</code></td>
+<td style="text-align: left;"><code>6.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>umap-learn</code></td>
+<td style="text-align: left;"><code>0.5.12</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>unidecode</code></td>
+<td style="text-align: left;"><code>1.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>uri-template</code></td>
+<td style="text-align: left;"><code>1.3.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>urllib3</code></td>
+<td style="text-align: left;"><code>2.2.1</code>, <code>2.8.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>uvicorn</code></td>
+<td style="text-align: left;"><code>0.54.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="w">W<a class="headerlink" href="#w" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>wasabi</code></td>
+<td style="text-align: left;"><code>1.1.3</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wcwidth</code></td>
+<td style="text-align: left;"><code>0.9.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>weasel</code></td>
+<td style="text-align: left;"><code>1.0.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>webcolors</code></td>
+<td style="text-align: left;"><code>25.10.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>webencodings</code></td>
+<td style="text-align: left;"><code>0.6.1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>websocket-client</code></td>
+<td style="text-align: left;"><code>1.9.2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>widgetsnbextension</code></td>
+<td style="text-align: left;"><code>4.0.16</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>win32-setctime</code></td>
+<td style="text-align: left;"><code>1.2.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wrapt</code></td>
+<td style="text-align: left;"><code>2.5.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wsproto</code></td>
+<td style="text-align: left;"><code>1.3.2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="x">X<a class="headerlink" href="#x" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>xarray</code></td>
+<td style="text-align: left;"><code>2026.7.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>xyzservices</code></td>
+<td style="text-align: left;"><code>2026.9.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="y">Y<a class="headerlink" href="#y" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>yamllint</code></td>
+<td style="text-align: left;"><code>1.38.0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="z">Z<a class="headerlink" href="#z" title="Anchor link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package Name</th>
+<th style="text-align: left;">Available Version(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>zarr</code></td>
+<td style="text-align: left;"><code>3.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>zope-interface</code></td>
+<td style="text-align: left;"><code>8.6</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="requesting-additional-packages">Requesting Additional Packages<a class="headerlink" href="#requesting-additional-packages" title="Anchor link to this section">&para;</a></h3>
+<ul>
+<li><strong>Contact</strong>: Submit a package request ticket to your Glasgow TRE representative.</li>
+<li><strong>Information Needed</strong>: Library name, requested version, and analytical rationale.</li>
+<li><strong>Deployment</strong>: Approved packages are synced to the internal mirror during scheduled maintenance updates.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -13,8 +13,10 @@
       
       
       
-        <link rel="prev" href="../../software/python/">
+        <link rel="prev" href="../../guildes/how-to-connect-to-service/">
       
+      
+        <link rel="next" href="../2026-10-01-python-software-docs/">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>Frequently Asked Questions: Data Transfer - GlasgowTRE Handbook</title>
+        <title>Design Document: Python Runtime Management & Package Directory Documentation - GlasgowTRE Handbook</title>
       
     
     
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frequently-asked-questions-data-transfer" class="md-skip">
+        <a href="#design-document-python-runtime-management--package-directory-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frequently Asked Questions: Data Transfer
+              Design Document: Python Runtime Management &amp; Package Directory Documentation
             
           </span>
         </div>
@@ -469,8 +471,6 @@
       
   
   
-    
-  
   
   
     
@@ -482,11 +482,13 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -507,7 +509,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -522,37 +524,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Frequently Asked Questions: Data Transfer
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../faq/data-transfer/" class="md-nav__link">
         
   
   
@@ -568,70 +543,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-is-this-an-https-transfer-service-or-an-http-wrapper-for-an-sftp-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Is this an HTTPS transfer service, or an HTTP wrapper for an SFTP one?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-is-the-service-suitable-for-multiple-500gb-individual-files-eg-23-files-totaling-115-tb-in-one-operation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Is the service suitable for multiple 500GB individual files (e.g. 23 files totaling ~11.5 TB in one operation)?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-will-it-process-multiple-files-in-parallel-or-sequentially" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Will it process multiple files in parallel or sequentially?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-does-the-service-support-resuming-paused-or-interrupted-uploads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Does the service support resuming paused or interrupted uploads?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -671,10 +582,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-is-this-an-https-transfer-service-or-an-http-wrapper-for-an-sftp-one" class="md-nav__link">
+  <a href="#1-executive-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Is this an HTTPS transfer service, or an HTTP wrapper for an SFTP one?
+        1. Executive Summary
       
     </span>
   </a>
@@ -682,35 +593,119 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-is-the-service-suitable-for-multiple-500gb-individual-files-eg-23-files-totaling-115-tb-in-one-operation" class="md-nav__link">
+  <a href="#2-information-architecture--navigation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Is the service suitable for multiple 500GB individual files (e.g. 23 files totaling ~11.5 TB in one operation)?
+        2. Information Architecture &amp; Navigation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Information Architecture &amp; Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-navigation-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Navigation Updates
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-will-it-process-multiple-files-in-parallel-or-sequentially" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#22-page-route" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Will it process multiple files in parallel or sequentially?
+        2.2 Page Route
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#4-does-the-service-support-resuming-paused-or-interrupted-uploads" class="md-nav__link">
+  <a href="#3-python-runtime-management-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Does the service support resuming paused or interrupted uploads?
+        3. Python Runtime Management Specification
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Python Runtime Management Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-toolchain--architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Toolchain &amp; Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-practical-user-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Practical User Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pypi-package-directory-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. PyPI Package Directory Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PyPI Package Directory Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-pipeline--normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Data Pipeline &amp; Normalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-presentation--navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Presentation &amp; Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -760,7 +755,7 @@
         <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    FAQ
+    Plans
   </span>
 
         </a>
@@ -779,47 +774,90 @@
 
 
 
-<h1 id="frequently-asked-questions-data-transfer">Frequently Asked Questions: Data Transfer<a class="headerlink" href="#frequently-asked-questions-data-transfer" title="Anchor link to this section">&para;</a></h1>
-<p>This page answers common operational and technical questions regarding data ingress and file transfers into the GlasgowTRE environment.</p>
+<h1 id="design-document-python-runtime-management--package-directory-documentation">Design Document: Python Runtime Management &amp; Package Directory Documentation<a class="headerlink" href="#design-document-python-runtime-management--package-directory-documentation" title="Anchor link to this section">&para;</a></h1>
+<p><strong>Date:</strong> 2026-10-01<br />
+<strong>Status:</strong> Approved<br />
+<strong>Author:</strong> GlasgowTRE Team  </p>
 <hr />
-<h3 id="1-is-this-an-https-transfer-service-or-an-http-wrapper-for-an-sftp-one">1. Is this an HTTPS transfer service, or an HTTP wrapper for an SFTP one?<a class="headerlink" href="#1-is-this-an-https-transfer-service-or-an-http-wrapper-for-an-sftp-one" title="Anchor link to this section">&para;</a></h3>
-<p>It is <strong>neither an HTTP wrapper nor a proxy</strong>.</p>
-<p>The service runs a unified, native multi-protocol transfer engine (<a href="https://github.com/drakkan/sftpgo">SFTPGo</a>) supporting both:</p>
+<h2 id="1-executive-summary">1. Executive Summary<a class="headerlink" href="#1-executive-summary" title="Anchor link to this section">&para;</a></h2>
+<p>This document establishes the architecture and content design for introducing the <strong>Software</strong> section into the Glasgow TRE Handbook website (<code>glasgowtre.github.io</code>). Specifically, it details the addition of a comprehensive <strong>Python</strong> documentation page (<code>docs/software/python.md</code>) that outlines how Python runtimes are managed within the secure, air-gapped environment using Astral <code>uv</code>, how standalone CPython executables are sourced and mirrored, practical researcher workflows, and a complete catalog of available PyPI packages grouped alphabetically from <code>A</code> to <code>Z</code>.</p>
+<hr />
+<h2 id="2-information-architecture--navigation">2. Information Architecture &amp; Navigation<a class="headerlink" href="#2-information-architecture--navigation" title="Anchor link to this section">&para;</a></h2>
+<h3 id="21-navigation-updates">2.1 Navigation Updates<a class="headerlink" href="#21-navigation-updates" title="Anchor link to this section">&para;</a></h3>
 <ul>
-<li><strong>HTTPS</strong> (web-transfer interface via port <code>443</code>)</li>
-<li><strong>Native SFTP</strong> (via port <code>2022</code>)</li>
+<li><strong>Top-Level Navigation (<code>docs/.pages</code>)</strong>:
+  Include <code>software</code> in the main handbook navigation between <code>guildes</code> and <code>faq</code>:
+  <div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guildes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">software</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">faq</span>
+</code></pre></div></li>
+<li><strong>Software Sub-navigation (<code>docs/software/.pages</code>)</strong>:
+  Establish the software category configuration:
+  <div class="highlight"><pre><span></span><code><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Software</span>
+<span class="nt">nav</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python.md</span>
+</code></pre></div></li>
 </ul>
-<p>Both protocols connect directly to the same underlying storage and authentication service. Files uploaded through either protocol arrive in the same target directories with identical permissions and access controls.</p>
-<hr />
-<h3 id="2-is-the-service-suitable-for-multiple-500gb-individual-files-eg-23-files-totaling-115-tb-in-one-operation">2. Is the service suitable for multiple 500GB individual files (e.g. 23 files totaling ~11.5 TB in one operation)?<a class="headerlink" href="#2-is-the-service-suitable-for-multiple-500gb-individual-files-eg-23-files-totaling-115-tb-in-one-operation" title="Anchor link to this section">&para;</a></h3>
-<p>The recommended protocol depends heavily on the volume and individual file sizes:</p>
+<h3 id="22-page-route">2.2 Page Route<a class="headerlink" href="#22-page-route" title="Anchor link to this section">&para;</a></h3>
 <ul>
-<li><strong>SFTP (Port 2022 — Strongly Recommended):</strong> <strong>Yes.</strong> A dedicated SFTP client (such as Cyberduck, FileZilla, WinSCP, or CLI tools like <code>sftp</code> / <code>rsync</code> over SSH) can queue all 23 files (~11.5 TB total) in a single operation and process the queue automatically without manual intervention.</li>
-<li><strong>HTTPS (Web Transfer — Not Recommended for Large Files):</strong> While the web interface technically allows queuing multiple files, uploading individual 500GB files via a web browser is very prone to browser tab crashes, memory exhaustion, and HTTP proxy or network timeouts.</li>
+<li>File path: <code>docs/software/python.md</code></li>
+<li>URL path: <code>/software/python/</code></li>
+<li>Breadcrumb: <code>Home &gt; Software &gt; Python</code></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Browser Upload Limitations</p>
-<p>For datasets with individual files larger than a few gigabytes, or total batch sizes in the hundreds of gigabytes or terabytes, always use <strong>native SFTP (Port 2022)</strong> rather than the web browser interface.</p>
-</div>
 <hr />
-<h3 id="3-will-it-process-multiple-files-in-parallel-or-sequentially">3. Will it process multiple files in parallel or sequentially?<a class="headerlink" href="#3-will-it-process-multiple-files-in-parallel-or-sequentially" title="Anchor link to this section">&para;</a></h3>
+<h2 id="3-python-runtime-management-specification">3. Python Runtime Management Specification<a class="headerlink" href="#3-python-runtime-management-specification" title="Anchor link to this section">&para;</a></h2>
+<h3 id="31-toolchain--architecture">3.1 Toolchain &amp; Architecture<a class="headerlink" href="#31-toolchain--architecture" title="Anchor link to this section">&para;</a></h3>
 <ul>
-<li><strong>HTTPS (Web Transfer):</strong> <strong>Sequentially only.</strong> The web interface transfers 1 file at a time; it only triggers the next upload once the current file completes.</li>
-<li><strong>SFTP (Port 2022):</strong> While the SFTP protocol inherently supports multiple concurrent connections, <strong>we advise against configuring parallel transfers at this time</strong>. Because the GlasgowTRE service enforces Multi-Factor Authentication (MFA), each new concurrent connection spawned by an SFTP client triggers a separate 2FA prompt/challenge. This can lead to session disruptions, timeout errors, and failed parallel streams.</li>
+<li><strong>Tool</strong>: Astral <code>uv</code> deployed system-wide (<code>C:\Program Files\uv</code> on Windows analytics workstations).</li>
+<li><strong>Security &amp; Privileges</strong>: All Python environment management, runtime switching, and dependency installations take place in user space without requiring local administrator rights.</li>
+<li><strong>Python Binary Distribution</strong>:</li>
+<li>Python binaries are sourced upstream from <a href="https://github.com/astral-sh/python-build-standalone"><code>astral-sh/python-build-standalone</code></a>.</li>
+<li>Version coverage includes all releases from <code>3.12.0</code> to <code>3.14.13</code> (including beta and RC builds).</li>
+<li>Supported platforms: Windows (<code>x86_64-pc-windows-msvc</code>) and Linux (<code>x86_64-unknown-linux-gnu</code>).</li>
+<li>Binaries are mirrored internally to internal HTTP/PowerScale S3 object storage (<code>python-install-mirror</code>).</li>
+<li><strong>Enforcement</strong>:</li>
+<li><code>C:\ProgramData\uv\uv.toml</code> sets <code>python-preference = "only-managed"</code> to ensure workstations strictly pull and run mirrored runtimes.</li>
+<li><strong>Package Repository (PyPI Mirror)</strong>:</li>
+<li>Glasgow TRE hosts an internal air-gapped Pulp mirror serving curated wheels and source distributions (<code>repo.hlz.glasgowtre.ac.uk</code>).</li>
+<li>Pre-configured <code>C:\ProgramData\pip\pip.ini</code> (Windows) and <code>/etc/pip.conf</code> (Linux) allow standard <code>pip</code> and Jupyter <code>%pip</code> commands to resolve dependencies automatically.</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Client Setting Recommendation: Limit to 1 Transfer at a Time</p>
-<p>We strongly recommend configuring your SFTP client queue settings to <strong>1 transfer at a time (sequential)</strong>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Roadmap: Parallel Transfers</p>
-<p>We recognise the importance of parallel transfers for high-volume data and are actively investigating secure mechanisms to enable concurrent streams without repeated MFA prompts in the future.</p>
-</div>
+<h3 id="32-practical-user-workflows">3.2 Practical User Workflows<a class="headerlink" href="#32-practical-user-workflows" title="Anchor link to this section">&para;</a></h3>
+<ol>
+<li><strong>Discovering &amp; Installing Runtimes</strong>:</li>
+<li><code>uv python list</code></li>
+<li><code>uv python install 3.12.13</code> (multiple versions installable side-by-side)</li>
+<li><strong>Project &amp; Virtual Environment Creation</strong>:</li>
+<li><code>uv init my_project</code></li>
+<li><code>uv venv --python 3.12</code></li>
+<li><strong>Dependency Management</strong>:</li>
+<li><code>uv add pandas polars jupyterlab</code> (pinned cleanly in <code>uv.lock</code>)</li>
+<li><code>uv pip install -r requirements.txt</code></li>
+<li>JupyterLab <code>%pip install &lt;package&gt;</code> support</li>
+<li><strong>Execution</strong>:</li>
+<li><code>uv run script.py</code></li>
+<li><code>uv run jupyter lab</code></li>
+<li>Ephemeral testing: <code>uv run --python 3.12 --with pandas script.py</code></li>
+<li><strong>IDE Detection</strong>: Automatic discovery by VS Code and PyCharm via <code>.venv</code>.</li>
+</ol>
 <hr />
-<h3 id="4-does-the-service-support-resuming-paused-or-interrupted-uploads">4. Does the service support resuming paused or interrupted uploads?<a class="headerlink" href="#4-does-the-service-support-resuming-paused-or-interrupted-uploads" title="Anchor link to this section">&para;</a></h3>
+<h2 id="4-pypi-package-directory-specification">4. PyPI Package Directory Specification<a class="headerlink" href="#4-pypi-package-directory-specification" title="Anchor link to this section">&para;</a></h2>
+<h3 id="41-data-pipeline--normalization">4.1 Data Pipeline &amp; Normalization<a class="headerlink" href="#41-data-pipeline--normalization" title="Anchor link to this section">&para;</a></h3>
 <ul>
-<li><strong>HTTPS (Web Transfer):</strong> <strong>No.</strong> The web browser client does not support resumable or chunked uploads. If a browser upload is interrupted or the network drops, the transfer must restart from 0%.</li>
-<li><strong>SFTP (Port 2022):</strong> <strong>Yes.</strong> Native SFTP clients support resuming/appending to interrupted or paused uploads based on byte offsets. Given 500GB file sizes, resumability is essential to prevent restarting multi-hour transfers from scratch in the event of transient network disruptions or client disconnections.</li>
+<li>Data source: <code>repo-config/ansible/files/pypi_packages.csv</code> (reflecting Snapshot Version 3 documented in <code>production_packages_report.md</code>).</li>
+<li>Library names are normalized according to PEP 503 conventions (lowercase, standardized dashes).</li>
+<li>When a library has multiple supported releases in the mirror (e.g., <code>numpy</code> versions <code>1.26.4</code> and <code>2.5.3</code>), releases are consolidated into a single entry with versions separated by commas.</li>
+</ul>
+<h3 id="42-presentation--navigation">4.2 Presentation &amp; Navigation<a class="headerlink" href="#42-presentation--navigation" title="Anchor link to this section">&para;</a></h3>
+<ul>
+<li><strong>Quick-Jump Alphabet Bar</strong>: Anchor links (<code>[A](#a) | [B](#b) | ... | [Z](#z)</code>) placed at the top of the package section.</li>
+<li><strong>A-Z Headings</strong>: Level-3 headings (<code>### A</code>, <code>### B</code>, etc.) for each letter with available packages.</li>
+<li><strong>Table Structure</strong>:
+  | Package | Available Version(s) |
+  | :--- | :--- |
+  | <code>package-name</code> | <code>version_1, version_2</code> |</li>
+<li><strong>Support &amp; Request Box</strong>: Admonition block detailing how researchers can request additional libraries or version updates via their TRE representative.</li>
 </ul>
 
 
