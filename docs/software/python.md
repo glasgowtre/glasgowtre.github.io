@@ -1,122 +1,77 @@
 # Python Runtime & Package Management
 
-This section details how Python runtimes and analytical dependencies are managed within the secure Glasgow TRE environment, along with common researcher workflows and a directory of pre-approved PyPI packages.
+## Overview & Management
+
+- **Management Tool**: Astral [`uv`](https://github.com/astral-sh/uv) provides runtime and environment management in user space without requiring administrator rights (`C:\Program Files\uv` on Windows).
+- **Binary Upstream**: Standalone Python builds sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone) and hosted on internal Dell PowerScale S3 storage.
+- **Supported Versions**: Python `3.12.0` through `3.14.13` (including beta and pre-release/RC builds) on Windows (`x86_64-pc-windows-msvc`) and Linux (`x86_64-unknown-linux-gnu`).
+- **Runtime Isolation**: Enforced via `python-preference = "only-managed"` in `C:\ProgramData\uv\uv.toml` so workstations only use approved internal mirrored runtimes.
+- **Package Index**: Air-gapped PyPI mirror hosted on `repo.hlz.glasgowtre.ac.uk`. Pre-configured `C:\ProgramData\pip\pip.ini` (Windows) and `/etc/pip.conf` (Linux) allow standard `pip` and Jupyter `%pip` commands to resolve dependencies automatically.
 
 ---
 
-## How Python is Managed
+## How-To: Common Workflows
 
-In secure and air-gapped analytics environments, traditional system-wide Python installations (such as `C:\Program Files\Python*`) restrict researchers because changing or installing versions requires local administrative privileges.
-
-Glasgow TRE adopts a modern, secure toolchain approach:
-
-- **Management Tool**: Astral [`uv`](https://github.com/astral-sh/uv) is deployed system-wide across all analytics workstations (`C:\Program Files\uv` on Windows).
-- **User-Space Autonomy**: All virtual environments, runtime switching, and package installations run entirely in user space without requiring local administrator rights.
-- **Standalone Runtime Binaries**: Python executables are sourced directly from upstream [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone) and mirrored internally onto **Dell PowerScale (Isilon) S3** storage and internal HTTP endpoints.
-- **Supported Versions**: All versions between **`3.12.0`** and **`3.14.13`** (including beta and pre-release/RC builds) are supported across both **Windows** (`x86_64-pc-windows-msvc`) and **Linux** (`x86_64-unknown-linux-gnu`) environments.
-- **Strict Isolation Policy**: Workstations are configured with `python-preference = "only-managed"` via system-wide configuration (`C:\ProgramData\uv\uv.toml`), guaranteeing that `uv` exclusively fetches and utilizes verified, internally mirrored runtimes.
-- **Internal Air-Gapped Package Mirror**: Dependencies are served from Glasgow TRE's internal PyPI repository mirror (`repo.hlz.glasgowtre.ac.uk`). A system-wide `pip.ini` (`C:\ProgramData\pip\pip.ini` on Windows / `/etc/pip.conf` on Linux) is pre-configured with the internal index URL and trusted host. Standard `pip` and Jupyter notebook `%pip` commands automatically resolve dependencies from the internal mirror without manual flags.
-
----
-
-## Researcher Guide & Workflows
-
-Researchers have access to `uv` directly from PowerShell, Windows Terminal, or Linux shells.
-
-### 1. Discover and Install Python Interpreters
-
-List available Python versions from the internal mirror and install your required version:
+### Install a Python Runtime
 
 ```powershell
-# List available Python versions
+# List available runtimes on the internal mirror
 uv python list
 
-# Install a specific Python version (e.g. 3.12.13)
+# Install target version (multiple versions can coexist)
 uv python install 3.12.13
 ```
 
-> **Tip:** You can install multiple versions side-by-side (e.g., `3.12.1` and `3.13.4`) without conflict.
-
----
-
-### 2. Initialize a Project & Virtual Environment
-
-Navigate to your workspace directory and create a version-isolated project environment:
+### Initialize a Project & Virtual Environment
 
 ```powershell
-# Create project folder
 mkdir C:\Users\<username>\Documents\analysis_project
 cd C:\Users\<username>\Documents\analysis_project
 
-# Initialize project configuration (creates pyproject.toml)
+# Initialize project config (pyproject.toml)
 uv init
 
-# Create a virtual environment pinned to Python 3.12
+# Create virtual environment pinned to a specific Python version
 uv venv --python 3.12
 ```
 
----
+### Install Packages
 
-### 3. Install Packages
+- **Using `uv`** (recorded in `uv.lock`):
+  ```powershell
+  uv add pandas polars jupyterlab
+  uv pip install -r requirements.txt
+  ```
+- **Inside JupyterLab notebooks** (uses pre-configured `pip.ini`):
+  ```python
+  %pip install <package-name>
+  ```
 
-Add dependencies using `uv add` to automatically record reproducible dependency locks in `uv.lock`:
-
-```powershell
-uv add pandas polars jupyterlab
-```
-
-For existing projects containing a standard `requirements.txt`:
-
-```powershell
-uv pip install -r requirements.txt
-```
-
-#### Working with JupyterLab and Standard Pip
-
-Analytics workstations have a system-wide `pip.ini` configured (`C:\ProgramData\pip\pip.ini`). Inside JupyterLab notebooks or terminal sessions, running:
-
-```python
-%pip install <package-name>
-```
-
-or from PowerShell:
+### Run Workloads
 
 ```powershell
-pip install <package-name>
-```
-
-will automatically fetch packages from the internal Glasgow TRE repository mirror without requiring manual repository flags.
-
----
-
-### 4. Run Workloads & Launch JupyterLab
-
-Execute your code directly through `uv run` to ensure execution within the isolated project environment:
-
-```powershell
-# Run a Python script
+# Execute a script inside the project environment
 uv run script.py
 
-# Launch JupyterLab within your environment
+# Launch JupyterLab within the project environment
 uv run jupyter lab
 
-# Run an ad-hoc script with ephemeral dependencies without altering project dependencies
+# Run ad-hoc script with ephemeral packages without altering project dependencies
 uv run --python 3.12 --with pandas script.py
 ```
 
+### IDE Integration
+
+- **VS Code & PyCharm**: Automatically detect virtual environments located in `.venv`.
+- **Interpreter Path**: Select `.venv\Scripts\python.exe` (Windows) or `.venv/bin/python` (Linux).
+
 ---
 
-### 5. IDE Integration
+## Reference: Available PyPI Packages
 
-Modern IDEs available on Glasgow TRE workstations (such as **Visual Studio Code** and **PyCharm**) automatically detect virtual environments created by `uv` inside the `.venv` directory. When opening a workspace, select the interpreter located at `.venv\Scripts\python.exe` (Windows) or `.venv/bin/python` (Linux).
+Inventory of **301 approved packages** available on the Glasgow TRE production mirror (Snapshot 3).
 
----
-
-## Available PyPI Packages Catalog
-
-Glasgow TRE curates and mirrors an internal PyPI repository to supply dependencies securely in an air-gapped environment. Below is the inventory of **301 unique libraries** currently available in the production mirror.
-
-### Alphabet Index
+### Jump to Letter
 
 [A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [J](#j) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [Q](#q) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [W](#w) | [X](#x) | [Y](#y) | [Z](#z)
 
@@ -550,10 +505,8 @@ Glasgow TRE curates and mirrors an internal PyPI repository to supply dependenci
 
 ---
 
-### Requesting Additional Packages or Versions
+### Requesting Additional Packages
 
-The Glasgow TRE PyPI mirror is actively managed. If your research workload requires a library or specific release not currently listed in the catalog:
-
-1. Contact your **Glasgow TRE Representative** or submit a package request ticket through the service portal.
-2. Specify the package name, requested version, and brief analytical rationale.
-3. Once approved, the dependency and its underlying wheels are synchronized to the internal mirror during scheduled updates.
+- **Contact**: Submit a package request ticket to your Glasgow TRE representative.
+- **Information Needed**: Library name, requested version, and analytical rationale.
+- **Deployment**: Approved packages are synced to the internal mirror during scheduled maintenance updates.
