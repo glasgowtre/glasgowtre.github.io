@@ -15,9 +15,8 @@
 ## Supported Python Releases
 
 !!! info "Supported Python Versions"
-    Glasgow TRE analytics workstations support **all** Python versions between **`3.12.0`** and **`3.14.13`** (including beta, release candidate, and pre-release releases) across both **Windows** and **Linux**. 
-    
-    You can install, use, and switch between multiple versions side-by-side in user space without requiring administrator privileges.
+     
+    It is possible to  install, use, and switch between multiple python versions.
 
 | Minor Track | Release | Release Date | Release Type |
 | :--- | :--- | :--- | :--- |
