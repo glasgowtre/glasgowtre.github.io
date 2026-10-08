@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../../guildes/how-to-connect-to-service/">
+        <link rel="prev" href="../2026-10-01-python-software-docs/">
       
       
-        <link rel="next" href="../2026-10-01-python-software-docs/">
+        <link rel="next" href="../2026-10-08-hpc-visual-theme/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Design Document: Python Runtime Management & Package Directory Documentation - GlasgowTRE Handbook</title>
+        <title>Design Document: Visual Theme Harmonization with HPC Sister Site - GlasgowTRE Handbook</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#design-document-python-runtime-management--package-directory-documentation" class="md-skip">
+        <a href="#design-document-visual-theme-harmonization-with-hpc-sister-site" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Design Document: Python Runtime Management &amp; Package Directory Documentation
+              Design Document: Visual Theme Harmonization with HPC Sister Site
             
           </span>
         </div>
@@ -593,22 +593,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-information-architecture--navigation" class="md-nav__link">
+  <a href="#2-upstream-hpc-visual-theme-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Information Architecture &amp; Navigation
+        2. Upstream HPC Visual Theme Analysis
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Information Architecture &amp; Navigation">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architecture--asset-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Architecture &amp; Asset Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Architecture &amp; Asset Specifications">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-navigation-updates" class="md-nav__link">
+  <a href="#31-assets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Navigation Updates
+        3.1 Assets
       
     </span>
   </a>
@@ -616,10 +627,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-page-route" class="md-nav__link">
+  <a href="#32-typography" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Page Route
+        3.2 Typography
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-css-rules-docsstylesheetspalettecss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 CSS Rules (docs/stylesheets/palette.css)
       
     </span>
   </a>
@@ -632,80 +654,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-python-runtime-management-specification" class="md-nav__link">
+  <a href="#4-implementation-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Python Runtime Management Specification
+        4. Implementation Steps
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3. Python Runtime Management Specification">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-toolchain--architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 Toolchain &amp; Architecture
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-practical-user-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 Practical User Workflows
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-pypi-package-directory-specification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. PyPI Package Directory Specification
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. PyPI Package Directory Specification">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-data-pipeline--normalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Data Pipeline &amp; Normalization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-presentation--navigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 Presentation &amp; Navigation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -752,7 +707,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../2026-10-01-python-software-docs-design/" class="md-path__link">
           
   <span class="md-ellipsis">
     Plans
@@ -774,91 +729,113 @@
 
 
 
-<h1 id="design-document-python-runtime-management--package-directory-documentation">Design Document: Python Runtime Management &amp; Package Directory Documentation<a class="headerlink" href="#design-document-python-runtime-management--package-directory-documentation" title="Anchor link to this section">&para;</a></h1>
-<p><strong>Date:</strong> 2026-10-01<br />
+<h1 id="design-document-visual-theme-harmonization-with-hpc-sister-site">Design Document: Visual Theme Harmonization with HPC Sister Site<a class="headerlink" href="#design-document-visual-theme-harmonization-with-hpc-sister-site" title="Anchor link to this section">&para;</a></h1>
+<p><strong>Date:</strong> 2026-10-08<br />
 <strong>Status:</strong> Approved<br />
 <strong>Author:</strong> GlasgowTRE Team  </p>
 <hr />
 <h2 id="1-executive-summary">1. Executive Summary<a class="headerlink" href="#1-executive-summary" title="Anchor link to this section">&para;</a></h2>
-<p>This document establishes the architecture and content design for introducing the <strong>Software</strong> section into the Glasgow TRE Handbook website (<code>glasgowtre.github.io</code>). Specifically, it details the addition of a comprehensive <strong>Python</strong> documentation page (<code>docs/software/python.md</code>) that outlines how Python runtimes are managed within the secure, air-gapped environment using Astral <code>uv</code>, how standalone CPython executables are sourced and mirrored, practical researcher workflows, and a complete catalog of available PyPI packages grouped alphabetically from <code>A</code> to <code>Z</code>.</p>
+<p>This document specifies the design for aligning the visual theme, assets, and typography of the Glasgow TRE Handbook (<code>glasgowtre.github.io</code>) with its University of Glasgow sister site, <a href="https://hpc.gla.ac.uk/">HPC</a>. </p>
+<p>By adopting the digital experience styling from the HPC site, GlasgowTRE achieves brand consistency across University research computing services, eliminates legacy CSS workarounds for logo rendering, and introduces polished light/dark theme headers, custom interactive button styles, and official typography (<code>Noto Sans</code> / <code>Noto Sans Mono</code>).</p>
 <hr />
-<h2 id="2-information-architecture--navigation">2. Information Architecture &amp; Navigation<a class="headerlink" href="#2-information-architecture--navigation" title="Anchor link to this section">&para;</a></h2>
-<h3 id="21-navigation-updates">2.1 Navigation Updates<a class="headerlink" href="#21-navigation-updates" title="Anchor link to this section">&para;</a></h3>
-<ul>
-<li><strong>Top-Level Navigation (<code>docs/.pages</code>)</strong>:
-  Include <code>software</code> in the main handbook navigation between <code>guildes</code> and <code>faq</code>:
-  <div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guildes</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">software</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">faq</span>
-</code></pre></div></li>
-<li><strong>Software Sub-navigation (<code>docs/software/.pages</code>)</strong>:
-  Establish the software category configuration:
-  <div class="highlight"><pre><span></span><code><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Software</span>
-<span class="nt">nav</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python.md</span>
-</code></pre></div></li>
-</ul>
-<h3 id="22-page-route">2.2 Page Route<a class="headerlink" href="#22-page-route" title="Anchor link to this section">&para;</a></h3>
-<ul>
-<li>File path: <code>docs/software/python.md</code></li>
-<li>URL path: <code>/software/python/</code></li>
-<li>Breadcrumb: <code>Home &gt; Software &gt; Python</code></li>
-</ul>
-<hr />
-<h2 id="3-python-runtime-management-specification">3. Python Runtime Management Specification<a class="headerlink" href="#3-python-runtime-management-specification" title="Anchor link to this section">&para;</a></h2>
-<h3 id="31-toolchain--architecture">3.1 Toolchain &amp; Architecture<a class="headerlink" href="#31-toolchain--architecture" title="Anchor link to this section">&para;</a></h3>
-<ul>
-<li><strong>Tool</strong>: Astral <code>uv</code> deployed system-wide (<code>C:\Program Files\uv</code> on Windows analytics workstations).</li>
-<li><strong>Security &amp; Privileges</strong>: All Python environment management, runtime switching, and dependency installations take place in user space without requiring local administrator rights.</li>
-<li><strong>Python Binary Distribution</strong>:</li>
-<li>Python binaries are sourced upstream from <a href="https://github.com/astral-sh/python-build-standalone"><code>astral-sh/python-build-standalone</code></a>.</li>
-<li>Version coverage includes all releases from <code>3.12.0</code> to <code>3.14.13</code> (including beta and RC builds).</li>
-<li>Supported platforms: Windows (<code>x86_64-pc-windows-msvc</code>) and Linux (<code>x86_64-unknown-linux-gnu</code>).</li>
-<li>Binaries are mirrored internally to internal HTTP/PowerScale S3 object storage (<code>python-install-mirror</code>).</li>
-<li><strong>Enforcement</strong>:</li>
-<li><code>C:\ProgramData\uv\uv.toml</code> sets <code>python-preference = "only-managed"</code> to ensure workstations strictly pull and run mirrored runtimes.</li>
-<li><strong>Package Repository (PyPI Mirror)</strong>:</li>
-<li>Glasgow TRE hosts an internal air-gapped Pulp mirror serving curated wheels and source distributions (<code>repo.hlz.glasgowtre.ac.uk</code>).</li>
-<li>Pre-configured <code>C:\ProgramData\pip\pip.ini</code> (Windows) and <code>/etc/pip.conf</code> (Linux) allow standard <code>pip</code> and Jupyter <code>%pip</code> commands to resolve dependencies automatically.</li>
-</ul>
-<h3 id="32-practical-user-workflows">3.2 Practical User Workflows<a class="headerlink" href="#32-practical-user-workflows" title="Anchor link to this section">&para;</a></h3>
+<h2 id="2-upstream-hpc-visual-theme-analysis">2. Upstream HPC Visual Theme Analysis<a class="headerlink" href="#2-upstream-hpc-visual-theme-analysis" title="Anchor link to this section">&para;</a></h2>
+<p>Inspection of <code>https://hpc.gla.ac.uk/</code> reveals the following core design elements:</p>
 <ol>
-<li><strong>Discovering &amp; Installing Runtimes</strong>:</li>
-<li><code>uv python list</code></li>
-<li><code>uv python install 3.12.13</code> (multiple versions installable side-by-side)</li>
-<li><strong>Project &amp; Virtual Environment Creation</strong>:</li>
-<li><code>uv init my_project</code></li>
-<li><code>uv venv --python 3.12</code></li>
-<li><strong>Dependency Management</strong>:</li>
-<li><code>uv add pandas polars jupyterlab</code> (pinned cleanly in <code>uv.lock</code>)</li>
-<li><code>uv pip install -r requirements.txt</code></li>
-<li>JupyterLab <code>%pip install &lt;package&gt;</code> support</li>
-<li><strong>Execution</strong>:</li>
-<li><code>uv run script.py</code></li>
-<li><code>uv run jupyter lab</code></li>
-<li>Ephemeral testing: <code>uv run --python 3.12 --with pandas script.py</code></li>
-<li><strong>IDE Detection</strong>: Automatic discovery by VS Code and PyCharm via <code>.venv</code>.</li>
+<li><strong>Header Colors &amp; Theme Palette</strong>:</li>
+<li><strong>Light Mode Header</strong>: <code>#011451</code> (Official University of Glasgow Navy Blue).</li>
+<li><strong>Dark Mode Header</strong>: <code>#344374</code> (Muted Slate Navy harmonized with Material dark slate surfaces).</li>
+<li><strong>Primary / Accent Tokens</strong>: Indigo palette base with targeted component overrides.</li>
+<li><strong>Branding Assets</strong>:</li>
+<li><strong>Header Vector Logo</strong> (<code>assets/logo-white.svg</code>): Tightly cropped viewBox (<code>39.3 39.16 156.39 48.39</code>) featuring the white crest and "University of Glasgow" logotype with authentic light blue (<code>#99d9f7</code>) and green (<code>#029048</code>) crest accents.</li>
+<li><strong>Favicon</strong> (<code>assets/favicon.png</code>): 201×201 high-resolution UoG crest on a transparent background.</li>
+<li><strong>Typography</strong>:</li>
+<li>Text font: <code>Noto Sans</code> (300, 400, 700).</li>
+<li>Code font: <code>Noto Sans Mono</code> (400, 700).</li>
+<li><strong>Custom Component Styling (<code>stylesheets/digital_experience_template.css</code>)</strong>:</li>
+<li>Header logo height constrained to <code>2rem</code> with auto width (max <code>300px</code>).</li>
+<li>Title offset (<code>margin-left: 1rem</code>).</li>
+<li>Navigation active links highlighted with <code>font-weight: 700</code>.</li>
+<li>Distinct button styling: <code>#011451</code> borders on light scheme; white borders on dark slate scheme with inverted hover states.</li>
 </ol>
 <hr />
-<h2 id="4-pypi-package-directory-specification">4. PyPI Package Directory Specification<a class="headerlink" href="#4-pypi-package-directory-specification" title="Anchor link to this section">&para;</a></h2>
-<h3 id="41-data-pipeline--normalization">4.1 Data Pipeline &amp; Normalization<a class="headerlink" href="#41-data-pipeline--normalization" title="Anchor link to this section">&para;</a></h3>
+<h2 id="3-architecture--asset-specifications">3. Architecture &amp; Asset Specifications<a class="headerlink" href="#3-architecture--asset-specifications" title="Anchor link to this section">&para;</a></h2>
+<h3 id="31-assets">3.1 Assets<a class="headerlink" href="#31-assets" title="Anchor link to this section">&para;</a></h3>
 <ul>
-<li>Data source: <code>repo-config/ansible/files/pypi_packages.csv</code> (reflecting Snapshot Version 3 documented in <code>production_packages_report.md</code>).</li>
-<li>Library names are normalized according to PEP 503 conventions (lowercase, standardized dashes).</li>
-<li>When a library has multiple supported releases in the mirror (e.g., <code>numpy</code> versions <code>1.26.4</code> and <code>2.5.3</code>), releases are consolidated into a single entry with versions separated by commas.</li>
+<li><strong>Logo</strong>:</li>
+<li>Saved to <code>docs/images/uog_logos/logo-white.svg</code>.</li>
+<li>Extracted from <code>https://hpc.gla.ac.uk/assets/logo-white.svg</code>.</li>
+<li>Used in <code>mkdocs.yml</code> under <code>theme.logo</code>.</li>
+<li><strong>Favicon</strong>:</li>
+<li>Saved to <code>docs/images/uog_logos/favicon.png</code>.</li>
+<li>Extracted from <code>https://hpc.gla.ac.uk/assets/favicon.png</code>.</li>
+<li>Used in <code>mkdocs.yml</code> under <code>theme.favicon</code>.</li>
 </ul>
-<h3 id="42-presentation--navigation">4.2 Presentation &amp; Navigation<a class="headerlink" href="#42-presentation--navigation" title="Anchor link to this section">&para;</a></h3>
-<ul>
-<li><strong>Quick-Jump Alphabet Bar</strong>: Anchor links (<code>[A](#a) | [B](#b) | ... | [Z](#z)</code>) placed at the top of the package section.</li>
-<li><strong>A-Z Headings</strong>: Level-3 headings (<code>### A</code>, <code>### B</code>, etc.) for each letter with available packages.</li>
-<li><strong>Table Structure</strong>:
-  | Package | Available Version(s) |
-  | :--- | :--- |
-  | <code>package-name</code> | <code>version_1, version_2</code> |</li>
-<li><strong>Support &amp; Request Box</strong>: Admonition block detailing how researchers can request additional libraries or version updates via their TRE representative.</li>
-</ul>
+<h3 id="32-typography">3.2 Typography<a class="headerlink" href="#32-typography" title="Anchor link to this section">&para;</a></h3>
+<p>Configured in <code>mkdocs.yml</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">font</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Noto Sans</span>
+<span class="w">    </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Noto Sans Mono</span>
+</code></pre></div></p>
+<h3 id="33-css-rules-docsstylesheetspalettecss">3.3 CSS Rules (<code>docs/stylesheets/palette.css</code>)<a class="headerlink" href="#33-css-rules-docsstylesheetspalettecss" title="Anchor link to this section">&para;</a></h3>
+<p>Refactor <code>palette.css</code> to integrate the HPC digital experience template while retaining <code>--gla-*</code> brand color tokens:</p>
+<ol>
+<li><strong>Header Overrides</strong>:
+   <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"default"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">md-header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#011451</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"slate"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">md-header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#344374</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><strong>Logo &amp; Header Sizing</strong>:
+   <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-header__button</span><span class="p">.</span><span class="nc">md-logo</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">md-header__title</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+   <em>Note: Remove the previous <code>background-image</code> light mode replacement and <code>filter: brightness(0) invert(1)</code> hack.</em></li>
+<li><strong>Navigation Links</strong>:
+   <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-nav__item</span><span class="w"> </span><span class="p">.</span><span class="nc">md-nav__link--active</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><strong>Button Styling</strong>:
+   <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"default"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">md-button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#011451</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#011451</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"default"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">md-button</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#011451</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#011451</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"slate"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">md-button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">"slate"</span><span class="o">]</span><span class="w"> </span><span class="p">.</span><span class="nc">md-button</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#011451</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="4-implementation-steps">4. Implementation Steps<a class="headerlink" href="#4-implementation-steps" title="Anchor link to this section">&para;</a></h2>
+<ol>
+<li>Fetch and store <code>logo-white.svg</code> and <code>favicon.png</code> from <code>https://hpc.gla.ac.uk/</code> into <code>docs/images/uog_logos/</code>.</li>
+<li>Update <code>mkdocs.yml</code> with the new logo, favicon, and <code>Noto Sans</code> font configurations.</li>
+<li>Update <code>docs/stylesheets/palette.css</code> with HPC header, logo, nav, and button styles, cleaning up redundant background-image rules.</li>
+<li>Verify asset integrity and layout consistency.</li>
+</ol>
 
 
 
