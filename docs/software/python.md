@@ -14,7 +14,7 @@
 
 ## Requesting Additional Packages
 
-If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to helpdesk [tre@glasgowtre.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request)
+If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to helpdesk [tre@glasgow.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request)
 
 Approved packages will be synced to the internal mirror to be available for installation.
 
