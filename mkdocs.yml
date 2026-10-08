@@ -5,8 +5,11 @@ site_author: GlasgowTRE
 
 theme:
   name: material
-  logo: images/uog_logos/Unboxed mono logo white.svg
-  favicon: images/uog_logos/Unboxed mono logo blue.svg
+  logo: images/uog_logos/logo-white.svg
+  favicon: images/uog_logos/favicon.png
+  font:
+    text: Noto Sans
+    code: Noto Sans Mono
   features:
     - navigation.indexes
     - navigation.instant
