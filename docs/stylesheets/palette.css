@@ -71,53 +71,52 @@
   --md-accent-fg-color--transparent: rgba(77, 187, 198, 0.1);
 }
 
-/* ── Header logo ───────────────────────────────────────────────── */
-/*
- * Light mode: Boxed colour logo.svg — navy bg + white text self-contained,
- *             no filter or modification needed.
- * Dark mode:  Unboxed mono logo white.svg with brightness(0) invert(1)
- *             to force fully white on the teal header.
- *
- * MkDocs Material only allows one logo: path in mkdocs.yml (set to the
- * white SVG for dark mode). Light mode overrides it via background-image.
- */
-.md-header__button.md-logo {
-  display: flex;
-  align-items: center;
-  /* Remove right padding; use margin-right for controlled gap to title */
-  padding: 4px 0 4px 4px;
-  margin-right: 1em;
+/* ── Header styling (harmonized with HPC sister site) ──────────── */
+/* Light mode: University of Glasgow Navy Blue */
+[data-md-color-scheme="default"] .md-header {
+  background-color: #011451;
 }
 
-.md-header__button.md-logo img,
-.md-header__button.md-logo svg {
-  height: 56px;
+/* Dark mode: Slate Navy */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #344374;
+}
+
+/* ── Header logo & title sizing ────────────────────────────────── */
+.md-header__button.md-logo img {
+  height: 2rem;
   width: auto;
-  min-width: 130px;
-  max-width: 210px;
+  max-width: 300px;
 }
 
-/* ── Light mode: boxed colour logo (no filter) ─────────────────── */
-[data-md-color-scheme="default"] .md-header__button.md-logo {
-  background-image: url('../images/uog_logos/Boxed colour logo.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left center;
-  /* Match the logo's natural aspect ratio (235×127 ≈ 1.85:1) at 56px tall */
-  width: 104px;
-  height: 56px;
+.md-header__title {
+  margin-left: 1rem;
 }
 
-/* Hide the white SVG <img> in light mode; background-image handles it */
-[data-md-color-scheme="default"] .md-header__button.md-logo img,
-[data-md-color-scheme="default"] .md-header__button.md-logo svg {
-  opacity: 0;
+/* ── Navigation links ──────────────────────────────────────────── */
+.md-nav__item .md-nav__link--active {
+  font-weight: 700;
 }
 
-/* ── Dark mode: white SVG forced fully white via filter ────────── */
-[data-md-color-scheme="slate"] .md-header__button.md-logo img,
-[data-md-color-scheme="slate"] .md-header__button.md-logo svg {
-  filter: brightness(0) invert(1);
+/* ── Button styling ────────────────────────────────────────────── */
+[data-md-color-scheme="default"] .md-button {
+  color: #011451;
+  border-color: #011451;
+}
+[data-md-color-scheme="default"] .md-button:hover {
+  background-color: #011451;
+  color: #ffffff;
+  border-color: #011451;
+}
+
+[data-md-color-scheme="slate"] .md-button {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+[data-md-color-scheme="slate"] .md-button:hover {
+  background-color: #ffffff;
+  color: #011451;
+  border-color: #ffffff;
 }
 
 
