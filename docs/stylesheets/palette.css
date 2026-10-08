@@ -73,13 +73,16 @@
 
 /* ── Header styling (harmonized with HPC sister site) ──────────── */
 /* Light mode: University of Glasgow Navy Blue */
-[data-md-color-scheme="default"] .md-header {
+[data-md-color-scheme="default"] .md-header,
+[data-md-color-scheme="default"] .md-nav--primary .md-nav__title[for="__drawer"] {
   background-color: #011451;
 }
 
 /* Dark mode: Slate Navy */
-[data-md-color-scheme="slate"] .md-header {
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title[for="__drawer"] {
   background-color: #344374;
+  color: #ffffff;
 }
 
 /* ── Header logo & title sizing ────────────────────────────────── */
