@@ -12,6 +12,19 @@
 
 ---
 
+## Requesting Additional Packages
+
+If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to helpdesk [tre@glasgowtre.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request)
+
+Approved packages will be synced to the internal mirror to be available for installation.
+
+
+!!! info "Information Needed" 
+    
+    Make sure to include the Library name, requested version, and analytical rationale.
+
+---
+
 ## Supported Python Releases
 
 !!! info "Supported Python Versions"
@@ -64,9 +77,9 @@
 
 ---
 
-## Reference: Available PyPI Packages
+## Available PyPI Packages
 
-Inventory of **301 approved packages** available on the Glasgow TRE production mirror (Snapshot 3).
+Inventory of **315 approved packages** available on the Glasgow TRE production mirror (Snapshot 5).
 
 ### Jump to Letter
 
@@ -112,6 +125,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `biopython` | `1.88` |
 | `biosppy` | `2.2.4` |
 | `bleach` | `6.4.0` |
+| `blinker` | `1.9.0` |
 | `blis` | `1.3.3` |
 | `bokeh` | `3.10.0` |
 | `brotli` | `1.2.0` |
@@ -125,7 +139,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `cbor2` | `5.9.0` |
 | `certifi` | `2024.2.2`, `2026.7.22` |
 | `cffi` | `2.1.1` |
-| `charset-normalizer` | `3.3.2`, `3.5.1` |
+| `charset-normalizer` | `3.3.2`, `3.5.1`, `3.5.2` |
 | `click` | `8.5.0` |
 | `cloudpathlib` | `0.25.0` |
 | `cloudpickle` | `3.1.2` |
@@ -148,6 +162,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | :--- | :--- |
 | `daphne` | `4.2.3` |
 | `darts` | `0.47.0` |
+| `dash` | `4.4.1` |
 | `debugpy` | `1.8.22` |
 | `defusedxml` | `0.7.1` |
 | `docutils` | `0.19` |
@@ -159,6 +174,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `ecos` | `2.0.14` |
+| `et-xmlfile` | `2.0.0` |
 | `executing` | `2.2.1` |
 
 ### F
@@ -171,6 +187,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `fhir-core` | `1.1.11` |
 | `fhir-resources` | `8.3.0` |
 | `filelock` | `4.0.4` |
+| `flask` | `3.1.3` |
 | `fonttools` | `4.66.0` |
 | `formulaic` | `1.2.2` |
 | `fqdn` | `1.5.1` |
@@ -212,6 +229,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | :--- | :--- |
 | `icecream` | `2.2.0` |
 | `idna` | `3.7`, `3.20` |
+| `importlib-metadata` | `9.0.1` |
 | `incremental` | `24.11.0` |
 | `iniconfig` | `2.3.0` |
 | `interface-meta` | `2.0.1` |
@@ -220,11 +238,13 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `ipython-pygments-lexers` | `1.1.1` |
 | `ipywidgets` | `8.1.9` |
 | `isoduration` | `20.11.0` |
+| `itsdangerous` | `2.2.0` |
 
 ### J
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
+| `janus` | `2.0.0` |
 | `jedi` | `0.20.0` |
 | `jinja2` | `3.1.6` |
 | `jmespath` | `1.1.0` |
@@ -271,7 +291,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | :--- | :--- |
 | `mako` | `1.4.3` |
 | `markdown-it-py` | `4.2.0` |
-| `markupsafe` | `3.0.3` |
+| `markupsafe` | `3.0.3`, `3.0.4` |
 | `marshmallow` | `4.3.1` |
 | `matplotlib` | `3.11.2` |
 | `matplotlib-inline` | `0.2.2` |
@@ -294,6 +314,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `nbclient` | `0.11.0` |
 | `nbconvert` | `7.17.1` |
 | `nbformat` | `5.11.1` |
+| `nest-asyncio` | `1.6.0` |
 | `nest-asyncio2` | `1.7.3` |
 | `networkx` | `3.7` |
 | `neurokit2` | `0.2.12` |
@@ -314,6 +335,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `opencv-python` | `5.0.0.93` |
+| `openpyxl` | `3.1.5` |
 | `optuna` | `5.0.0` |
 | `orjson` | `3.12.0` |
 | `osqp` | `1.1.3` |
@@ -333,6 +355,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `pillow` | `12.3.0` |
 | `pip` | `26.2.1` |
 | `platformdirs` | `4.12.0` |
+| `plotly` | `7.1.0` |
 | `pluggy` | `1.6.0` |
 | `polars` | `1.44.2` |
 | `polars-runtime-32` | `1.44.2` |
@@ -386,6 +409,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `referencing` | `0.37.0` |
 | `regex` | `2026.9.10` |
 | `requests` | `2.31.0`, `2.34.2` |
+| `retrying` | `1.4.2` |
 | `rfc3339-validator` | `0.1.4` |
 | `rfc3986-validator` | `0.1.1` |
 | `rfc3987-syntax` | `1.1.0` |
@@ -475,6 +499,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | `webcolors` | `25.10.0` |
 | `webencodings` | `0.6.1` |
 | `websocket-client` | `1.9.2` |
+| `werkzeug` | `3.1.9` |
 | `widgetsnbextension` | `4.0.16` |
 | `win32-setctime` | `1.2.0` |
 | `wrapt` | `2.5.0` |
@@ -485,6 +510,7 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `xarray` | `2026.7.0` |
+| `xlsxwriter` | `3.2.9` |
 | `xyzservices` | `2026.9.1` |
 
 ### Y
@@ -498,12 +524,39 @@ Inventory of **301 approved packages** available on the Glasgow TRE production m
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `zarr` | `3.4.0` |
+| `zipp` | `4.1.1` |
 | `zope-interface` | `8.6` |
 
 ---
 
-### Requesting Additional Packages
+## Changelog
 
-- **Contact**: Submit a package request ticket to your Glasgow TRE representative.
-- **Information Needed**: Library name, requested version, and analytical rationale.
-- **Deployment**: Approved packages are synced to the internal mirror during scheduled maintenance updates.
+### Snapshot 5
+
+**Capabilities Enabled:**
+
+- Libraries  open/read/write Microsoft Excel Spreadsheet (`openpyxl`, `xlsxwriter`, `et-xmlfile`)
+- Added [Dash](https://plotly.com/dash/) framework.
+    - If you're not familiar with it, RealPython has an excellent tutorial on their [Develop Data Visualization Interfaces in Python With Dash](https://realpython.com/python-dash/) article.
+
+**Packages Added:**
+
+| Package Name | Available Version(s) |
+| :--- | :--- |
+| `blinker` | `1.9.0` |
+| `charset-normalizer` | `3.5.2` |
+| `dash` | `4.4.1` |
+| `et-xmlfile` | `2.0.0` |
+| `flask` | `3.1.3` |
+| `importlib-metadata` | `9.0.1` |
+| `itsdangerous` | `2.2.0` |
+| `janus` | `2.0.0` |
+| `markupsafe` | `3.0.4` |
+| `nest-asyncio` | `1.6.0` |
+| `openpyxl` | `3.1.5` |
+| `plotly` | `7.1.0` |
+| `retrying` | `1.4.2` |
+| `werkzeug` | `3.1.9` |
+| `xlsxwriter` | `3.2.9` |
+| `zipp` | `4.1.1` |
+
