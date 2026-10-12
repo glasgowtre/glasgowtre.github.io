@@ -16,6 +16,8 @@
         <link rel="prev" href="../../software/jupyter/">
       
       
+        <link rel="next" href="../preparing-data-for-transfer/">
+      
       
         
       
@@ -25,7 +27,7 @@
     
     
       
-        <title>Frequently Asked Questions: Data Transfer - GlasgowTRE Handbook</title>
+        <title>Data Transfer - GlasgowTRE Handbook</title>
       
     
     
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frequently-asked-questions-data-transfer" class="md-skip">
+        <a href="#data-transfer" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frequently Asked Questions: Data Transfer
+              Data Transfer
             
           </span>
         </div>
@@ -272,6 +274,8 @@
       
         
       
+        
+      
     
     
     
@@ -357,6 +361,34 @@
     
   
     How to use GlasgowTRE secure web file transfer service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guildes/how-to-prepare-data-transfer-manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to prepare a data transfer manifest
   
 
     
@@ -508,6 +540,8 @@
       
         
       
+        
+      
     
     
     
@@ -571,7 +605,7 @@
   <span class="md-ellipsis">
     
   
-    Frequently Asked Questions: Data Transfer
+    Data Transfer
   
 
     
@@ -589,7 +623,7 @@
   <span class="md-ellipsis">
     
   
-    Frequently Asked Questions: Data Transfer
+    Data Transfer
   
 
     
@@ -658,10 +692,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-how-can-i-verify-that-large-transfers-arrived-without-corruption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How can I verify that large transfers arrived without corruption?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preparing-data-for-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparing Data for Transfer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -744,6 +817,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-how-can-i-verify-that-large-transfers-arrived-without-corruption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How can I verify that large transfers arrived without corruption?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -809,7 +893,7 @@
 
 
 
-<h1 id="frequently-asked-questions-data-transfer">Frequently Asked Questions: Data Transfer<a class="headerlink" href="#frequently-asked-questions-data-transfer" title="Anchor link to this section">&para;</a></h1>
+<h1 id="data-transfer">Data Transfer<a class="headerlink" href="#data-transfer" title="Anchor link to this section">&para;</a></h1>
 <p>This page answers common operational and technical questions regarding data ingress and file transfers into the GlasgowTRE environment.</p>
 <hr />
 <h3 id="1-is-this-an-https-transfer-service-or-an-http-wrapper-for-an-sftp-one">1. Is this an HTTPS transfer service, or an HTTP wrapper for an SFTP one?<a class="headerlink" href="#1-is-this-an-https-transfer-service-or-an-http-wrapper-for-an-sftp-one" title="Anchor link to this section">&para;</a></h3>
@@ -851,12 +935,19 @@
 <li><strong>HTTPS (Web Transfer):</strong> <strong>No.</strong> The web browser client does not support resumable or chunked uploads. If a browser upload is interrupted or the network drops, the transfer must restart from 0%.</li>
 <li><strong>SFTP (Port 2022):</strong> <strong>Yes.</strong> Native SFTP clients support resuming/appending to interrupted or paused uploads based on byte offsets. Given 500GB file sizes, resumability is essential to prevent restarting multi-hour transfers from scratch in the event of transient network disruptions or client disconnections.</li>
 </ul>
+<hr />
+<h3 id="5-how-can-i-verify-that-large-transfers-arrived-without-corruption">5. How can I verify that large transfers arrived without corruption?<a class="headerlink" href="#5-how-can-i-verify-that-large-transfers-arrived-without-corruption" title="Anchor link to this section">&para;</a></h3>
+<p>Before transferring your dataset, generate a cryptographic checksum manifest (e.g. <code>SHA256SUMS</code>). Once the upload completes, run the verification command on the destination GlasgowTRE workstation to confirm byte-for-byte integrity.</p>
+<p>For complete step-by-step instructions and commands across Linux and Windows, see our guide on <a href="../../guildes/how-to-prepare-data-transfer-manifest/">How to prepare a data transfer manifest</a> and the <a href="../preparing-data-for-transfer/">Preparing Data for Transfer FAQ</a>.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -868,6 +959,8 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -908,7 +1001,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.tooltips", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
