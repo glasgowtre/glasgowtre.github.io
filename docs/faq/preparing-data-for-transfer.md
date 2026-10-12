@@ -33,7 +33,6 @@ While some legacy workflows use MD5 or custom formats like `<filename><TAB><md5>
 1. **Cryptographic Weakness:** MD5 is vulnerable to collision attacks (RFC 6151). While sufficient for accidental bit flips, it fails institutional data security baselines.
 2. **Tool Incompatibility:** Inverting columns breaks native check flags (`sha256sum -c` or `md5sum -c`), requiring recipients to write custom parsing scripts.
 
-If your specific data agreement or ingest pipeline strictly requires the legacy tab-separated MD5 format, refer to the [Alternative Recipe in our How-To Guide](../guildes/how-to-prepare-data-transfer-manifest.md#alternative-recipe-legacy-tab-delimited-md5-manifest-manifesttxt).
 
 ---
 

@@ -247,99 +247,6 @@ Run the verification command inside the destination directory:
 
 ---
 
-## Alternative Recipe: Legacy Tab-Delimited MD5 Manifest (`manifest.txt`)
-
-Use this procedure **only** if your project's ingestion protocol explicitly mandates the legacy tab-separated MD5 format (`./<filename><TAB><md5>` with POSIX LF line endings).
-
-!!! warning "Cryptographic and Operational Limitations"
-    - **Security:** MD5 is cryptographically weak and vulnerable to collision attacks (RFC 6151). SHA-256 (above) is the GlasgowTRE standard.
-    - **Compatibility:** Inverting columns to `<file><TAB><hash>` breaks native GNU Coreutils check flags (`sha256sum -c`), requiring custom parsing logic during verification.
-
-### Generate legacy manifest
-
-Execute inside the target directory:
-
-=== "Linux (Bash)"
-
-    ```bash
-    find . -type f ! -name "manifest.txt" -exec md5sum {} + \
-      | sort -k2 \
-      | awk '{hash=$1; sub(/^[^ ]+[ ]+/, ""); print $0 "\t" hash}' > manifest.txt
-    ```
-
-=== "Windows (PowerShell)"
-
-    ```powershell
-    [System.IO.File]::WriteAllText(
-        "$PWD\manifest.txt",
-        ((Get-ChildItem -File -Recurse |
-            Where-Object Name -ne 'manifest.txt' |
-            Sort-Object FullName |
-            ForEach-Object {
-                $relPath = "./" + $_.FullName.Substring($PWD.Path.Length).TrimStart('\').Replace('\', '/')
-                $hash = (Get-FileHash -LiteralPath $_.FullName -Algorithm MD5).Hash.ToLower()
-                "$relPath`t$hash"
-            }) -join "`n") + "`n",
-        [System.Text.UTF8Encoding]::new($false)
-    )
-    ```
-
-=== "Windows (Command Prompt)"
-
-    ```cmd
-    powershell -NoProfile -Command ^
-      "[System.IO.File]::WriteAllText('manifest.txt', " ^
-      "((Get-ChildItem -File -Recurse | " ^
-      "Where-Object Name -ne 'manifest.txt' | " ^
-      "Sort-Object FullName | " ^
-      "ForEach-Object { " ^
-      "  $rel = './' + $_.FullName.Substring($PWD.Path.Length).TrimStart('\').Replace('\', '/'); " ^
-      "  $hash = (Get-FileHash -LiteralPath $_.FullName -Algorithm MD5).Hash.ToLower(); " ^
-      "  ($rel + [char]9 + $hash) " ^
-      "}) -join [char]10) + [char]10, " ^
-      "[System.Text.UTF8Encoding]::new($false))"
-    ```
-
-### Verify legacy manifest
-
-=== "Linux (Bash)"
-
-    ```bash
-    awk -F'\t' '{sub(/\r$/, "", $2); print $2 "  " $1}' manifest.txt \
-      | md5sum -c
-    ```
-
-=== "Windows (PowerShell)"
-
-    ```powershell
-    Get-Content .\manifest.txt |
-        Where-Object { $_ -match '\S' } |
-        ForEach-Object {
-            $f, $h = $_ -split "`t"
-            $match = (Test-Path -LiteralPath $f) -and
-                ((Get-FileHash -LiteralPath $f -Algorithm MD5).Hash.ToLower() -eq $h.Trim().ToLower())
-            $status = if ($match) { "OK" } else { "FAILED" }
-            [PSCustomObject]@{ File = $f; Status = $status }
-        }
-    ```
-
-=== "Windows (Command Prompt)"
-
-    ```cmd
-    powershell -NoProfile -Command ^
-      "Get-Content .\manifest.txt | " ^
-      "Where-Object { $_ -match '\S' } | " ^
-      "ForEach-Object { " ^
-      "  $f, $h = $_ -split [char]9; " ^
-      "  $match = (Test-Path -LiteralPath $f) -and " ^
-      "    ((Get-FileHash -LiteralPath $f -Algorithm MD5).Hash.ToLower() -eq $h.Trim().ToLower()); " ^
-      "  $status = if ($match) { 'OK' } else { 'FAILED' }; " ^
-      "  [PSCustomObject]@{ File = $f; Status = $status } " ^
-      "}"
-    ```
-
----
-
 ## Troubleshooting
 
 | Symptom | Root Cause | Resolution |
@@ -348,7 +255,7 @@ Execute inside the target directory:
 | Verification fails on the first file on Linux (`: no such file`) | The manifest was generated on Windows with a UTF-8 BOM (`EF BB BF`). | Re-generate using the provided PowerShell snippet which explicitly enforces `[System.Text.UTF8Encoding]::new($false)`. |
 | Linux verification fails with `No such file or directory` on nested files (`\subdir\file: FAILED open or read`) | The manifest was generated on Windows with backslashes (`\`) instead of POSIX slashes (`/`). | Re-generate using the provided PowerShell snippet (which converts paths with `.Replace('\', '/')`), or convert existing separators on Linux via `tr '\\' '/' < SHA256SUMS \| sha256sum -c`. |
 | PowerShell throws `InvokeMethodOnNull` or generates empty hashes on paths with `[` or `]` | `Get-FileHash` treats square brackets as wildcard pattern boundaries when `-LiteralPath` is omitted. | Re-generate using the provided snippets which specify `-LiteralPath` for all hashing and path validation calls. |
-| Linux `md5sum -c` fails with `no properly formatted checksum lines found` on `manifest.txt` | The legacy manifest contains Windows CRLF line endings (`\r\n`) that append `\r` to the hash field. | Run the updated verification command which uses `sub(/\r$/, "", $2)` in awk to strip carriage returns before piping to `md5sum -c`. |
+| Linux `md5sum -c` fails with `no properly formatted checksum lines found` on `manifest.txt` | The  manifest contains Windows CRLF line endings (`\r\n`) that append `\r` to the hash field. | Run the verification command which uses `sub(/\r$/, "", $2)` in awk to strip carriage returns before piping to `md5sum -c`. |
 | `FAILED` checksum on large files | The upload was interrupted, truncated, or suffered network corruption. | Re-transfer the affected file via SFTP (port 2022) with resume capability enabled. |
 | Subdirectories reported as directories during hash generation | Using wildcards like `sha256sum *` attempts to pass directories directly to the hashing binary. | Use the recommended `find . -type f` command which filters exclusively for files and traverses nested directories. |
 
