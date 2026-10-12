@@ -1,4 +1,8 @@
-# Frequently Asked Questions: Data Transfer
+---
+title: Data Transfer
+---
+
+# Data Transfer
 
 This page answers common operational and technical questions regarding data ingress and file transfers into the GlasgowTRE environment.
 
@@ -46,3 +50,12 @@ The recommended protocol depends heavily on the volume and individual file sizes
 
 - **HTTPS (Web Transfer):** **No.** The web browser client does not support resumable or chunked uploads. If a browser upload is interrupted or the network drops, the transfer must restart from 0%.
 - **SFTP (Port 2022):** **Yes.** Native SFTP clients support resuming/appending to interrupted or paused uploads based on byte offsets. Given 500GB file sizes, resumability is essential to prevent restarting multi-hour transfers from scratch in the event of transient network disruptions or client disconnections.
+
+---
+
+### 5. How can I verify that large transfers arrived without corruption?
+
+Before transferring your dataset, generate a cryptographic checksum manifest (e.g. `SHA256SUMS`). Once the upload completes, run the verification command on the destination GlasgowTRE workstation to confirm byte-for-byte integrity.
+
+For complete step-by-step instructions and commands across Linux and Windows, see our guide on [How to prepare a data transfer manifest](../guildes/how-to-prepare-data-transfer-manifest.md) and the [Preparing Data for Transfer FAQ](preparing-data-for-transfer.md).
+

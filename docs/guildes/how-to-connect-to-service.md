@@ -79,7 +79,8 @@ Once you are signed in:
 ![The file context menu showing Rename, Move or copy, and Delete options](../images/image9.png)
 
 !!! tip "Planning large or bulk file transfers (500GB+)?"
-    Uploading large datasets through a web browser is prone to tab crashes and network timeouts, and cannot be resumed if interrupted. For high-volume data transfers, we strongly recommend using native SFTP (Port 2022). See our [Data Transfer FAQ](../faq/data-transfer.md) for architecture details, concurrency limits, and recommended client settings.
+    Uploading large datasets through a web browser is prone to tab crashes and network timeouts, and cannot be resumed if interrupted. For high-volume data transfers, we strongly recommend using native SFTP (Port 2022). See our [Data Transfer FAQ](../faq/data-transfer.md) for architecture details, concurrency limits, and recommended client settings. Before transferring, generate an integrity manifest by following our [How to prepare a data transfer manifest](how-to-prepare-data-transfer-manifest.md) guide.
+
 
 ## Step 5: End the session securely
 
