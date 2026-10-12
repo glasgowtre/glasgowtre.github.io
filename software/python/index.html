@@ -16,7 +16,7 @@
         <link rel="prev" href="../../guildes/how-to-connect-to-service/">
       
       
-        <link rel="next" href="../../faq/data-transfer/">
+        <link rel="next" href="../jupyter/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Python Runtime & Package Management - GlasgowTRE Handbook</title>
+        <title>Python - GlasgowTRE Handbook</title>
       
     
     
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python Runtime &amp; Package Management
+              Python
             
           </span>
         </div>
@@ -392,6 +392,8 @@
       
         
       
+        
+      
     
     
     
@@ -455,7 +457,7 @@
   <span class="md-ellipsis">
     
   
-    Python Runtime &amp; Package Management
+    Python
   
 
     
@@ -473,7 +475,7 @@
   <span class="md-ellipsis">
     
   
-    Python Runtime &amp; Package Management
+    Python
   
 
     
@@ -499,10 +501,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview--management" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview &amp; Management
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Demo
       
     </span>
   </a>
@@ -871,6 +884,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter Notebooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -993,10 +1034,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview--management" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview &amp; Management
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Demo
       
     </span>
   </a>
@@ -1422,36 +1474,70 @@
 
 
 <h1 id="python-runtime--package-management">Python Runtime &amp; Package Management<a class="headerlink" href="#python-runtime--package-management" title="Anchor link to this section">&para;</a></h1>
-<h2 id="overview--management">Overview &amp; Management<a class="headerlink" href="#overview--management" title="Anchor link to this section">&para;</a></h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section">&para;</a></h2>
 <ul>
-<li><strong>Management Tool</strong>: Astral <a href="https://github.com/astral-sh/uv"><code>uv</code></a> provides runtime and environment management in user space without requiring administrator rights (<code>C:\Program Files\uv</code> on Windows).</li>
-<li><strong>Binary Upstream</strong>: Standalone Python builds sourced from <a href="https://github.com/astral-sh/python-build-standalone"><code>astral-sh/python-build-standalone</code></a> and hosted on internal Dell PowerScale S3 storage.</li>
 <li>
-<p><strong>Supported Versions</strong>: Python <code>3.12.0</code> through <code>3.14.13</code> (including beta and pre-release/RC builds) on Windows (<code>x86_64-pc-windows-msvc</code>) and Linux (<code>x86_64-unknown-linux-gnu</code>).</p>
+<p><strong>Our Approach</strong>: Glasgow TRE allow Python development is based on a Python Management approach, which allows user to tailor their their Python  environments according to their specific needs.</p>
 </li>
 <li>
-<p><strong>Package Index</strong>: PyPA repository with <a href="https://www.pypa.io/en/latest/specifications/#pypa-specifications">correct specifications</a> is hosted on-premises. <code>pip</code> and <code>uv</code> are pre-configured to use this repo.<br><br>
-  Jupyter notebooks using  <code>%pip</code> magic command are also configured to use this repo.</p>
+<p><strong>Management Tool</strong>: The solution is based on Astral's <a href="https://docs.astral.sh/uv/getting-started/"><code>uv</code></a> Python manager. Through it can users can install, manage, and switch between multiple Python versions and their associated packages.</p>
+</li>
+<li>
+<p><strong>Binary Upstream</strong>: Python builds are sourced from <a href="https://github.com/astral-sh/python-build-standalone"><code>astral-sh/python-build-standalone</code></a>. Through an internal process, these builds are then made available for use. </p>
+</li>
+<li>
+<p><strong>Preconfigured</strong>: The Managment Tool is pre-configured to use an internal PyPA mirror and Python Executables straight away. See the <a href="#demo">Demo</a> section for a quick start.</p>
+</li>
+<li>
+<p><strong>IDE Support</strong>: Managed environments are fully supported by modern IDEs such as VS Code, which makes them ideal for workflows that lean towards <em>programmatic</em> work (i.e. Python programming) rather than <em>analytical</em> work (i.e. Jupyter notebooks used to interact with your data).</p>
 </li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p><a href="../jupyter/">Jupyter notebooks</a> use the same underlying infrastructure but are pre-configured and ready to be used.</p>
+</div>
+<ul>
+<li><strong>Package Index</strong>: Glasgow TRE operates an internal PyPA repository on-premises. <code>pip</code> and <code>uv</code> are pre-configured to use this repository.</li>
+</ul>
+<hr />
+<h2 id="demo">Demo<a class="headerlink" href="#demo" title="Anchor link to this section">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The project needs Python 3.13.4 and the numpy, pandas, and matplotlib packages
+# Open a terminal and run the following commands:
+
+&gt; uv python install 3.13.4
+&gt; cd V:/
+&gt; uv init --app --python 3.14.4 my-awesome-project
+&gt; cd my-awesome-project
+&gt; tree /F
+.gitignore
+.python-version
+pyproject.toml
+README.md
+\---src
+    \---my_awesome_project
+        __init__.py
+&gt; code .
+</code></pre></div>
 <hr />
 <h2 id="requesting-additional-packages">Requesting Additional Packages<a class="headerlink" href="#requesting-additional-packages" title="Anchor link to this section">&para;</a></h2>
-<p>If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to helpdesk <a href="mailto:tre@glasgow.com?subject=Python%20Package%20Request">tre@glasgow.com</a></p>
-<p>Approved packages will be synced to the internal mirror to be available for installation.</p>
+<p>If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to the helpdesk at <a href="mailto:tre@glasgow.com?subject=Python%20Package%20Request">tre@glasgow.com</a>.</p>
+<p>After we review your request, the packages will be made available to all users and projects. </p>
 <div class="admonition info">
 <p class="admonition-title">Information Needed</p>
-<p>Make sure to include the Library name, requested version, and analytical rationale.</p>
+<p>Make sure to include the library name, requested version, and analytical rationale.</p>
 </div>
 <hr />
 <h2 id="supported-python-releases">Supported Python Releases<a class="headerlink" href="#supported-python-releases" title="Anchor link to this section">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Supported Python Versions</p>
-<p>It is possible to  install, use, and switch between multiple python versions.</p>
+<p>It is possible to install, use, and switch between multiple Python versions.</p>
 </div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python 3.12</label><label for="__tabbed_1_2">Python 3.13</label><label for="__tabbed_1_3">Python 3.14</label><label for="__tabbed_1_4">Python 3.15</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Minor Track</th>
 <th style="text-align: left;">Release</th>
 <th style="text-align: left;">Release Date</th>
 <th style="text-align: left;">Release Type</th>
@@ -1459,253 +1545,254 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.0</code></td>
 <td style="text-align: left;">2023-10-02</td>
 <td style="text-align: left;">Major Feature Release</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.1</code></td>
 <td style="text-align: left;">2023-12-07</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.2</code></td>
 <td style="text-align: left;">2024-02-06</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.3</code></td>
 <td style="text-align: left;">2024-04-09</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.4</code></td>
 <td style="text-align: left;">2024-06-06</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.5</code></td>
 <td style="text-align: left;">2024-08-06</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.6</code></td>
 <td style="text-align: left;">2024-09-06</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.7</code></td>
 <td style="text-align: left;">2024-10-01</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.8</code></td>
 <td style="text-align: left;">2024-12-03</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.9</code></td>
 <td style="text-align: left;">2025-02-04</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.10</code></td>
 <td style="text-align: left;">2025-04-08</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.11</code></td>
 <td style="text-align: left;">2025-06-03</td>
 <td style="text-align: left;">Security Fix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.12</code></td>
 <td style="text-align: left;">2025-10-09</td>
 <td style="text-align: left;">Security Fix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.13</code></td>
 <td style="text-align: left;">2026-03-03</td>
 <td style="text-align: left;">Security Fix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.12</td>
 <td style="text-align: left;"><code>3.12.14</code></td>
 <td style="text-align: left;">2026-08-12</td>
 <td style="text-align: left;">Security Fix</td>
 </tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
+<th style="text-align: left;">Release</th>
+<th style="text-align: left;">Release Date</th>
+<th style="text-align: left;">Release Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align: left;"><code>3.13.0</code></td>
 <td style="text-align: left;">2024-10-07</td>
 <td style="text-align: left;">Major Feature Release</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.1</code></td>
 <td style="text-align: left;">2024-12-03</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.2</code></td>
 <td style="text-align: left;">2025-02-04</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.3</code></td>
-<td style="text-align: left;">2025-04-08</td>
+<td style="text-align: left;">2025-04-07</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.4</code></td>
 <td style="text-align: left;">2025-06-03</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.5</code></td>
 <td style="text-align: left;">2025-06-11</td>
 <td style="text-align: left;">Hotfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.6</code></td>
 <td style="text-align: left;">2025-08-06</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.7</code></td>
 <td style="text-align: left;">2025-08-14</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.8</code></td>
 <td style="text-align: left;">2025-10-07</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.9</code></td>
 <td style="text-align: left;">2025-10-14</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.10</code></td>
 <td style="text-align: left;">2025-12-02</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.11</code></td>
 <td style="text-align: left;">2025-12-05</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.12</code></td>
 <td style="text-align: left;">2026-02-03</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.13</code></td>
 <td style="text-align: left;">2026-04-07</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.14</code></td>
 <td style="text-align: left;">2026-06-10</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.13</td>
 <td style="text-align: left;"><code>3.13.15</code></td>
 <td style="text-align: left;">2026-08-05</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
+<th style="text-align: left;">Release</th>
+<th style="text-align: left;">Release Date</th>
+<th style="text-align: left;">Release Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align: left;"><code>3.14.0</code></td>
 <td style="text-align: left;">2025-10-07</td>
 <td style="text-align: left;">Major Feature Release</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.1</code></td>
 <td style="text-align: left;">2025-12-02</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.2</code></td>
 <td style="text-align: left;">2025-12-05</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.3</code></td>
 <td style="text-align: left;">2026-02-03</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.4</code></td>
 <td style="text-align: left;">2026-04-07</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.5</code></td>
 <td style="text-align: left;">2026-05-10</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.6</code></td>
 <td style="text-align: left;">2026-06-10</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.14</td>
 <td style="text-align: left;"><code>3.14.7</code></td>
 <td style="text-align: left;">2026-08-05</td>
 <td style="text-align: left;">Bugfix</td>
 </tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
 <tr>
-<td style="text-align: left;">Python 3.15</td>
+<th style="text-align: left;">Release</th>
+<th style="text-align: left;">Release Date</th>
+<th style="text-align: left;">Release Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align: left;"><code>3.15.0rc1</code></td>
 <td style="text-align: left;">2026-08-04</td>
 <td style="text-align: left;">Release Candidate 1</td>
 </tr>
 <tr>
-<td style="text-align: left;">Python 3.15</td>
 <td style="text-align: left;"><code>3.15.0rc2</code></td>
 <td style="text-align: left;">2026-09-01</td>
 <td style="text-align: left;">Release Candidate 2</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="available-pypi-packages">Available PyPI Packages<a class="headerlink" href="#available-pypi-packages" title="Anchor link to this section">&para;</a></h2>
 <p>Inventory of <strong>315 approved packages</strong> available on the Glasgow TRE production mirror (Snapshot 5).</p>
@@ -3339,6 +3426,9 @@
 
 
 
+
+  
+  
 
 
 
