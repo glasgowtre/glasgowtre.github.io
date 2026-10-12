@@ -1,79 +1,131 @@
+---
+title: Python
+---
+
 # Python Runtime & Package Management
 
 
-## Overview & Management
+## Overview
 
-- **Management Tool**: Astral [`uv`](https://github.com/astral-sh/uv) provides runtime and environment management in user space without requiring administrator rights (`C:\Program Files\uv` on Windows).
-- **Binary Upstream**: Standalone Python builds sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone) and hosted on internal Dell PowerScale S3 storage.
-- **Supported Versions**: Python `3.12.0` through `3.14.13` (including beta and pre-release/RC builds) on Windows (`x86_64-pc-windows-msvc`) and Linux (`x86_64-unknown-linux-gnu`).
+- **Our Approach**: Glasgow TRE allow Python development is based on a Python Management approach, which allows user to tailor their their Python  environments according to their specific needs.
 
-- **Package Index**: PyPA repository with [correct specifications](https://www.pypa.io/en/latest/specifications/#pypa-specifications) is hosted on-premises. `pip` and `uv` are pre-configured to use this repo.<br><br>
-  Jupyter notebooks using  `%pip` magic command are also configured to use this repo.
+- **Management Tool**: The solution is based on Astral's [`uv`](https://docs.astral.sh/uv/getting-started/) Python manager. Through it can users can install, manage, and switch between multiple Python versions and their associated packages.
+
+- **Binary Upstream**: Python builds are sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone). Through an internal process, these builds are then made available for use. 
+
+- **Preconfigured**: The Managment Tool is pre-configured to use an internal PyPA mirror and Python Executables straight away. See the [Demo](#demo) section for a quick start.
+
+- **IDE Support**: Managed environments are fully supported by modern IDEs such as VS Code, which makes them ideal for workflows that lean towards *programmatic* work (i.e. Python programming) rather than *analytical* work (i.e. Jupyter notebooks used to interact with your data).
+
+!!! info "Note"
+
+    [Jupyter notebooks](jupyter.md) use the same underlying infrastructure but are pre-configured and ready to be used.
+
+- **Package Index**: Glasgow TRE operates an internal PyPA repository on-premises. `pip` and `uv` are pre-configured to use this repository.
+
+---
+
+## Demo
+
+```text
+# The project needs Python 3.13.4 and the numpy, pandas, and matplotlib packages
+# Open a terminal and run the following commands:
+
+> uv python install 3.13.4
+> cd V:/
+> uv init --app --python 3.14.4 my-awesome-project
+> cd my-awesome-project
+> tree /F
+.gitignore
+.python-version
+pyproject.toml
+README.md
+\---src
+    \---my_awesome_project
+        __init__.py
+> code .
+```
 
 ---
 
 ## Requesting Additional Packages
 
-If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to helpdesk [tre@glasgow.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request)
+If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to the helpdesk at [tre@glasgow.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request).
 
-Approved packages will be synced to the internal mirror to be available for installation.
+After we review your request, the packages will be made available to all users and projects. 
 
+!!! info "Information Needed"
 
-!!! info "Information Needed" 
-    
-    Make sure to include the Library name, requested version, and analytical rationale.
+    Make sure to include the library name, requested version, and analytical rationale.
 
 ---
 
 ## Supported Python Releases
 
 !!! info "Supported Python Versions"
-     
-    It is possible to  install, use, and switch between multiple python versions.
 
-| Minor Track | Release | Release Date | Release Type |
-| :--- | :--- | :--- | :--- |
-| Python 3.12 | `3.12.0` | 2023-10-02 | Major Feature Release |
-| Python 3.12 | `3.12.1` | 2023-12-07 | Bugfix |
-| Python 3.12 | `3.12.2` | 2024-02-06 | Bugfix |
-| Python 3.12 | `3.12.3` | 2024-04-09 | Bugfix |
-| Python 3.12 | `3.12.4` | 2024-06-06 | Bugfix |
-| Python 3.12 | `3.12.5` | 2024-08-06 | Bugfix |
-| Python 3.12 | `3.12.6` | 2024-09-06 | Bugfix |
-| Python 3.12 | `3.12.7` | 2024-10-01 | Bugfix |
-| Python 3.12 | `3.12.8` | 2024-12-03 | Bugfix |
-| Python 3.12 | `3.12.9` | 2025-02-04 | Bugfix |
-| Python 3.12 | `3.12.10` | 2025-04-08 | Bugfix |
-| Python 3.12 | `3.12.11` | 2025-06-03 | Security Fix |
-| Python 3.12 | `3.12.12` | 2025-10-09 | Security Fix |
-| Python 3.12 | `3.12.13` | 2026-03-03 | Security Fix |
-| Python 3.12 | `3.12.14` | 2026-08-12 | Security Fix |
-| Python 3.13 | `3.13.0` | 2024-10-07 | Major Feature Release |
-| Python 3.13 | `3.13.1` | 2024-12-03 | Bugfix |
-| Python 3.13 | `3.13.2` | 2025-02-04 | Bugfix |
-| Python 3.13 | `3.13.3` | 2025-04-08 | Bugfix |
-| Python 3.13 | `3.13.4` | 2025-06-03 | Bugfix |
-| Python 3.13 | `3.13.5` | 2025-06-11 | Hotfix |
-| Python 3.13 | `3.13.6` | 2025-08-06 | Bugfix |
-| Python 3.13 | `3.13.7` | 2025-08-14 | Bugfix |
-| Python 3.13 | `3.13.8` | 2025-10-07 | Bugfix |
-| Python 3.13 | `3.13.9` | 2025-10-14 | Bugfix |
-| Python 3.13 | `3.13.10` | 2025-12-02 | Bugfix |
-| Python 3.13 | `3.13.11` | 2025-12-05 | Bugfix |
-| Python 3.13 | `3.13.12` | 2026-02-03 | Bugfix |
-| Python 3.13 | `3.13.13` | 2026-04-07 | Bugfix |
-| Python 3.13 | `3.13.14` | 2026-06-10 | Bugfix |
-| Python 3.13 | `3.13.15` | 2026-08-05 | Bugfix |
-| Python 3.14 | `3.14.0` | 2025-10-07 | Major Feature Release |
-| Python 3.14 | `3.14.1` | 2025-12-02 | Bugfix |
-| Python 3.14 | `3.14.2` | 2025-12-05 | Bugfix |
-| Python 3.14 | `3.14.3` | 2026-02-03 | Bugfix |
-| Python 3.14 | `3.14.4` | 2026-04-07 | Bugfix |
-| Python 3.14 | `3.14.5` | 2026-05-10 | Bugfix |
-| Python 3.14 | `3.14.6` | 2026-06-10 | Bugfix |
-| Python 3.14 | `3.14.7` | 2026-08-05 | Bugfix |
-| Python 3.15 | `3.15.0rc1` | 2026-08-04 | Release Candidate 1 |
-| Python 3.15 | `3.15.0rc2` | 2026-09-01 | Release Candidate 2 |
+    It is possible to install, use, and switch between multiple Python versions.
+
+=== "Python 3.12"
+
+    | Release | Release Date | Release Type |
+    | :--- | :--- | :--- |
+    | `3.12.0` | 2023-10-02 | Major Feature Release |
+    | `3.12.1` | 2023-12-07 | Bugfix |
+    | `3.12.2` | 2024-02-06 | Bugfix |
+    | `3.12.3` | 2024-04-09 | Bugfix |
+    | `3.12.4` | 2024-06-06 | Bugfix |
+    | `3.12.5` | 2024-08-06 | Bugfix |
+    | `3.12.6` | 2024-09-06 | Bugfix |
+    | `3.12.7` | 2024-10-01 | Bugfix |
+    | `3.12.8` | 2024-12-03 | Bugfix |
+    | `3.12.9` | 2025-02-04 | Bugfix |
+    | `3.12.10` | 2025-04-08 | Bugfix |
+    | `3.12.11` | 2025-06-03 | Security Fix |
+    | `3.12.12` | 2025-10-09 | Security Fix |
+    | `3.12.13` | 2026-03-03 | Security Fix |
+    | `3.12.14` | 2026-08-12 | Security Fix |
+
+=== "Python 3.13"
+
+    | Release | Release Date | Release Type |
+    | :--- | :--- | :--- |
+    | `3.13.0` | 2024-10-07 | Major Feature Release |
+    | `3.13.1` | 2024-12-03 | Bugfix |
+    | `3.13.2` | 2025-02-04 | Bugfix |
+    | `3.13.3` | 2025-04-07 | Bugfix |
+    | `3.13.4` | 2025-06-03 | Bugfix |
+    | `3.13.5` | 2025-06-11 | Hotfix |
+    | `3.13.6` | 2025-08-06 | Bugfix |
+    | `3.13.7` | 2025-08-14 | Bugfix |
+    | `3.13.8` | 2025-10-07 | Bugfix |
+    | `3.13.9` | 2025-10-14 | Bugfix |
+    | `3.13.10` | 2025-12-02 | Bugfix |
+    | `3.13.11` | 2025-12-05 | Bugfix |
+    | `3.13.12` | 2026-02-03 | Bugfix |
+    | `3.13.13` | 2026-04-07 | Bugfix |
+    | `3.13.14` | 2026-06-10 | Bugfix |
+    | `3.13.15` | 2026-08-05 | Bugfix |
+
+=== "Python 3.14"
+
+    | Release | Release Date | Release Type |
+    | :--- | :--- | :--- |
+    | `3.14.0` | 2025-10-07 | Major Feature Release |
+    | `3.14.1` | 2025-12-02 | Bugfix |
+    | `3.14.2` | 2025-12-05 | Bugfix |
+    | `3.14.3` | 2026-02-03 | Bugfix |
+    | `3.14.4` | 2026-04-07 | Bugfix |
+    | `3.14.5` | 2026-05-10 | Bugfix |
+    | `3.14.6` | 2026-06-10 | Bugfix |
+    | `3.14.7` | 2026-08-05 | Bugfix |
+
+=== "Python 3.15"
+
+    | Release | Release Date | Release Type |
+    | :--- | :--- | :--- |
+    | `3.15.0rc1` | 2026-08-04 | Release Candidate 1 |
+    | `3.15.0rc2` | 2026-09-01 | Release Candidate 2 |
 
 ---
 
@@ -559,4 +611,3 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `werkzeug` | `3.1.9` |
 | `xlsxwriter` | `3.2.9` |
 | `zipp` | `4.1.1` |
-
