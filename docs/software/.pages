@@ -1,3 +1,4 @@
 title: Software
 nav:
   - python.md
+  - jupyter.md
