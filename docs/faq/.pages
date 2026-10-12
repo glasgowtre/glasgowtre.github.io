@@ -1,3 +1,4 @@
 title: FAQ
 nav:
   - data-transfer.md
+  - preparing-data-for-transfer.md
