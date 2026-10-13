@@ -57,7 +57,7 @@
   code .
   ```
 - VS Code Remote - WSL extension integration for development directly within the Linux environment.
-- Linking to the container workflows described in [Containers & Apptainer](../software/containers.md).
+- Linking to the container workflows described in Containers & Apptainer (`containers.md`).
 
 ---
 
