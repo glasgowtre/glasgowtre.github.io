@@ -73,16 +73,27 @@
 
 /* ── Header styling (harmonized with HPC sister site) ──────────── */
 /* Light mode: University of Glasgow Navy Blue */
-[data-md-color-scheme="default"] .md-header,
-[data-md-color-scheme="default"] .md-nav--primary .md-nav__title[for="__drawer"] {
+[data-md-color-scheme="default"] .md-header {
   background-color: #011451;
 }
 
 /* Dark mode: Slate Navy */
-[data-md-color-scheme="slate"] .md-header,
-[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title[for="__drawer"] {
+[data-md-color-scheme="slate"] .md-header {
   background-color: #344374;
   color: #ffffff;
+}
+
+/* Mobile drawer header (restricted to mobile/tablet drawer viewports) */
+@media screen and (max-width: 76.234375em) {
+  [data-md-color-scheme="default"] .md-nav--primary .md-nav__title[for="__drawer"] {
+    background-color: #011451;
+    color: #ffffff;
+  }
+
+  [data-md-color-scheme="slate"] .md-nav--primary .md-nav__title[for="__drawer"] {
+    background-color: #344374;
+    color: #ffffff;
+  }
 }
 
 /* ── Header logo & title sizing ────────────────────────────────── */
