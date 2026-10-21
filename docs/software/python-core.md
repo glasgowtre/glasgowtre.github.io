@@ -1,54 +1,45 @@
 ---
-title: Python
+title: Python Core
 ---
 
-# Python Runtime & Package Management
+# Python Core & Python Packages
 
 
 ## Overview
 
-- **Our Approach**: Glasgow TRE allow Python development is based on a Python Management approach, which allows user to tailor their their Python  environments according to their specific needs.
+#### Approach
 
-- **Management Tool**: The solution is based on Astral's [`uv`](https://docs.astral.sh/uv/getting-started/) Python manager. Through it can users can install, manage, and switch between multiple Python versions and their associated packages.
+Glasgow TRE allow Python development is based on a Python Management approach, which allows user to tailor their their Python  environments according to their specific needs.
 
-- **Binary Upstream**: Python builds are sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone). Through an internal process, these builds are then made available for use. 
+#### Management
 
-- **Preconfigured**: The Managment Tool is pre-configured to use an internal PyPA mirror and Python Executables straight away. See the [Demo](#demo) section for a quick start.
+This is based on Astral's [`uv`](https://docs.astral.sh/uv/getting-started/) Python manager. Users can install, manage, and switch between multiple Python versions and their associated packages.
 
-- **IDE Support**: Managed environments are fully supported by modern IDEs such as VS Code, which makes them ideal for workflows that lean towards *programmatic* work (i.e. Python programming) rather than *analytical* work (i.e. Jupyter notebooks used to interact with your data).
+#### Python Builds
+
+Selected Python builds are sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone) and hosted in an internal mirror. uv then is then downloading the selected version according to your request.
+
+
+!!! info "Supported Python Versions" 
+
+    please refer to the [Supported Python Releases](#supported-python-releases) section for a list of available versions.
+
+#### Available Packages
+
+Python package managers are preconfigured configured to use our internal PyPA mirror. This includes `pip` and `uv`. 
+
+
+#### IDE Support
+
+Environments made with uv are fully compatible with modern IDEs such as VS Code. This creates an ideal enviroment for developers who want to write and test their Python code.
 
 !!! info "Note"
 
     [Jupyter notebooks](jupyter.md) use the same underlying infrastructure but are pre-configured and ready to be used.
 
-- **Package Index**: Glasgow TRE operates an internal PyPA repository on-premises. `pip` and `uv` are pre-configured to use this repository.
-
 ---
 
-## Demo
-
-```text
-# The project needs Python 3.13.4 and the numpy, pandas, and matplotlib packages
-# Open a terminal and run the following commands:
-
-> uv python install 3.13.4
-> cd V:/
-> uv init --app --python 3.14.4 my-awesome-project
-> cd my-awesome-project
-> tree /F
-.gitignore
-.python-version
-pyproject.toml
-README.md
-\---src
-    \---my_awesome_project
-        __init__.py
-> code .
-```
-
----
-
-## Requesting Additional Packages
+## Additional Python Packages
 
 If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to the helpdesk at [tre@glasgow.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request).
 
@@ -60,7 +51,7 @@ After we review your request, the packages will be made available to all users a
 
 ---
 
-## Supported Python Releases
+## Available Python Releases
 
 !!! info "Supported Python Versions"
 
@@ -70,55 +61,55 @@ After we review your request, the packages will be made available to all users a
 
     | Release | Release Date | Release Type |
     | :--- | :--- | :--- |
-    | `3.12.0` | 2023-10-02 | Major Feature Release |
-    | `3.12.1` | 2023-12-07 | Bugfix |
-    | `3.12.2` | 2024-02-06 | Bugfix |
-    | `3.12.3` | 2024-04-09 | Bugfix |
-    | `3.12.4` | 2024-06-06 | Bugfix |
-    | `3.12.5` | 2024-08-06 | Bugfix |
-    | `3.12.6` | 2024-09-06 | Bugfix |
-    | `3.12.7` | 2024-10-01 | Bugfix |
-    | `3.12.8` | 2024-12-03 | Bugfix |
-    | `3.12.9` | 2025-02-04 | Bugfix |
-    | `3.12.10` | 2025-04-08 | Bugfix |
-    | `3.12.11` | 2025-06-03 | Security Fix |
-    | `3.12.12` | 2025-10-09 | Security Fix |
+    | ***3.12.14** | 2026-08-12 | Security Fix |
     | `3.12.13` | 2026-03-03 | Security Fix |
-    | `3.12.14` | 2026-08-12 | Security Fix |
+    | `3.12.12` | 2025-10-09 | Security Fix |
+    | `3.12.11` | 2025-06-03 | Security Fix |
+    | `3.12.10` | 2025-04-08 | Bugfix |
+    | `3.12.9` | 2025-02-04 | Bugfix |
+    | `3.12.8` | 2024-12-03 | Bugfix |
+    | `3.12.7` | 2024-10-01 | Bugfix |
+    | `3.12.6` | 2024-09-06 | Bugfix |
+    | `3.12.5` | 2024-08-06 | Bugfix |
+    | `3.12.4` | 2024-06-06 | Bugfix |
+    | `3.12.3` | 2024-04-09 | Bugfix |
+    | `3.12.2` | 2024-02-06 | Bugfix |
+    | `3.12.1` | 2023-12-07 | Bugfix |
+    | `3.12.0` | 2023-10-02 | Major Feature Release |
 
 === "Python 3.13"
 
     | Release | Release Date | Release Type |
     | :--- | :--- | :--- |
-    | `3.13.0` | 2024-10-07 | Major Feature Release |
-    | `3.13.1` | 2024-12-03 | Bugfix |
-    | `3.13.2` | 2025-02-04 | Bugfix |
-    | `3.13.3` | 2025-04-07 | Bugfix |
-    | `3.13.4` | 2025-06-03 | Bugfix |
-    | `3.13.5` | 2025-06-11 | Hotfix |
-    | `3.13.6` | 2025-08-06 | Bugfix |
-    | `3.13.7` | 2025-08-14 | Bugfix |
-    | `3.13.8` | 2025-10-07 | Bugfix |
-    | `3.13.9` | 2025-10-14 | Bugfix |
-    | `3.13.10` | 2025-12-02 | Bugfix |
-    | `3.13.11` | 2025-12-05 | Bugfix |
-    | `3.13.12` | 2026-02-03 | Bugfix |
-    | `3.13.13` | 2026-04-07 | Bugfix |
+    | **3.13.15** | 2026-08-05 | Bugfix |
     | `3.13.14` | 2026-06-10 | Bugfix |
-    | `3.13.15` | 2026-08-05 | Bugfix |
+    | `3.13.13` | 2026-04-07 | Bugfix |
+    | `3.13.12` | 2026-02-03 | Bugfix |
+    | `3.13.11` | 2025-12-05 | Bugfix |
+    | `3.13.10` | 2025-12-02 | Bugfix |
+    | `3.13.9` | 2025-10-14 | Bugfix |
+    | `3.13.8` | 2025-10-07 | Bugfix |
+    | `3.13.7` | 2025-08-14 | Bugfix |
+    | `3.13.6` | 2025-08-06 | Bugfix |
+    | `3.13.5` | 2025-06-11 | Hotfix |
+    | `3.13.4` | 2025-06-03 | Bugfix |
+    | `3.13.3` | 2025-04-07 | Bugfix |
+    | `3.13.2` | 2025-02-04 | Bugfix |
+    | `3.13.1` | 2024-12-03 | Bugfix |
+    | `3.13.0` | 2024-10-07 | Major Feature Release |
 
 === "Python 3.14"
 
     | Release | Release Date | Release Type |
     | :--- | :--- | :--- |
-    | `3.14.0` | 2025-10-07 | Major Feature Release |
-    | `3.14.1` | 2025-12-02 | Bugfix |
-    | `3.14.2` | 2025-12-05 | Bugfix |
-    | `3.14.3` | 2026-02-03 | Bugfix |
-    | `3.14.4` | 2026-04-07 | Bugfix |
-    | `3.14.5` | 2026-05-10 | Bugfix |
+    | ***3.14.7** | 2026-08-05 | Bugfix |
     | `3.14.6` | 2026-06-10 | Bugfix |
-    | `3.14.7` | 2026-08-05 | Bugfix |
+    | `3.14.5` | 2026-05-10 | Bugfix |
+    | `3.14.4` | 2026-04-07 | Bugfix |
+    | `3.14.3` | 2026-02-03 | Bugfix |
+    | `3.14.2` | 2025-12-05 | Bugfix |
+    | `3.14.1` | 2025-12-02 | Bugfix |
+    | `3.14.0` | 2025-10-07 | Major Feature Release |
 
 === "Python 3.15"
 
@@ -129,7 +120,7 @@ After we review your request, the packages will be made available to all users a
 
 ---
 
-## Available PyPI Packages
+## AvailableS Packages
 
 Inventory of **398 approved packages** available on the Glasgow TRE production mirror (Snapshot 6).
 
@@ -139,7 +130,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 
 ---
 
-### A
+<h3 id="a">A</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -172,7 +163,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `automat` | `25.4.16` |
 | `awscli` | `1.46.1` |
 
-### B
+<h3 id="b">B</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -191,7 +182,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `bokeh` | `3.10.0` |
 | `brotli` | `1.2.0` |
 
-### C
+<h3 id="c">C</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -222,7 +213,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `cymem` | `2.0.13` |
 | `cython` | `3.1.8` |
 
-### D
+<h3 id="d">D</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -241,7 +232,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `duckdb` | `1.5.5` |
 | `dynamic-network-architectures` | `0.4.4` |
 
-### E
+<h3 id="e">E</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -250,7 +241,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `et-xmlfile` | `2.0.0` |
 | `executing` | `2.2.1` |
 
-### F
+<h3 id="f">F</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -270,7 +261,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `fury` | `2.1.0` |
 | `future` | `1.0.0` |
 
-### G
+<h3 id="g">G</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -283,7 +274,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `great-expectations` | `1.23.2` |
 | `groovy` | `0.1.2` |
 
-### H
+<h3 id="h">H</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -306,7 +297,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `hyperframe` | `6.1.0` |
 | `hyperlink` | `21.0.0` |
 
-### I
+<h3 id="i">I</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -326,7 +317,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `isoduration` | `20.11.0` |
 | `itsdangerous` | `2.2.0` |
 
-### J
+<h3 id="j">J</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -353,13 +344,13 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `jupyterlab-server` | `2.28.1` |
 | `jupyterlab-widgets` | `3.0.17` |
 
-### K
+<h3 id="k">K</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `kiwisolver` | `1.5.1` |
 
-### L
+<h3 id="l">L</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -373,7 +364,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `loguru` | `0.7.3` |
 | `lxml` | `6.1.3` |
 
-### M
+<h3 id="m">M</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -395,7 +386,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `multidict` | `7.1.0` |
 | `murmurhash` | `1.0.15` |
 
-### N
+<h3 id="n">N</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -436,7 +427,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `nvidia-nvshmem-cu13` | `3.4.5` |
 | `nvidia-nvtx` | `13.0.85` |
 
-### O
+<h3 id="o">O</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -447,7 +438,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `orjson` | `3.12.0` |
 | `osqp` | `1.1.3` |
 
-### P
+<h3 id="p">P</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -510,13 +501,13 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `pyyaml` | `6.0.3` |
 | `pyzmq` | `27.2.0` |
 
-### Q
+<h3 id="q">Q</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `quicksectx` | `0.4.1` |
 
-### R
+<h3 id="r">R</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -537,7 +528,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `ruamel-yaml` | `0.19.1` |
 | `rubicon-objc` | `0.5.7` |
 
-### S
+<h3 id="s">S</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -578,7 +569,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `stdlib-list` | `0.12.0` |
 | `sympy` | `1.14.0` |
 
-### T
+<h3 id="t">T</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -605,7 +596,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `tzdata` | `2024.1`, `2026.4`, `2026.5` |
 | `tzlocal` | `5.4.4` |
 
-### U
+<h3 id="u">U</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -619,7 +610,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `urllib3` | `2.2.1`, `2.8.0` |
 | `uvicorn` | `0.54.0` |
 
-### W
+<h3 id="w">W</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -636,7 +627,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `wrapt` | `2.5.0` |
 | `wsproto` | `1.3.2` |
 
-### X
+<h3 id="x">X</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -646,7 +637,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `xvfbwrapper` | `0.2.35` |
 | `xyzservices` | `2026.9.1` |
 
-### Y
+<h3 id="y">Y</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -654,7 +645,7 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 | `yamllint` | `1.38.0` |
 | `yarl` | `1.25.1` |
 
-### Z
+<h3 id="z">Z</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -669,6 +660,8 @@ Inventory of **398 approved packages** available on the Glasgow TRE production m
 ### Snapshot 6
 
 **Capabilities Enabled:**
+
+- Added 99 new Python packages including a newer version of some existing packages. 
 
 - Medical image analysis, segmentation, and feature extraction tooling ([TotalSegmentator](https://github.com/wasserth/TotalSegmentator) `totalsegmentator`, [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) `nnunetv2`, `dynamic-network-architectures`, `pyradiomics`, `dicom2nifti`, `rt-utils`, `dipy`, `python-gdcm`, `trx-python`, `scikit-image`).
 - NVIDIA CUDA 13 ecosystem libraries and GPU compute runtimes (`nvidia-cuda-runtime`, `nvidia-cudnn-cu13`, `nvidia-cublas`, `cuda-toolkit`, `cuda-bindings`, `triton`, `timm`, `safetensors`, `einops`).
