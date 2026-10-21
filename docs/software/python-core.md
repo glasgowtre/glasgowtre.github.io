@@ -1,54 +1,45 @@
 ---
-title: Python
+title: Python Core
 ---
 
-# Python Runtime & Package Management
+# Python Core & Python Packages
 
 
 ## Overview
 
-- **Our Approach**: Glasgow TRE allow Python development is based on a Python Management approach, which allows user to tailor their their Python  environments according to their specific needs.
+#### Approach
 
-- **Management Tool**: The solution is based on Astral's [`uv`](https://docs.astral.sh/uv/getting-started/) Python manager. Through it can users can install, manage, and switch between multiple Python versions and their associated packages.
+Glasgow TRE allow Python development is based on a Python Management approach, which allows user to tailor their their Python  environments according to their specific needs.
 
-- **Binary Upstream**: Python builds are sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone). Through an internal process, these builds are then made available for use. 
+#### Management
 
-- **Preconfigured**: The Managment Tool is pre-configured to use an internal PyPA mirror and Python Executables straight away. See the [Demo](#demo) section for a quick start.
+This is based on Astral's [`uv`](https://docs.astral.sh/uv/getting-started/) Python manager. Users can install, manage, and switch between multiple Python versions and their associated packages.
 
-- **IDE Support**: Managed environments are fully supported by modern IDEs such as VS Code, which makes them ideal for workflows that lean towards *programmatic* work (i.e. Python programming) rather than *analytical* work (i.e. Jupyter notebooks used to interact with your data).
+#### Python Builds
+
+Selected Python builds are sourced from [`astral-sh/python-build-standalone`](https://github.com/astral-sh/python-build-standalone) and hosted in an internal mirror. uv then is then downloading the selected version according to your request.
+
+
+!!! info "Supported Python Versions" 
+
+    please refer to the [Supported Python Releases](#supported-python-releases) section for a list of available versions.
+
+#### Available Packages
+
+Python package managers are preconfigured configured to use our internal PyPA mirror. This includes `pip` and `uv`. 
+
+
+#### IDE Support
+
+Environments made with uv are fully compatible with modern IDEs such as VS Code. This creates an ideal enviroment for developers who want to write and test their Python code.
 
 !!! info "Note"
 
     [Jupyter notebooks](jupyter.md) use the same underlying infrastructure but are pre-configured and ready to be used.
 
-- **Package Index**: Glasgow TRE operates an internal PyPA repository on-premises. `pip` and `uv` are pre-configured to use this repository.
-
 ---
 
-## Demo
-
-```text
-# The project needs Python 3.13.4 and the numpy, pandas, and matplotlib packages
-# Open a terminal and run the following commands:
-
-> uv python install 3.13.4
-> cd V:/
-> uv init --app --python 3.14.4 my-awesome-project
-> cd my-awesome-project
-> tree /F
-.gitignore
-.python-version
-pyproject.toml
-README.md
-\---src
-    \---my_awesome_project
-        __init__.py
-> code .
-```
-
----
-
-## Requesting Additional Packages
+## Additional Python Packages
 
 If you need additional packages, please submit a package request ticket through your Glasgow TRE representative or send an email to the helpdesk at [tre@glasgow.com](mailto:tre@glasgow.com?subject=Python%20Package%20Request).
 
@@ -60,7 +51,7 @@ After we review your request, the packages will be made available to all users a
 
 ---
 
-## Supported Python Releases
+## Available Python Releases
 
 !!! info "Supported Python Versions"
 
@@ -70,55 +61,55 @@ After we review your request, the packages will be made available to all users a
 
     | Release | Release Date | Release Type |
     | :--- | :--- | :--- |
-    | `3.12.0` | 2023-10-02 | Major Feature Release |
-    | `3.12.1` | 2023-12-07 | Bugfix |
-    | `3.12.2` | 2024-02-06 | Bugfix |
-    | `3.12.3` | 2024-04-09 | Bugfix |
-    | `3.12.4` | 2024-06-06 | Bugfix |
-    | `3.12.5` | 2024-08-06 | Bugfix |
-    | `3.12.6` | 2024-09-06 | Bugfix |
-    | `3.12.7` | 2024-10-01 | Bugfix |
-    | `3.12.8` | 2024-12-03 | Bugfix |
-    | `3.12.9` | 2025-02-04 | Bugfix |
-    | `3.12.10` | 2025-04-08 | Bugfix |
-    | `3.12.11` | 2025-06-03 | Security Fix |
-    | `3.12.12` | 2025-10-09 | Security Fix |
+    | ***3.12.14** | 2026-08-12 | Security Fix |
     | `3.12.13` | 2026-03-03 | Security Fix |
-    | `3.12.14` | 2026-08-12 | Security Fix |
+    | `3.12.12` | 2025-10-09 | Security Fix |
+    | `3.12.11` | 2025-06-03 | Security Fix |
+    | `3.12.10` | 2025-04-08 | Bugfix |
+    | `3.12.9` | 2025-02-04 | Bugfix |
+    | `3.12.8` | 2024-12-03 | Bugfix |
+    | `3.12.7` | 2024-10-01 | Bugfix |
+    | `3.12.6` | 2024-09-06 | Bugfix |
+    | `3.12.5` | 2024-08-06 | Bugfix |
+    | `3.12.4` | 2024-06-06 | Bugfix |
+    | `3.12.3` | 2024-04-09 | Bugfix |
+    | `3.12.2` | 2024-02-06 | Bugfix |
+    | `3.12.1` | 2023-12-07 | Bugfix |
+    | `3.12.0` | 2023-10-02 | Major Feature Release |
 
 === "Python 3.13"
 
     | Release | Release Date | Release Type |
     | :--- | :--- | :--- |
-    | `3.13.0` | 2024-10-07 | Major Feature Release |
-    | `3.13.1` | 2024-12-03 | Bugfix |
-    | `3.13.2` | 2025-02-04 | Bugfix |
-    | `3.13.3` | 2025-04-07 | Bugfix |
-    | `3.13.4` | 2025-06-03 | Bugfix |
-    | `3.13.5` | 2025-06-11 | Hotfix |
-    | `3.13.6` | 2025-08-06 | Bugfix |
-    | `3.13.7` | 2025-08-14 | Bugfix |
-    | `3.13.8` | 2025-10-07 | Bugfix |
-    | `3.13.9` | 2025-10-14 | Bugfix |
-    | `3.13.10` | 2025-12-02 | Bugfix |
-    | `3.13.11` | 2025-12-05 | Bugfix |
-    | `3.13.12` | 2026-02-03 | Bugfix |
-    | `3.13.13` | 2026-04-07 | Bugfix |
+    | **3.13.15** | 2026-08-05 | Bugfix |
     | `3.13.14` | 2026-06-10 | Bugfix |
-    | `3.13.15` | 2026-08-05 | Bugfix |
+    | `3.13.13` | 2026-04-07 | Bugfix |
+    | `3.13.12` | 2026-02-03 | Bugfix |
+    | `3.13.11` | 2025-12-05 | Bugfix |
+    | `3.13.10` | 2025-12-02 | Bugfix |
+    | `3.13.9` | 2025-10-14 | Bugfix |
+    | `3.13.8` | 2025-10-07 | Bugfix |
+    | `3.13.7` | 2025-08-14 | Bugfix |
+    | `3.13.6` | 2025-08-06 | Bugfix |
+    | `3.13.5` | 2025-06-11 | Hotfix |
+    | `3.13.4` | 2025-06-03 | Bugfix |
+    | `3.13.3` | 2025-04-07 | Bugfix |
+    | `3.13.2` | 2025-02-04 | Bugfix |
+    | `3.13.1` | 2024-12-03 | Bugfix |
+    | `3.13.0` | 2024-10-07 | Major Feature Release |
 
 === "Python 3.14"
 
     | Release | Release Date | Release Type |
     | :--- | :--- | :--- |
-    | `3.14.0` | 2025-10-07 | Major Feature Release |
-    | `3.14.1` | 2025-12-02 | Bugfix |
-    | `3.14.2` | 2025-12-05 | Bugfix |
-    | `3.14.3` | 2026-02-03 | Bugfix |
-    | `3.14.4` | 2026-04-07 | Bugfix |
-    | `3.14.5` | 2026-05-10 | Bugfix |
+    | ***3.14.7** | 2026-08-05 | Bugfix |
     | `3.14.6` | 2026-06-10 | Bugfix |
-    | `3.14.7` | 2026-08-05 | Bugfix |
+    | `3.14.5` | 2026-05-10 | Bugfix |
+    | `3.14.4` | 2026-04-07 | Bugfix |
+    | `3.14.3` | 2026-02-03 | Bugfix |
+    | `3.14.2` | 2025-12-05 | Bugfix |
+    | `3.14.1` | 2025-12-02 | Bugfix |
+    | `3.14.0` | 2025-10-07 | Major Feature Release |
 
 === "Python 3.15"
 
@@ -129,9 +120,9 @@ After we review your request, the packages will be made available to all users a
 
 ---
 
-## Available PyPI Packages
+## AvailableS Packages
 
-Inventory of **315 approved packages** available on the Glasgow TRE production mirror (Snapshot 5).
+Inventory of **398 approved packages** available on the Glasgow TRE production mirror (Snapshot 6).
 
 ### Jump to Letter
 
@@ -139,11 +130,15 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 
 ---
 
-### A
+<h3 id="a">A</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
+| `acvl-utils` | `0.2.6` |
 | `aiofiles` | `25.1.0` |
+| `aiohappyeyeballs` | `2.7.1` |
+| `aiohttp` | `3.14.5` |
+| `aiosignal` | `1.4.0` |
 | `alembic` | `1.20.0` |
 | `altair` | `6.3.0` |
 | `anndata` | `0.13.4` |
@@ -154,6 +149,7 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `appnope` | `1.0.0` |
 | `argon2-cffi` | `25.1.0` |
 | `argon2-cffi-bindings` | `26.1.0` |
+| `argparse` | `1.4.0` |
 | `array-api-compat` | `1.15.0` |
 | `arrow` | `1.4.0` |
 | `asgiref` | `3.12.1` |
@@ -167,11 +163,13 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `automat` | `25.4.16` |
 | `awscli` | `1.46.1` |
 
-### B
+<h3 id="b">B</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `babel` | `2.18.0` |
+| `batchgenerators` | `0.25.5` |
+| `batchgeneratorsv2` | `0.3.6` |
 | `beautifulsoup4` | `4.15.0` |
 | `bidict` | `0.24.1` |
 | `biopython` | `1.88` |
@@ -179,17 +177,20 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `bleach` | `6.4.0` |
 | `blinker` | `1.9.0` |
 | `blis` | `1.3.3` |
+| `blosc` | `1.11.4` |
+| `blosc2` | `4.14.1` |
 | `bokeh` | `3.10.0` |
 | `brotli` | `1.2.0` |
 
-### C
+<h3 id="c">C</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
+| `cachebox` | `5.2.3` |
 | `cachetools` | `7.2.0` |
 | `catalogue` | `2.0.10` |
 | `cbor2` | `5.9.0` |
-| `certifi` | `2024.2.2`, `2026.7.22` |
+| `certifi` | `2024.2.2`, `2026.7.22`, `2026.10.19` |
 | `cffi` | `2.1.1` |
 | `charset-normalizer` | `3.3.2`, `3.5.1`, `3.5.2` |
 | `click` | `8.5.0` |
@@ -201,35 +202,46 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `comm` | `0.2.3` |
 | `confection` | `1.3.3` |
 | `conllu` | `6.0.0` |
+| `connected-components-3d` | `4.1.0` |
 | `constantly` | `23.10.4` |
 | `contourpy` | `1.4.0` |
 | `cryptography` | `50.0.1` |
+| `cuda-bindings` | `13.4.4` |
+| `cuda-pathfinder` | `1.8.3` |
+| `cuda-toolkit` | `13.0.3` |
 | `cycler` | `0.12.1` |
 | `cymem` | `2.0.13` |
 | `cython` | `3.1.8` |
 
-### D
+<h3 id="d">D</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `daphne` | `4.2.3` |
 | `darts` | `0.47.0` |
 | `dash` | `4.4.1` |
+| `dataclasses` | `0.8` |
 | `debugpy` | `1.8.22` |
+| `deepdiff` | `9.1.0` |
 | `defusedxml` | `0.7.1` |
+| `dicom2nifti` | `2.6.2` |
+| `dipy` | `1.12.1` |
+| `docopt` | `0.6.2` |
 | `docutils` | `0.19` |
 | `donfig` | `0.8.1.post1` |
 | `duckdb` | `1.5.5` |
+| `dynamic-network-architectures` | `0.4.4` |
 
-### E
+<h3 id="e">E</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `ecos` | `2.0.14` |
+| `einops` | `0.8.2` |
 | `et-xmlfile` | `2.0.0` |
 | `executing` | `2.2.1` |
 
-### F
+<h3 id="f">F</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -238,25 +250,31 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `fastjsonschema` | `2.22.2` |
 | `fhir-core` | `1.1.11` |
 | `fhir-resources` | `8.3.0` |
-| `filelock` | `4.0.4` |
+| `filelock` | `4.0.4`, `4.2.4` |
 | `flask` | `3.1.3` |
-| `fonttools` | `4.66.0` |
+| `fonttools` | `4.66.0`, `4.67.0` |
 | `formulaic` | `1.2.2` |
 | `fqdn` | `1.5.1` |
+| `freetype-py` | `2.5.1` |
+| `frozenlist` | `1.8.0` |
 | `fsspec` | `2026.9.0` |
+| `fury` | `2.1.0` |
+| `future` | `1.0.0` |
 
-### G
+<h3 id="g">G</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
+| `glfw` | `2.11.0` |
 | `google-crc32c` | `1.9.0` |
 | `gradio` | `6.28.0` |
 | `gradio-client` | `2.7.1` |
 | `granian` | `2.8.3` |
+| `graphviz` | `0.21` |
 | `great-expectations` | `1.23.2` |
 | `groovy` | `0.1.2` |
 
-### H
+<h3 id="h">H</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -264,23 +282,30 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `h2` | `4.4.1` |
 | `h5py` | `3.16.0` |
 | `hf-gradio` | `0.4.1` |
-| `hf-xet` | `1.6.0` |
+| `hf-xet` | `1.6.0`, `1.7.0` |
 | `holidays` | `0.105` |
 | `hpack` | `4.2.0` |
+| `hsluv` | `5.0.4` |
 | `html5lib` | `1.1` |
 | `httpcore` | `1.0.9` |
+| `httpcore2` | `2.16.0` |
 | `httpx` | `0.28.1` |
-| `huggingface-hub` | `1.33.0` |
+| `httpx2` | `2.16.0` |
+| `httpx2-jsfetch` | `1.0` |
+| `huggingface-hub` | `1.33.0`, `2.2.0` |
 | `hypercorn` | `0.18.0` |
 | `hyperframe` | `6.1.0` |
 | `hyperlink` | `21.0.0` |
 
-### I
+<h3 id="i">I</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `icecream` | `2.2.0` |
 | `idna` | `3.7`, `3.20` |
+| `imagecodecs` | `2026.10.10` |
+| `imageio` | `2.38.1` |
+| `imgkit` | `1.2.3` |
 | `importlib-metadata` | `9.0.1` |
 | `incremental` | `24.11.0` |
 | `iniconfig` | `2.3.0` |
@@ -292,7 +317,7 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `isoduration` | `20.11.0` |
 | `itsdangerous` | `2.2.0` |
 
-### J
+<h3 id="j">J</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -319,25 +344,27 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `jupyterlab-server` | `2.28.1` |
 | `jupyterlab-widgets` | `3.0.17` |
 
-### K
+<h3 id="k">K</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `kiwisolver` | `1.5.1` |
 
-### L
+<h3 id="l">L</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `lark` | `1.3.1` |
+| `lazy-loader` | `0.6` |
 | `legacy-api-wrap` | `1.5` |
 | `lifelines` | `0.30.0` |
+| `linecache2` | `1.0.0` |
 | `llvmlite` | `0.36.0`, `0.49.0` |
 | `local-migrator` | `0.1.10` |
 | `loguru` | `0.7.3` |
 | `lxml` | `6.1.3` |
 
-### M
+<h3 id="m">M</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -353,15 +380,17 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `medspacy-unqlite` | `0.9.8` |
 | `mistune` | `3.3.4` |
 | `mock` | `5.2.0` |
+| `mpmath` | `1.3.0` |
 | `msgpack` | `1.2.2` |
 | `msgspec` | `0.21.1` |
+| `multidict` | `7.1.0` |
 | `murmurhash` | `1.0.15` |
 
-### N
+<h3 id="n">N</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
-| `narwhals` | `2.26.0` |
+| `narwhals` | `2.26.0`, `2.27.1` |
 | `natsort` | `8.4.0` |
 | `nbclient` | `0.11.0` |
 | `nbconvert` | `7.17.1` |
@@ -375,24 +404,41 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `nltk` | `3.10.3` |
 | `nme` | `0.1.8` |
 | `nmslib` | `2.1.2` |
+| `nnunetv2` | `2.8.1` |
 | `notebook` | `7.6.3` |
 | `notebook-shim` | `0.2.4` |
 | `numba` | `0.53.1`, `0.67.0` |
 | `numcodecs` | `0.17.0` |
 | `numexpr` | `2.14.2` |
-| `numpy` | `1.26.4`, `2.5.3` |
+| `numpy` | `1.26.4`, `2.5.3`, `2.5.4` |
+| `nvidia-cublas` | `13.1.1.3` |
+| `nvidia-cuda-cupti` | `13.0.85` |
+| `nvidia-cuda-nvrtc` | `13.0.88` |
+| `nvidia-cuda-runtime` | `13.0.96` |
+| `nvidia-cudnn-cu13` | `9.24.0.43` |
+| `nvidia-cufft` | `12.0.0.61` |
+| `nvidia-cufile` | `1.15.1.6` |
+| `nvidia-curand` | `10.4.0.35` |
+| `nvidia-cusolver` | `12.0.4.66` |
+| `nvidia-cusparse` | `12.6.3.3` |
+| `nvidia-cusparselt-cu13` | `0.8.1` |
+| `nvidia-nccl-cu13` | `2.30.7` |
+| `nvidia-nvjitlink` | `13.4.92` |
+| `nvidia-nvshmem-cu13` | `3.4.5` |
+| `nvidia-nvtx` | `13.0.85` |
 
-### O
+<h3 id="o">O</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `opencv-python` | `5.0.0.93` |
 | `openpyxl` | `3.1.5` |
 | `optuna` | `5.0.0` |
+| `orderly-set` | `5.5.0` |
 | `orjson` | `3.12.0` |
 | `osqp` | `1.1.3` |
 
-### P
+<h3 id="p">P</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -404,42 +450,49 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `patsy` | `1.0.3` |
 | `pendulum` | `3.2.0` |
 | `pexpect` | `4.9.0` |
-| `pillow` | `12.3.0` |
-| `pip` | `26.2.1` |
+| `pillow` | `12.3.0`, `13.0.0` |
+| `pip` | `26.2.1`, `26.2.2` |
 | `platformdirs` | `4.12.0` |
 | `plotly` | `7.1.0` |
 | `pluggy` | `1.6.0` |
 | `polars` | `1.44.2` |
 | `polars-runtime-32` | `1.44.2` |
+| `polyxios` | `0.5.1` |
 | `preshed` | `3.0.13` |
 | `priority` | `2.0.0` |
 | `prometheus-client` | `0.26.0` |
 | `prompt-toolkit` | `3.0.53` |
+| `propcache` | `0.5.4` |
 | `prophet` | `1.4.0` |
 | `psutil` | `7.2.2` |
 | `ptyprocess` | `0.7.0` |
 | `pure-eval` | `0.2.4` |
-| `pyarrow` | `25.0.1` |
+| `pyarrow` | `25.0.1`, `26.0.0` |
 | `pyasn1` | `0.6.4` |
 | `pybind11` | `3.1.0` |
-| `pycparser` | `3.0` |
-| `pydantic` | `2.13.5` |
-| `pydantic-core` | `2.46.5` |
+| `pycparser` | `3.0`, `3.11` |
+| `pydantic` | `2.13.5`, `2.14.1` |
+| `pydantic-core` | `2.46.5`, `2.50.1` |
 | `pydantic-settings` | `2.15.0` |
 | `pydicom` | `3.0.2` |
 | `pydub` | `0.25.1` |
 | `pyfastner` | `1.0.10` |
+| `pygfx` | `0.17.0` |
 | `pygments` | `2.21.0` |
+| `pykwalify` | `1.8.0` |
+| `pylinalg` | `0.6.8` |
 | `pynndescent` | `0.5.13`, `0.6.0` |
 | `pyod` | `3.6.6` |
 | `pyopenssl` | `26.4.0` |
 | `pyparsing` | `3.3.3` |
+| `pyradiomics` | `3.1.0` |
 | `pyrush` | `1.0.13` |
 | `pysbd` | `0.3.4` |
 | `pysimstring` | `1.3.0` |
 | `pytest` | `9.1.1` |
 | `python-dateutil` | `2.9.0.post0` |
 | `python-dotenv` | `1.2.3` |
+| `python-gdcm` | `3.2.6` |
 | `python-json-logger` | `4.2.0` |
 | `python-multipart` | `0.0.32` |
 | `pytz` | `2024.1`, `2026.4` |
@@ -448,19 +501,21 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `pyyaml` | `6.0.3` |
 | `pyzmq` | `27.2.0` |
 
-### Q
+<h3 id="q">Q</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `quicksectx` | `0.4.1` |
 
-### R
+<h3 id="r">R</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `referencing` | `0.37.0` |
 | `regex` | `2026.9.10` |
+| `rendercanvas` | `2.7.2` |
 | `requests` | `2.31.0`, `2.34.2` |
+| `requests-toolbelt` | `1.0.0` |
 | `retrying` | `1.4.2` |
 | `rfc3339-validator` | `0.1.4` |
 | `rfc3986-validator` | `0.1.1` |
@@ -469,14 +524,18 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `rich-click` | `1.9.9` |
 | `rpds-py` | `2026.6.3` |
 | `rsa` | `4.7.2` |
+| `rt-utils` | `1.2.7` |
 | `ruamel-yaml` | `0.19.1` |
+| `rubicon-objc` | `0.5.7` |
 
-### S
+<h3 id="s">S</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `safehttpx` | `0.1.7` |
+| `safetensors` | `0.8.0` |
 | `scanpy` | `1.9.8`, `1.12.4` |
+| `scikit-image` | `0.26.0` |
 | `scikit-learn` | `1.9.1` |
 | `scikit-survival` | `0.28.0` |
 | `scipy` | `1.18.1` |
@@ -488,7 +547,7 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `service-identity` | `26.1.0` |
 | `session-info` | `1.0.1` |
 | `session-info2` | `0.4.2` |
-| `setuptools` | `84.0.0` |
+| `setuptools` | `84.0.0`, `84.2.1` |
 | `shap` | `0.52.0` |
 | `shellingham` | `1.5.4` |
 | `shortuuid` | `1.0.13` |
@@ -508,40 +567,50 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `starlette` | `1.7.0` |
 | `statsmodels` | `0.15.0` |
 | `stdlib-list` | `0.12.0` |
+| `sympy` | `1.14.0` |
 
-### T
+<h3 id="t">T</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `terminado` | `0.18.1` |
 | `thinc` | `8.3.13` |
 | `threadpoolctl` | `3.7.0` |
+| `tifffile` | `2026.10.15` |
+| `timm` | `1.0.22` |
 | `tinycss2` | `1.5.1` |
 | `tomlkit` | `0.14.0` |
 | `tornado` | `6.5.10` |
+| `totalsegmentator` | `2.17.0` |
 | `tqdm` | `4.70.1` |
+| `traceback2` | `1.4.0` |
 | `traitlets` | `5.16.1` |
+| `triton` | `3.8.0` |
+| `truststore` | `0.10.5` |
+| `trx-python` | `0.6` |
 | `twisted` | `26.4.0` |
 | `txaio` | `26.6.1` |
-| `typer` | `0.27.2` |
+| `typer` | `0.27.2`, `0.27.3` |
 | `typing-extensions` | `4.16.0` |
 | `typing-inspection` | `0.4.4` |
-| `tzdata` | `2024.1`, `2026.4` |
+| `tzdata` | `2024.1`, `2026.4`, `2026.5` |
 | `tzlocal` | `5.4.4` |
 
-### U
+<h3 id="u">U</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `u-msgpack-python` | `2.8.0` |
+| `uharfbuzz` | `0.56.3` |
 | `ujson` | `6.0.0` |
 | `umap-learn` | `0.5.12` |
 | `unidecode` | `1.4.0` |
+| `unittest2` | `1.1.0` |
 | `uri-template` | `1.3.0` |
 | `urllib3` | `2.2.1`, `2.8.0` |
 | `uvicorn` | `0.54.0` |
 
-### W
+<h3 id="w">W</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -552,26 +621,31 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 | `webencodings` | `0.6.1` |
 | `websocket-client` | `1.9.2` |
 | `werkzeug` | `3.1.9` |
+| `wgpu` | `0.32.0` |
 | `widgetsnbextension` | `4.0.16` |
 | `win32-setctime` | `1.2.0` |
 | `wrapt` | `2.5.0` |
 | `wsproto` | `1.3.2` |
 
-### X
+<h3 id="x">X</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
 | `xarray` | `2026.7.0` |
 | `xlsxwriter` | `3.2.9` |
+| `xmltodict` | `1.0.4` |
+| `xvfbwrapper` | `0.2.35` |
 | `xyzservices` | `2026.9.1` |
 
-### Y
+<h3 id="y">Y</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
+| `yacs` | `0.1.8` |
 | `yamllint` | `1.38.0` |
+| `yarl` | `1.25.1` |
 
-### Z
+<h3 id="z">Z</h3>
 
 | Package Name | Available Version(s) |
 | :--- | :--- |
@@ -582,6 +656,121 @@ Inventory of **315 approved packages** available on the Glasgow TRE production m
 ---
 
 ## Changelog
+
+### Snapshot 6
+
+**Capabilities Enabled:**
+
+- Added 99 new Python packages including a newer version of some existing packages. 
+
+- Medical image analysis, segmentation, and feature extraction tooling ([TotalSegmentator](https://github.com/wasserth/TotalSegmentator) `totalsegmentator`, [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) `nnunetv2`, `dynamic-network-architectures`, `pyradiomics`, `dicom2nifti`, `rt-utils`, `dipy`, `python-gdcm`, `trx-python`, `scikit-image`).
+- NVIDIA CUDA 13 ecosystem libraries and GPU compute runtimes (`nvidia-cuda-runtime`, `nvidia-cudnn-cu13`, `nvidia-cublas`, `cuda-toolkit`, `cuda-bindings`, `triton`, `timm`, `safetensors`, `einops`).
+- Scientific 3D rendering and GPU computing frameworks ([PyGFX](https://pygfx.readthedocs.io/) `pygfx`, [wgpu](https://wgpu-py.readthedocs.io/) `wgpu`, `rendercanvas`, `pylinalg`, `fury`, `glfw`, `freetype-py`).
+- Asynchronous HTTP and networking stack (`aiohttp`, `yarl`, `propcache`, `aiohappyeyeballs`, `aiosignal`, `frozenlist`, `httpcore2`, `httpx2`).
+
+**Packages Added:**
+
+| Package Name | Available Version(s) |
+| :--- | :--- |
+| `acvl-utils` | `0.2.6` |
+| `aiohappyeyeballs` | `2.7.1` |
+| `aiohttp` | `3.14.5` |
+| `aiosignal` | `1.4.0` |
+| `argparse` | `1.4.0` |
+| `batchgenerators` | `0.25.5` |
+| `batchgeneratorsv2` | `0.3.6` |
+| `blosc` | `1.11.4` |
+| `blosc2` | `4.14.1` |
+| `cachebox` | `5.2.3` |
+| `certifi` | `2026.10.19` |
+| `connected-components-3d` | `4.1.0` |
+| `cuda-bindings` | `13.4.4` |
+| `cuda-pathfinder` | `1.8.3` |
+| `cuda-toolkit` | `13.0.3` |
+| `dataclasses` | `0.8` |
+| `deepdiff` | `9.1.0` |
+| `dicom2nifti` | `2.6.2` |
+| `dipy` | `1.12.1` |
+| `docopt` | `0.6.2` |
+| `dynamic-network-architectures` | `0.4.4` |
+| `einops` | `0.8.2` |
+| `filelock` | `4.2.4` |
+| `fonttools` | `4.67.0` |
+| `freetype-py` | `2.5.1` |
+| `frozenlist` | `1.8.0` |
+| `fury` | `2.1.0` |
+| `future` | `1.0.0` |
+| `glfw` | `2.11.0` |
+| `graphviz` | `0.21` |
+| `hf-xet` | `1.7.0` |
+| `hsluv` | `5.0.4` |
+| `httpcore2` | `2.16.0` |
+| `httpx2` | `2.16.0` |
+| `httpx2-jsfetch` | `1.0` |
+| `huggingface-hub` | `2.2.0` |
+| `imagecodecs` | `2026.10.10` |
+| `imageio` | `2.38.1` |
+| `imgkit` | `1.2.3` |
+| `lazy-loader` | `0.6` |
+| `linecache2` | `1.0.0` |
+| `mpmath` | `1.3.0` |
+| `multidict` | `7.1.0` |
+| `narwhals` | `2.27.1` |
+| `nnunetv2` | `2.8.1` |
+| `numpy` | `2.5.4` |
+| `nvidia-cublas` | `13.1.1.3` |
+| `nvidia-cuda-cupti` | `13.0.85` |
+| `nvidia-cuda-nvrtc` | `13.0.88` |
+| `nvidia-cuda-runtime` | `13.0.96` |
+| `nvidia-cudnn-cu13` | `9.24.0.43` |
+| `nvidia-cufft` | `12.0.0.61` |
+| `nvidia-cufile` | `1.15.1.6` |
+| `nvidia-curand` | `10.4.0.35` |
+| `nvidia-cusolver` | `12.0.4.66` |
+| `nvidia-cusparse` | `12.6.3.3` |
+| `nvidia-cusparselt-cu13` | `0.8.1` |
+| `nvidia-nccl-cu13` | `2.30.7` |
+| `nvidia-nvjitlink` | `13.4.92` |
+| `nvidia-nvshmem-cu13` | `3.4.5` |
+| `nvidia-nvtx` | `13.0.85` |
+| `orderly-set` | `5.5.0` |
+| `pillow` | `13.0.0` |
+| `pip` | `26.2.2` |
+| `polyxios` | `0.5.1` |
+| `propcache` | `0.5.4` |
+| `pyarrow` | `26.0.0` |
+| `pycparser` | `3.11` |
+| `pydantic` | `2.14.1` |
+| `pydantic-core` | `2.50.1` |
+| `pygfx` | `0.17.0` |
+| `pykwalify` | `1.8.0` |
+| `pylinalg` | `0.6.8` |
+| `pyradiomics` | `3.1.0` |
+| `python-gdcm` | `3.2.6` |
+| `rendercanvas` | `2.7.2` |
+| `requests-toolbelt` | `1.0.0` |
+| `rt-utils` | `1.2.7` |
+| `rubicon-objc` | `0.5.7` |
+| `safetensors` | `0.8.0` |
+| `scikit-image` | `0.26.0` |
+| `setuptools` | `84.2.1` |
+| `sympy` | `1.14.0` |
+| `tifffile` | `2026.10.15` |
+| `timm` | `1.0.22` |
+| `totalsegmentator` | `2.17.0` |
+| `traceback2` | `1.4.0` |
+| `triton` | `3.8.0` |
+| `truststore` | `0.10.5` |
+| `trx-python` | `0.6` |
+| `typer` | `0.27.3` |
+| `tzdata` | `2026.5` |
+| `uharfbuzz` | `0.56.3` |
+| `unittest2` | `1.1.0` |
+| `wgpu` | `0.32.0` |
+| `xmltodict` | `1.0.4` |
+| `xvfbwrapper` | `0.2.35` |
+| `yacs` | `0.1.8` |
+| `yarl` | `1.25.1` |
 
 ### Snapshot 5
 

@@ -192,6 +192,6 @@ V:\<project-name>\
 
 ## Related Documentation
 
-- [Python Runtime & Package Management](python.md) — Automating analytical data processing and manipulating Excel/CSV files via `pandas`, `openpyxl`, and `polars`.
+- [Python Runtime & Package Management](python-core.md) — Automating analytical data processing and manipulating Excel/CSV files via `pandas`, `openpyxl`, and `polars`.
 - [Jupyter Notebooks](jupyter.md) — Interactive notebook computing and reporting.
 - [Data Transfer Guidelines](../faq/data-transfer.md) — Secure procedures for importing data and exporting approved research results.
