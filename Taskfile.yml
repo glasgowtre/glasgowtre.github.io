@@ -2,29 +2,35 @@
 
 version: '3'
 
+env:
+  PATH: '{{.HOME}}/.local/bin:{{.PATH}}'
+
 vars:
+  UV_BIN:
+    sh: command -v uv || echo "$HOME/.local/bin/uv"
   UV_TOOL_ID: mkdocs
   UV_WITHS: >-
     --with mkdocs-material
     --with mkdocs-awesome-pages-plugin
+    --with pymdown-extensions
 
 tasks:
   proj/init:
     desc: Initialize the project
     cmds:
-      - uv tool install {{.UV_WITHS}} {{.UV_TOOL_ID}}
+      - '{{.UV_BIN}} tool install {{.UV_WITHS}} {{.UV_TOOL_ID}}'
 
   docs/serve:
     desc: Run the local docs server
     cmds:
-      - uv tool run {{.UV_TOOL_ID}} serve
+      - '{{.UV_BIN}} tool run {{.UV_WITHS}} {{.UV_TOOL_ID}} serve'
 
   docs/build:
     desc: Build the static site (used by CI)
     cmds:
-      - uv tool run {{.UV_TOOL_ID}} build --strict
+      - '{{.UV_BIN}} tool run {{.UV_WITHS}} {{.UV_TOOL_ID}} build --strict'
 
   docs/deploy:
     desc: Build and deploy to GitHub Pages (gh-deploy)
     cmds:
-      - uv tool run {{.UV_TOOL_ID}} gh-deploy --force --clean
+      - '{{.UV_BIN}} tool run {{.UV_WITHS}} {{.UV_TOOL_ID}} gh-deploy --force --clean'
