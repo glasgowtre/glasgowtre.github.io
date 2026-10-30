@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glasgow TRE — vGPU Capacity Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root, [data-theme="light"] {
+      --background: #f8fafc;
+      --card: #ffffff;
+      --secondary: #f1f5f9;
+      --border: #cbd5e1;
+      --foreground: #0f172a;
+      --muted-foreground: #475569;
+      --primary: #011451;
+      --primary-foreground: #ffffff;
+    }
+    [data-theme="dark"] {
+      --background: #1e222a;
+      --card: #262b36;
+      --secondary: #303746;
+      --border: #3f4759;
+      --foreground: #f1f5f9;
+      --muted-foreground: #94a3b8;
+      --primary: #4DBBC6;
+      --primary-foreground: #011451;
+    }
+    body {
+      font-family: "Noto Sans", system-ui, -apple-system, sans-serif;
+    }
+    .slot-cell {
+      transition: all 0.15s ease;
+    }
+    .striped-grey {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(148, 163, 184, 0.22),
+        rgba(148, 163, 184, 0.22) 5px,
+        rgba(100, 116, 139, 0.4) 5px,
+        rgba(100, 116, 139, 0.4) 10px
+      );
+    }
+    .striped-ha {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(100, 116, 139, 0.06),
+        rgba(100, 116, 139, 0.06) 6px,
+        rgba(100, 116, 139, 0.15) 6px,
+        rgba(100, 116, 139, 0.15) 12px
+      );
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-3 md:p-4">
+  <div class="max-w-6xl mx-auto space-y-3.5">
+
+    <!-- Top Control Bar -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-3">
+        <div>
+          <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Cluster Scope</label>
+          <select id="scopeSelect" onchange="recalculate()" class="rounded-lg border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] px-3 py-1.5 text-xs font-semibold">
+            <option value="4" selected>4 GPUs Active (192 GB · HA-Safe)</option>
+            <option value="2">2 GPUs Active (96 GB · Single Host)</option>
+            <option value="6">6 GPUs Active (288 GB · No HA)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Auto-Fill Remaining Slots</label>
+          <select id="autoFillSelect" onchange="recalculate()" class="rounded-lg border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] px-3 py-1.5 text-xs font-semibold">
+            <option value="12Q" selected>Fill with 12Q (12 GB Baseline)</option>
+            <option value="24Q">Fill with 24Q (24 GB)</option>
+            <option value="6Q">Fill with 6Q (6 GB)</option>
+            <option value="8Q_4Q">Fill with 8Q + 4Q Pair (100% Fit)</option>
+            <option value="16Q_8Q">Fill with 16Q + 8Q Pair (100% Fit)</option>
+            <option value="8Q">Fill with 8Q Only (66.7% Cap)</option>
+            <option value="4Q">Fill with 4Q Only (66.7% Cap)</option>
+            <option value="none">Off (Manual Only)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="resetAll()" class="px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--foreground)] hover:opacity-80">
+          Reset
+        </button>
+        <button onclick="exportCurrentCSV()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90">
+          Export CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 Compact KPI Cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm">
+        <div class="text-xs font-medium text-[var(--muted-foreground)]">Total Hosted VMs</div>
+        <div class="text-2xl font-bold mt-0.5 text-[var(--foreground)]" id="kpiTotalVMs">16</div>
+        <div class="text-xs text-[var(--muted-foreground)] mt-0.5 truncate" id="kpiVMBreakdown">16× 12Q</div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm">
+        <div class="text-xs font-medium text-[var(--muted-foreground)]">Active Pool Utilization</div>
+        <div class="flex items-baseline gap-2 mt-0.5">
+          <span class="text-2xl font-bold text-[var(--foreground)]" id="kpiActivePct">100.0%</span>
+          <span class="text-xs text-[var(--muted-foreground)]" id="kpiActiveGB">192 / 192 GB</span>
+        </div>
+        <div class="w-full h-1.5 bg-[var(--secondary)] rounded-full mt-2 overflow-hidden">
+          <div id="barActivePct" class="h-full rounded-full transition-all duration-200" style="width: 100%; background-color: #005398;"></div>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm">
+        <div class="text-xs font-medium text-[var(--muted-foreground)]">Raw 6-GPU Cluster</div>
+        <div class="flex items-baseline gap-2 mt-0.5">
+          <span class="text-2xl font-bold text-[var(--foreground)]" id="kpiRawPct">66.7%</span>
+          <span class="text-xs text-[var(--muted-foreground)]" id="kpiRawGB">192 / 288 GB</span>
+        </div>
+        <div class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiHAStatus">Host 3 reserved for HA</div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm">
+        <div class="text-xs font-medium text-[var(--muted-foreground)]">Status &amp; Grey Waste</div>
+        <div class="text-base font-bold mt-1" id="kpiFeasibilityBadge">OPTIMAL FIT</div>
+        <div class="text-xs text-[var(--muted-foreground)] mt-0.5" id="kpiGreyNote">0 GB stranded</div>
+      </div>
+    </div>
+
+    <!-- Main 2-Column Body -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-start">
+
+      <!-- Left: Pinned VMs + Quick Presets (5 cols) -->
+      <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm space-y-2.5">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Pinned VMs (Constraints)</h2>
+          <span class="text-xs text-[var(--muted-foreground)]">Mixed-Size · Min 4Q</span>
+        </div>
+
+        <div id="constraintList" class="space-y-1.5"></div>
+
+        <!-- Quick Presets -->
+        <div class="pt-2 border-t border-[var(--border)]">
+          <div class="text-xs font-semibold text-[var(--muted-foreground)] mb-1.5">Quick Presets:</div>
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="loadPreset('s04_12q')" class="px-2.5 py-1 rounded-md text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] hover:opacity-80">
+              16× 12Q
+            </button>
+            <button onclick="loadPreset('s13_scenC_12q')" class="px-2.5 py-1 rounded-md text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] hover:opacity-80">
+              1× 72G + 10× 12Q
+            </button>
+            <button onclick="loadPreset('s11_scenB_12q')" class="px-2.5 py-1 rounded-md text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] hover:opacity-80">
+              1× 96G + 8× 12Q
+            </button>
+            <button onclick="loadPreset('s09_1x48_12q')" class="px-2.5 py-1 rounded-md text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] hover:opacity-80">
+              1× 48Q + 12× 12Q
+            </button>
+            <button onclick="loadPreset('s21_8q_4q_smart')" class="px-2.5 py-1 rounded-md text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] hover:opacity-80">
+              16× 8Q + 16× 4Q
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 3-Host / 6-GPU Slot Visualizer (7 cols) -->
+      <div class="lg:col-span-7 bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
+            Physical GPU Allocation (48 GB per L40S)
+          </h2>
+          <div class="flex items-center gap-2.5 text-xs">
+            <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm inline-block" style="background:#011451"></span>96G/72G/48Q</span>
+            <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm inline-block" style="background:#405D18"></span>24Q/12Q/6Q</span>
+            <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm inline-block" style="background:#b87d3b"></span>16Q/8Q/4Q</span>
+            <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm inline-block striped-grey border border-slate-400"></span>Grey Waste</span>
+          </div>
+        </div>
+
+        <div id="gpuHostContainer" class="space-y-2.5"></div>
+
+        <div id="diagnosticBox" class="rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-3 py-2 text-xs"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const PROFILES = [
+      { id: '2x48Q', label: 'Dual-48Q (96 GB)', sub: '2× 48Q · Full Host', vram: 96, color: '#011451', isMulti: true },
+      { id: '48Q+24Q', label: '48Q + 24Q (72 GB)', sub: 'Multi-vGPU', vram: 72, color: '#005398', isMulti: true },
+      { id: '48Q', label: 'L40S-48Q (48 GB)', sub: 'Full Card', vram: 48, size: 48, starts: [0], color: '#2b6cb0' },
+      { id: '24Q', label: 'L40S-24Q (24 GB)', sub: 'Half Card', vram: 24, size: 24, starts: [0, 24], color: '#2f6f4e' },
+      { id: '16Q', label: 'L40S-16Q (16 GB) ⚠️', sub: 'Max 2/card unless +8Q', vram: 16, size: 16, starts: [0, 32], color: '#b87d3b' },
+      { id: '12Q', label: 'L40S-12Q (12 GB)', sub: 'Quarter Card', vram: 12, size: 12, starts: [0, 12, 24, 36], color: '#405D18' },
+      { id: '8Q', label: 'L40S-8Q (8 GB) ⚠️', sub: 'Max 4/card unless +4Q', vram: 8, size: 8, starts: [0, 16, 24, 40], color: '#c48845' },
+      { id: '6Q', label: 'L40S-6Q (6 GB)', sub: 'Eighth Card', vram: 6, size: 6, starts: [0, 6, 12, 18, 24, 30, 36, 42], color: '#5c8d73' },
+      { id: '4Q', label: 'L40S-4Q (4 GB) ⚠️', sub: 'Min Profile (Max 8/card)', vram: 4, size: 4, starts: [0, 8, 12, 20, 24, 32, 36, 44], color: '#a66c38' }
+    ];
+
+    const PROFILE_MAP = {};
+    PROFILES.forEach(p => PROFILE_MAP[p.id] = p);
+
+    const pinnedCounts = { '2x48Q': 0, '48Q+24Q': 0, '48Q': 0, '24Q': 0, '16Q': 0, '12Q': 0, '8Q': 0, '6Q': 0, '4Q': 0 };
+    let lastSolution = null;
+
+    function syncParentTheme() {
+      try {
+        if (window.parent && window.parent.document && window.parent.document.body) {
+          const scheme = window.parent.document.body.getAttribute('data-md-color-scheme');
+          document.documentElement.setAttribute('data-theme', scheme === 'slate' ? 'dark' : 'light');
+        }
+      } catch (e) {}
+    }
+
+    function notifyHeight() {
+      try {
+        window.parent.postMessage({ type: 'vgpu-calc-resize', height: document.body.scrollHeight }, '*');
+      } catch (e) {}
+    }
+
+    function buildConstraintControls() {
+      const container = document.getElementById('constraintList');
+      container.innerHTML = '';
+      PROFILES.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--background)]';
+        row.innerHTML = `
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-2.5 h-6 rounded-sm shrink-0" style="background:${p.color}"></span>
+            <div class="truncate">
+              <span class="text-xs font-semibold text-[var(--foreground)]">${p.label}</span>
+              <span class="text-xs text-[var(--muted-foreground)] ml-1.5 hidden sm:inline">${p.sub}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 shrink-0">
+            <button onclick="adjustCount('${p.id}', -1)" class="w-6 h-6 rounded border border-[var(--border)] bg-[var(--secondary)] text-xs font-bold hover:opacity-80">−</button>
+            <span id="count_${p.id}" class="w-6 text-center text-xs font-bold">${pinnedCounts[p.id]}</span>
+            <button onclick="adjustCount('${p.id}', 1)" class="w-6 h-6 rounded border border-[var(--border)] bg-[var(--secondary)] text-xs font-bold hover:opacity-80">+</button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function adjustCount(profileId, delta) {
+      pinnedCounts[profileId] = Math.max(0, (pinnedCounts[profileId] || 0) + delta);
+      document.getElementById(`count_${profileId}`).textContent = pinnedCounts[profileId];
+      recalculate();
+    }
+
+    function resetAll() {
+      Object.keys(pinnedCounts).forEach(k => {
+        pinnedCounts[k] = 0;
+        document.getElementById(`count_${k}`).textContent = '0';
+      });
+      document.getElementById('scopeSelect').value = '4';
+      document.getElementById('autoFillSelect').value = 'none';
+      recalculate();
+    }
+
+    function loadPreset(presetName) {
+      Object.keys(pinnedCounts).forEach(k => pinnedCounts[k] = 0);
+      document.getElementById('scopeSelect').value = '4';
+      document.getElementById('autoFillSelect').value = '12Q';
+
+      if (presetName === 's13_scenC_12q') pinnedCounts['48Q+24Q'] = 1;
+      else if (presetName === 's11_scenB_12q') pinnedCounts['2x48Q'] = 1;
+      else if (presetName === 's09_1x48_12q') pinnedCounts['48Q'] = 1;
+      else if (presetName === 's21_8q_4q_smart') document.getElementById('autoFillSelect').value = '8Q_4Q';
+
+      Object.keys(pinnedCounts).forEach(k => {
+        document.getElementById(`count_${k}`).textContent = pinnedCounts[k];
+      });
+      recalculate();
+    }
+
+    function canPlaceOnGPU(gpu, profileId, startSlot) {
+      const p = PROFILE_MAP[profileId];
+      for (let s = startSlot; s < startSlot + p.size; s++) {
+        if (s >= 48 || gpu.slots[s] !== null) return false;
+      }
+      return true;
+    }
+
+    function placeOnGPU(gpu, profileId, startSlot, customColor) {
+      const p = PROFILE_MAP[profileId];
+      const alloc = { profileId, start: startSlot, size: p.size, color: customColor || p.color };
+      for (let s = startSlot; s < startSlot + p.size; s++) gpu.slots[s] = alloc;
+      gpu.allocations.push(alloc);
+    }
+
+    function tryPlaceSingleSlice(gpus, activeCount, profileId, customColor) {
+      const p = PROFILE_MAP[profileId];
+      const gpuOrder = [];
+      for (let i = 0; i < activeCount; i++) gpuOrder.push(i);
+      gpuOrder.sort((a, b) => {
+        const usedA = gpus[a].slots.filter(Boolean).length;
+        const usedB = gpus[b].slots.filter(Boolean).length;
+        return ((usedB > 0 && usedB < 48 ? 100 + usedB : usedB) - (usedA > 0 && usedA < 48 ? 100 + usedA : usedA));
+      });
+
+      for (const gIdx of gpuOrder) {
+        for (const st of p.starts) {
+          if (canPlaceOnGPU(gpus[gIdx], profileId, st)) {
+            placeOnGPU(gpus[gIdx], profileId, st, customColor);
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function recalculate() {
+      const activeGPUs = parseInt(document.getElementById('scopeSelect').value, 10);
+      const autoFill = document.getElementById('autoFillSelect').value;
+
+      const gpus = Array.from({ length: 6 }, (_, i) => ({
+        index: i,
+        host: Math.floor(i / 2) + 1,
+        active: i < activeGPUs,
+        slots: new Array(48).fill(null),
+        allocations: []
+      }));
+
+      const finalCounts = { '2x48Q': 0, '48Q+24Q': 0, '48Q': 0, '24Q': 0, '16Q': 0, '12Q': 0, '8Q': 0, '6Q': 0, '4Q': 0 };
+      const unplaced = [];
+
+      for (let n = 0; n < pinnedCounts['2x48Q']; n++) {
+        let placed = false;
+        for (let h = 0; h < activeGPUs / 2; h++) {
+          const g1 = gpus[h * 2], g2 = gpus[h * 2 + 1];
+          if (canPlaceOnGPU(g1, '48Q', 0) && canPlaceOnGPU(g2, '48Q', 0)) {
+            placeOnGPU(g1, '48Q', 0, PROFILE_MAP['2x48Q'].color);
+            placeOnGPU(g2, '48Q', 0, PROFILE_MAP['2x48Q'].color);
+            finalCounts['2x48Q']++; placed = true; break;
+          }
+        }
+        if (!placed) unplaced.push('2×48Q (96GB)');
+      }
+
+      for (let n = 0; n < pinnedCounts['48Q+24Q']; n++) {
+        let placed = false;
+        for (let h = 0; h < activeGPUs / 2; h++) {
+          const pair = [gpus[h * 2], gpus[h * 2 + 1]];
+          for (let pIdx = 0; pIdx < 2; pIdx++) {
+            const gA = pair[pIdx], gB = pair[1 - pIdx];
+            const valid24 = [0, 24].find(st => canPlaceOnGPU(gB, '24Q', st));
+            if (canPlaceOnGPU(gA, '48Q', 0) && valid24 !== undefined) {
+              placeOnGPU(gA, '48Q', 0, PROFILE_MAP['48Q+24Q'].color);
+              placeOnGPU(gB, '24Q', valid24, PROFILE_MAP['48Q+24Q'].color);
+              finalCounts['48Q+24Q']++; placed = true; break;
+            }
+          }
+          if (placed) break;
+        }
+        if (!placed) unplaced.push('48Q+24Q (72GB)');
+      }
+
+      ['48Q', '24Q', '16Q', '12Q', '8Q', '6Q', '4Q'].forEach(pid => {
+        for (let n = 0; n < pinnedCounts[pid]; n++) {
+          if (tryPlaceSingleSlice(gpus, activeGPUs, pid)) finalCounts[pid]++;
+          else unplaced.push(pid);
+        }
+      });
+
+      if (autoFill !== 'none' && unplaced.length === 0) {
+        if (autoFill === '8Q_4Q') {
+          while (tryPlaceSingleSlice(gpus, activeGPUs, '8Q')) finalCounts['8Q']++;
+          while (tryPlaceSingleSlice(gpus, activeGPUs, '4Q')) finalCounts['4Q']++;
+        } else if (autoFill === '16Q_8Q') {
+          while (tryPlaceSingleSlice(gpus, activeGPUs, '16Q')) finalCounts['16Q']++;
+          while (tryPlaceSingleSlice(gpus, activeGPUs, '8Q')) finalCounts['8Q']++;
+        } else {
+          while (tryPlaceSingleSlice(gpus, activeGPUs, autoFill)) finalCounts[autoFill]++;
+        }
+      }
+
+      let allocatedSlots = 0, greySlots = 0;
+      let refProfile = (autoFill !== 'none' && autoFill !== '8Q_4Q' && autoFill !== '16Q_8Q') ? autoFill : '12Q';
+      for (const pid of ['16Q', '8Q', '4Q']) {
+        if (pinnedCounts[pid] > 0 && autoFill === 'none') { refProfile = pid; break; }
+      }
+
+      for (let i = 0; i < activeGPUs; i++) {
+        const gpu = gpus[i];
+        const canFitRefMask = new Array(48).fill(false);
+        const refP = PROFILE_MAP[refProfile];
+        for (const st of refP.starts) {
+          if (canPlaceOnGPU(gpu, refP.id, st)) {
+            for (let s = st; s < st + refP.size; s++) canFitRefMask[s] = true;
+          }
+        }
+        gpu.slotStates = new Array(48).fill('free');
+        for (let s = 0; s < 48; s++) {
+          if (gpu.slots[s] !== null) {
+            gpu.slotStates[s] = 'used';
+            allocatedSlots++;
+          } else if (!canFitRefMask[s] && gpu.allocations.length > 0) {
+            gpu.slotStates[s] = 'grey';
+            greySlots++;
+          }
+        }
+      }
+
+      lastSolution = { activeGPUs, autoFill, gpus, finalCounts, allocatedSlots, greySlots, unplaced };
+      renderUI(lastSolution);
+      setTimeout(notifyHeight, 40);
+    }
+
+    function renderUI(sol) {
+      const totalVMs = Object.values(sol.finalCounts).reduce((a, b) => a + b, 0);
+      const activePoolGB = sol.activeGPUs * 48;
+      const activePct = ((sol.allocatedSlots / activePoolGB) * 100).toFixed(1);
+      const rawPct = ((sol.allocatedSlots / 288) * 100).toFixed(1);
+
+      document.getElementById('kpiTotalVMs').textContent = totalVMs;
+      const breakdownParts = [];
+      Object.entries(sol.finalCounts).forEach(([k, v]) => { if (v > 0) breakdownParts.push(`${v}× ${k}`); });
+      document.getElementById('kpiVMBreakdown').textContent = breakdownParts.length ? breakdownParts.join(' + ') : 'No VMs allocated';
+
+      document.getElementById('kpiActivePct').textContent = `${activePct}%`;
+      document.getElementById('kpiActiveGB').textContent = `${sol.allocatedSlots} / ${activePoolGB} GB`;
+      document.getElementById('barActivePct').style.width = `${Math.min(100, parseFloat(activePct))}%`;
+
+      document.getElementById('kpiRawPct').textContent = `${rawPct}%`;
+      document.getElementById('kpiRawGB').textContent = `${sol.allocatedSlots} / 288 GB`;
+      document.getElementById('kpiHAStatus').textContent =
+        sol.activeGPUs === 4 ? 'Host 3 (96 GB) reserved for HA'
+        : sol.activeGPUs === 2 ? 'Single Host Scope'
+        : '⚠️ No HA Failover Reserve';
+
+      const badge = document.getElementById('kpiFeasibilityBadge');
+      const greyNote = document.getElementById('kpiGreyNote');
+
+      if (sol.unplaced.length > 0) {
+        badge.textContent = 'OVER CAPACITY';
+        badge.style.color = '#dc2626';
+        greyNote.textContent = `Cannot fit: ${sol.unplaced.join(', ')}`;
+      } else if (sol.greySlots > 0) {
+        badge.textContent = `${sol.greySlots} GB GREY WASTE`;
+        badge.style.color = '#d97706';
+        greyNote.textContent = 'Pair with 4Q/8Q to fill gaps';
+      } else if (sol.activeGPUs === 6) {
+        badge.textContent = 'NO-HA WARNING';
+        badge.style.color = '#d97706';
+        greyNote.textContent = '0 GB waste · Breaks HA failover';
+      } else {
+        badge.textContent = 'OPTIMAL FIT';
+        badge.style.color = '#16a34a';
+        greyNote.textContent = '0 GB stranded grey waste';
+      }
+
+      const hostContainer = document.getElementById('gpuHostContainer');
+      hostContainer.innerHTML = '';
+
+      for (let h = 1; h <= 3; h++) {
+        const gA = sol.gpus[(h - 1) * 2], gB = sol.gpus[(h - 1) * 2 + 1];
+        const isReservedHost = !gA.active && !gB.active;
+        const hostBox = document.createElement('div');
+        hostBox.className = `rounded-lg border border-[var(--border)] p-2.5 space-y-2 ${isReservedHost ? 'striped-ha opacity-75' : 'bg-[var(--background)]'}`;
+        hostBox.innerHTML = `
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-[var(--foreground)]">Host ${h} (2× L40S = 96 GB)</span>
+            <span class="text-[var(--muted-foreground)] font-medium">${isReservedHost ? 'HA Failover Standby' : 'Active'}</span>
+          </div>
+        `;
+
+        [gA, gB].forEach(gpu => {
+          const usedGB = gpu.slots.filter(Boolean).length;
+          const row = document.createElement('div');
+          row.className = 'flex items-center gap-2';
+
+          const lbl = document.createElement('div');
+          lbl.className = 'w-20 shrink-0 text-xs font-semibold text-[var(--foreground)]';
+          lbl.textContent = `GPU ${gpu.index + 1} (${usedGB}G)`;
+          row.appendChild(lbl);
+
+          const bar = document.createElement('div');
+          bar.className = 'flex-1 h-7 rounded border border-[var(--border)] overflow-hidden flex bg-[var(--card)]';
+
+          if (!gpu.active) {
+            bar.innerHTML = `<div class="w-full h-full flex items-center justify-center text-xs text-[var(--muted-foreground)]">Reserved for vSphere HA</div>`;
+          } else {
+            let s = 0;
+            while (s < 48) {
+              const alloc = gpu.slots[s];
+              if (alloc) {
+                const seg = document.createElement('div');
+                seg.style.width = `${(alloc.size / 48) * 100}%`;
+                seg.style.backgroundColor = alloc.color;
+                seg.className = 'h-full flex items-center justify-center text-white text-xs font-semibold border-r border-white/30 px-1 truncate slot-cell';
+                seg.title = `${alloc.profileId} [${alloc.start}–${alloc.start + alloc.size - 1}] (${alloc.size} GB)`;
+                seg.textContent = alloc.profileId;
+                bar.appendChild(seg);
+                s += alloc.size;
+              } else {
+                const state = gpu.slotStates[s];
+                let end = s + 1;
+                while (end < 48 && gpu.slots[end] === null && gpu.slotStates[end] === state && end !== 12 && end !== 24 && end !== 36) end++;
+                const seg = document.createElement('div');
+                seg.style.width = `${((end - s) / 48) * 100}%`;
+                seg.className = `h-full flex items-center justify-center text-xs border-r border-[var(--border)] px-1 truncate slot-cell ${state === 'grey' ? 'striped-grey font-semibold' : 'text-[var(--muted-foreground)]'}`;
+                seg.textContent = state === 'grey' ? 'GREY' : '';
+                bar.appendChild(seg);
+                s = end;
+              }
+            }
+          }
+          row.appendChild(bar);
+          hostBox.appendChild(row);
+        });
+        hostContainer.appendChild(hostBox);
+      }
+
+      const diag = document.getElementById('diagnosticBox');
+      if (sol.unplaced.length > 0) {
+        diag.innerHTML = `<span class="font-bold text-red-600">Cannot fit ${sol.unplaced.join(', ')}:</span> Not enough aligned binary-tree slots remaining.`;
+      } else if (sol.greySlots > 0) {
+        diag.innerHTML = `<span class="font-bold text-amber-600">${sol.greySlots} GB Stranded:</span> 16Q/8Q/4Q cannot cross binary-tree walls (Slots 12, 24, 36). Pair with 4Q or 8Q to reach 100%.`;
+      } else {
+        diag.innerHTML = `<strong>Summary:</strong> ${totalVMs} VMs using ${sol.allocatedSlots} GB (${activePct}% of active pool · ${rawPct}% of raw 6-GPU cluster).`;
+      }
+    }
+
+    function exportCurrentCSV() {
+      if (!lastSolution) return;
+      const c = lastSolution.finalCounts;
+      const totalVMs = Object.values(c).reduce((a, b) => a + b, 0);
+      const activePoolGB = lastSolution.activeGPUs * 48;
+      const activePct = ((lastSolution.allocatedSlots / activePoolGB) * 100).toFixed(1) + '%';
+      const rawPct = ((lastSolution.allocatedSlots / 288) * 100).toFixed(1) + '%';
+      const headers = ['Scope_Active_GPUs','Available_VRAM_GB','VM_2x48Q_96GB','VM_48Qplus24Q_72GB','L40S_48Q_48GB','L40S_24Q_24GB','L40S_16Q_16GB','L40S_12Q_12GB','L40S_8Q_8GB','L40S_6Q_6GB','L40S_4Q_4GB','Total_VMs','Allocated_VRAM_GB','Stranded_Grey_VRAM_GB','GPU_Utilization_Pct_of_Active_Pool','GPU_Utilization_Pct_of_Raw_6GPUs'];
+      const row = [lastSolution.activeGPUs, activePoolGB, c['2x48Q'], c['48Q+24Q'], c['48Q'], c['24Q'], c['16Q'], c['12Q'], c['8Q'], c['6Q'], c['4Q'], totalVMs, lastSolution.allocatedSlots, lastSolution.greySlots, activePct, rawPct];
+      const csvContent = 'data:text/csv;charset=utf-8,' + headers.join(',') + '\n' + row.join(',') + '\n';
+      const link = document.createElement('a');
+      link.setAttribute('href', encodeURI(csvContent));
+      link.setAttribute('download', 'tre_custom_vgpu_scenario.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    syncParentTheme();
+    setInterval(syncParentTheme, 800);
+    window.addEventListener('resize', notifyHeight);
+    buildConstraintControls();
+    loadPreset('s04_12q');
+  </script>
+</body>
+</html>
