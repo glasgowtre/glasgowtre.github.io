@@ -4,6 +4,8 @@ title: 3D Slicer
 
 # 3D Slicer
 
+![3D Slicer](../images/3dslicer/3dslicer-1.png)
+
 ## Overview
 
 #### Service Offering
