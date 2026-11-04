@@ -4,21 +4,27 @@ title: 3D Slicer
 
 # 3D Slicer
 
-![3D Slicer](../images/3dslicer/3dslicer-1.png)
+
 
 ## Overview
 
 #### Service Offering
 
-Glasgow TRE provides **3D Slicer**, an open-source medical image computing, 3D visualization, and AI-assisted anatomical segmentation platform for clinical and biomedical imaging research. Researchers can inspect DICOM studies, perform manual and semi-automated 3D volume segmentation, run deep learning inference (`TotalSegmentator` and `nnU-Net`), and calculate quantitative comparison metrics entirely offline within the secure environment.
+Glasgow TRE can provide workstations with **3D Slicer**, an open-source medical image computing, 3D visualization, and AI-assisted anatomical segmentation platform for clinical and biomedical imaging research. Researchers can inspect DICOM studies, perform manual and semi-automated 3D volume segmentation, run deep learning inference (`TotalSegmentator` and `nnU-Net`), and calculate quantitative comparison metrics entirely offline within the secure environment.
+
+![3D Slicer](../images/3dslicer/3dslicer-1.png)
 
 #### Version & Pre-Configured Environment
 
-The platform provides **3D Slicer 5.12.4** (revision `34645`, 64-bit) installed machine-wide for all users. Workstations provisioned with 3D Slicer arrive **fully pre-configured out of the box**:
+Workstations provisioned with **3D Slicer 5.12.4** (revision `34645`, 64-bit) arrive **fully pre-configured out of the box**:
 
-- **Pre-installed AI & Segmentation Extensions**: All core extensions and their embedded Python dependencies (`PyTorch 2.14.1+cu130`, `torchvision`, `nnunetv2`, `totalsegmentator`, `nibabel`, `dicom2nifti`) are pre-installed for GPU-accelerated execution.
-- **Pre-configured Light Model Weights**: Workstations are pre-seeded and pre-configured to use the **light (`fast`, 3 mm) pretrained model weights** (`Dataset297_TotalSegmentator_total_3mm_1559subj`), stored locally in `C:\ProgramData\TotalSegmentator\weights`. Both the **TotalSegmentator** and **nnUNet** modules automatically point to these weights at startup without requiring manual downloads or configuration.
-- **Offline Operation**: Glasgow TRE has no external internet access. Automatic update checks, the online Extensions Manager, and external sample data downloads are disabled by policy.
+- **Pre-installed AI & Segmentation Extensions**:<br>
+    All core extensions and their embedded Python dependencies (`PyTorch 2.14.1+cu130`, `torchvision`, `nnunetv2`, `totalsegmentator`, `nibabel`, `dicom2nifti`) are pre-installed for GPU-accelerated execution.
+- **Pre-configured Light Model Weights**:<br>
+    Workstations are pre-seeded and pre-configured to use the **light (`fast`, 3 mm) pretrained model weights** (`Dataset297_TotalSegmentator_total_3mm_1559subj`), stored locally in `C:\ProgramData\TotalSegmentator\weights`. Both the **TotalSegmentator** and **nnUNet** modules automatically point to these weights at startup without requiring manual downloads or configuration.
+
+- **Offline Operation**: <br>
+    Glasgow TRE has no external internet access. Automatic update checks, the online Extensions Manager, and external sample data downloads are disabled by policy.
 
 ---
 
@@ -43,13 +49,13 @@ Medical volume rendering and 3D deep learning segmentation are memory- and compu
 
 Every 3D Slicer workstation includes the following pre-installed extensions:
 
-1. **TotalSegmentator** — Automated whole-body CT and MRI anatomical structure segmentation powered by `nnU-Net`. Pre-configured with offline light (`3 mm`) weights in `C:\ProgramData\TotalSegmentator\weights` via the `TOTALSEG_WEIGHTS_PATH` system environment variable.
-2. **NNUNet (`SlicerNNUNet`)** — Deep learning biomedical segmentation framework for running custom or pre-seeded `nnU-Net v2` models directly inside Slicer. Pre-configured at startup to point to `C:/ProgramData/TotalSegmentator/weights/Dataset297_TotalSegmentator_total_3mm_1559subj/nnUNetTrainer_4000epochs_NoMirroring__nnUNetPlans__3d_fullres` on `cuda` (`fold_0`).
-3. **PyTorch (`SlicerPyTorch`)** — Embedded PyTorch management utility paired with `torch==2.14.1+cu130` and `torchvision==0.29.1+cu130` for NVIDIA CUDA GPU acceleration.
-4. **SegmentEditorExtraEffects** — Additional interactive tools in the **Segment Editor** module, including *Surface Cut*, *Draw Tube*, *Fast Marching*, *Watershed*, and *Split Volume*.
-5. **MarkupsToModel** — Generates 3D surface models (`vtkPolyData`) from fiducial points, closed curves, and planes for surgical planning and anatomical region definition.
-6. **MONAILabel** — Interactive AI-assisted annotation and active learning client for connecting to local MONAI Label inference servers.
-7. **SegmentComparison (`SlicerRT`)** — Quantitative segmentation evaluation tools from the SlicerRT suite for computing **Dice Similarity Coefficient** and **Hausdorff Distance** metrics between ground-truth and predicted segmentations.
+1. **[TotalSegmentator](https://extensions.slicer.org/view/TotalSegmentator/35457/win/amd64)** — Automated whole-body CT and MRI anatomical structure segmentation powered by `nnU-Net`. Pre-configured with offline light (`3 mm`) weights in `C:\ProgramData\TotalSegmentator\weights` via the `TOTALSEG_WEIGHTS_PATH` system environment variable.
+2. **[NNUNet](https://extensions.slicer.org/view/NNUNet/35457/win/amd64) (`SlicerNNUNet`)** — Deep learning biomedical segmentation framework for running custom or pre-seeded `nnU-Net v2` models directly inside Slicer. Pre-configured at startup to point to `C:/ProgramData/TotalSegmentator/weights/Dataset297_TotalSegmentator_total_3mm_1559subj/nnUNetTrainer_4000epochs_NoMirroring__nnUNetPlans__3d_fullres` on `cuda` (`fold_0`).
+3. **[PyTorch](https://extensions.slicer.org/view/PyTorch/35457/win/amd64) (`SlicerPyTorch`)** — Embedded PyTorch management utility paired with `torch==2.14.1+cu130` and `torchvision==0.29.1+cu130` for NVIDIA CUDA GPU acceleration.
+4. **[SegmentEditorExtraEffects](https://extensions.slicer.org/view/SegmentEditorExtraEffects/35457/win/amd64)** — Additional interactive tools in the **Segment Editor** module, including *Surface Cut*, *Draw Tube*, *Fast Marching*, *Watershed*, and *Split Volume*.
+5. **[MarkupsToModel](https://extensions.slicer.org/view/MarkupsToModel/35457/win/amd64)** — Generates 3D surface models (`vtkPolyData`) from fiducial points, closed curves, and planes for surgical planning and anatomical region definition.
+6. **[MONAILabel](https://extensions.slicer.org/view/MONAILabel/35457/win/amd64)** — Interactive AI-assisted annotation and active learning client for connecting to local MONAI Label inference servers.
+7. **[SegmentComparison](https://extensions.slicer.org/view/SlicerRT/35457/win/amd64) (`SlicerRT`)** — Quantitative segmentation evaluation tools from the SlicerRT suite for computing **Dice Similarity Coefficient** and **Hausdorff Distance** metrics between ground-truth and predicted segmentations.
 
 ---
 
@@ -118,9 +124,12 @@ You can automate volume processing or batch segmentation scripts from **PowerShe
 
 ## Settings and Troubleshooting
 
-- **Settings roam across workstations**: Your module preferences and UI settings in `%APPDATA%\slicer.org` follow your user profile, while large pretrained weights (`C:\ProgramData\TotalSegmentator\weights`) and the DICOM SQLite database (`%LOCALAPPDATA%`) stay on fast local storage.
-- **Out of GPU memory (`CUDA out of memory`)**: Close unused 3D views, enable the **Fast (3mm)** option in TotalSegmentator, or request an **8 GB+ vGPU** profile if running full-resolution (`1.5 mm`) segmentations.
-- **Need an additional extension or pretrained model?** Because workstations operate offline, extensions and Python wheels cannot be installed from the internet. Contact the helpdesk at [tre@glasgow.com](mailto:tre@glasgow.com?subject=3D%20Slicer%20Extension%20Request) to request staging a new extension or model weight archive on the internal mirror.
+- **Settings roam across workstations**: <br>
+Your module preferences and UI settings in `%APPDATA%\slicer.org` follow your user profile, while large pretrained weights (`C:\ProgramData\TotalSegmentator\weights`) and the DICOM SQLite database (`%LOCALAPPDATA%`) stay on fast local storage.
+- **Out of GPU memory (`CUDA out of memory`)**:<br>
+ Close unused 3D views, enable the **Fast (3mm)** option in TotalSegmentator, or request an **8 GB+ vGPU** profile if running full-resolution (`1.5 mm`) segmentations.
+- **Need an additional extension or pretrained model?**<br>
+ Because workstations operate offline, extensions and Python wheels cannot be installed from the internet. Contact the helpdesk at [tre@glasgow.com](mailto:tre@glasgow.com?subject=3D%20Slicer%20Extension%20Request) to request staging a new extension or model weight archive on the internal mirror.
 
 ---
 
