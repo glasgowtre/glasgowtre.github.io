@@ -1,0 +1,1476 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for GlasgowTRE">
+      
+      
+        <meta name="author" content="GlasgowTRE">
+      
+      
+      
+        <link rel="prev" href="../jupyter/">
+      
+      
+        <link rel="next" href="../libreoffice/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/uog_logos/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>3D Slicer - GlasgowTRE Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/palette.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3d-slicer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GlasgowTRE Handbook" class="md-header__button md-logo" aria-label="GlasgowTRE Handbook" data-md-component="logo">
+      
+  <img src="../../images/uog_logos/logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GlasgowTRE Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3D Slicer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GlasgowTRE Handbook" class="md-nav__button md-logo" aria-label="GlasgowTRE Handbook" data-md-component="logo">
+      
+  <img src="../../images/uog_logos/logo-white.svg" alt="logo">
+
+    </a>
+    GlasgowTRE Handbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to GlagowTRE Handbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guildes/how-to-access-secure-vpn-and-workstation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DRAFT] How to connect to GlasgowTRE secure VPN and workstation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guildes/how-to-connect-to-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use GlasgowTRE secure web file transfer service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guildes/how-to-prepare-data-transfer-manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to prepare a data transfer manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter Notebooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Slicer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Slicer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-offering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Offering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version--pre-configured-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version &amp; Pre-Configured Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workstation-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Workstation Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bundled-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bundled Extensions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How-To Guides
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How-To Guides">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-and-inspect-dicom-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import and inspect DICOM studies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-automated-segmentation-with-totalsegmentator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run automated segmentation with TotalSegmentator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-inference-with-the-nnunet-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run inference with the nnUNet module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-two-segmentations-dice--hausdorff-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compare two segmentations (Dice &amp; Hausdorff metrics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-headless-batch-processing-from-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run headless batch processing from PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings and Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libreoffice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LibreOffice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vgpu-capacity-calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vGPU Capacity Calculator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FAQ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/data-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Transfer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/preparing-data-for-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparing Data for Transfer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-offering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Offering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version--pre-configured-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version &amp; Pre-Configured Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workstation-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Workstation Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bundled-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bundled Extensions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How-To Guides
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How-To Guides">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-and-inspect-dicom-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import and inspect DICOM studies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-automated-segmentation-with-totalsegmentator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run automated segmentation with TotalSegmentator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-inference-with-the-nnunet-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run inference with the nnUNet module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-two-segmentations-dice--hausdorff-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compare two segmentations (Dice &amp; Hausdorff metrics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-headless-batch-processing-from-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run headless batch processing from PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings and Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Welcome to GlagowTRE Handbook
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../python-core/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Software
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3d-slicer">3D Slicer<a class="headerlink" href="#3d-slicer" title="Anchor link to this section">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section">&para;</a></h2>
+<h4 id="service-offering">Service Offering<a class="headerlink" href="#service-offering" title="Anchor link to this section">&para;</a></h4>
+<p>Glasgow TRE can provide workstations with <strong>3D Slicer</strong>, an open-source medical image computing, 3D visualization, and AI-assisted anatomical segmentation platform for clinical and biomedical imaging research. Researchers can inspect DICOM studies, perform manual and semi-automated 3D volume segmentation, run deep learning inference (<code>TotalSegmentator</code> and <code>nnU-Net</code>), and calculate quantitative comparison metrics entirely offline within the secure environment.</p>
+<p><img alt="3D Slicer" src="../../images/3dslicer/3dslicer-1.png" /></p>
+<h4 id="version--pre-configured-environment">Version &amp; Pre-Configured Environment<a class="headerlink" href="#version--pre-configured-environment" title="Anchor link to this section">&para;</a></h4>
+<p>Workstations provisioned with <strong>3D Slicer 5.12.4</strong> (revision <code>34645</code>, 64-bit) arrive <strong>fully pre-configured out of the box</strong>:</p>
+<ul>
+<li><strong>Pre-installed AI &amp; Segmentation Extensions</strong>:<br>
+    All core extensions and their embedded Python dependencies (<code>PyTorch 2.14.1+cu130</code>, <code>torchvision</code>, <code>nnunetv2</code>, <code>totalsegmentator</code>, <code>nibabel</code>, <code>dicom2nifti</code>) are pre-installed for GPU-accelerated execution.</li>
+<li>
+<p><strong>Pre-configured Light Model Weights</strong>:<br>
+    Workstations are pre-seeded and pre-configured to use the <strong>light (<code>fast</code>, 3 mm) pretrained model weights</strong> (<code>Dataset297_TotalSegmentator_total_3mm_1559subj</code>), stored locally in <code>C:\ProgramData\TotalSegmentator\weights</code>. Both the <strong>TotalSegmentator</strong> and <strong>nnUNet</strong> modules automatically point to these weights at startup without requiring manual downloads or configuration.</p>
+</li>
+<li>
+<p><strong>Offline Operation</strong>: <br>
+    Glasgow TRE has no external internet access. Automatic update checks, the online Extensions Manager, and external sample data downloads are disabled by policy.</p>
+</li>
+</ul>
+<hr />
+<h2 id="recommended-workstation-specifications">Recommended Workstation Specifications<a class="headerlink" href="#recommended-workstation-specifications" title="Anchor link to this section">&para;</a></h2>
+<p>Medical volume rendering and 3D deep learning segmentation are memory- and compute-intensive. For optimal performance, 3D Slicer and its bundled AI extensions work best on a workstation configured with:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Resource</th>
+<th style="text-align: left;">Recommended Specification</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>System Memory (RAM)</strong></td>
+<td style="text-align: left;"><strong>32 GB</strong></td>
+<td style="text-align: left;">Required for loading multi-series 3D DICOM/NIfTI volumes and running <code>nnU-Net</code> preprocessing workers in parallel.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Processor (vCPU)</strong></td>
+<td style="text-align: left;"><strong>8 CPUs</strong></td>
+<td style="text-align: left;">Accelerates image resampling, marching cubes surface generation, and NIfTI export.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPU Memory (VRAM)</strong></td>
+<td style="text-align: left;"><strong>At least 4 GB GPU</strong> (<strong>8 GB+ GPU</strong> for normal full-resolution segmentations)</td>
+<td style="text-align: left;"><strong>4 GB VRAM</strong> is sufficient for pre-configured <strong>light/fast (3 mm)</strong> segmentations (<code>Dataset297</code>). <strong>8 GB or more VRAM</strong> is required if you run <strong>normal (1.5 mm full-resolution)</strong> multi-part segmentations.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Local System Disk (<code>C:</code>)</strong></td>
+<td style="text-align: left;"><strong>100 GB+</strong></td>
+<td style="text-align: left;">Accommodates the local DICOM database cache (<code>%LOCALAPPDATA%</code>), CUDA libraries, and temporary inference volumes.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Requesting GPU Capacity</p>
+<p>If your project requires full-resolution (<code>1.5 mm</code>) anatomical segmentation or custom high-resolution <code>nnU-Net</code> models and your workstation has a 4 GB vGPU profile, contact the TRE helpdesk to request an <strong>8 GB+ vGPU</strong> allocation.</p>
+</div>
+<hr />
+<h2 id="bundled-extensions">Bundled Extensions<a class="headerlink" href="#bundled-extensions" title="Anchor link to this section">&para;</a></h2>
+<p>Every 3D Slicer workstation includes the following pre-installed extensions:</p>
+<ol>
+<li><strong><a href="https://extensions.slicer.org/view/TotalSegmentator/35457/win/amd64">TotalSegmentator</a></strong> — Automated whole-body CT and MRI anatomical structure segmentation powered by <code>nnU-Net</code>. Pre-configured with offline light (<code>3 mm</code>) weights in <code>C:\ProgramData\TotalSegmentator\weights</code> via the <code>TOTALSEG_WEIGHTS_PATH</code> system environment variable.</li>
+<li><strong><a href="https://extensions.slicer.org/view/NNUNet/35457/win/amd64">NNUNet</a> (<code>SlicerNNUNet</code>)</strong> — Deep learning biomedical segmentation framework for running custom or pre-seeded <code>nnU-Net v2</code> models directly inside Slicer. Pre-configured at startup to point to <code>C:/ProgramData/TotalSegmentator/weights/Dataset297_TotalSegmentator_total_3mm_1559subj/nnUNetTrainer_4000epochs_NoMirroring__nnUNetPlans__3d_fullres</code> on <code>cuda</code> (<code>fold_0</code>).</li>
+<li><strong><a href="https://extensions.slicer.org/view/PyTorch/35457/win/amd64">PyTorch</a> (<code>SlicerPyTorch</code>)</strong> — Embedded PyTorch management utility paired with <code>torch==2.14.1+cu130</code> and <code>torchvision==0.29.1+cu130</code> for NVIDIA CUDA GPU acceleration.</li>
+<li><strong><a href="https://extensions.slicer.org/view/SegmentEditorExtraEffects/35457/win/amd64">SegmentEditorExtraEffects</a></strong> — Additional interactive tools in the <strong>Segment Editor</strong> module, including <em>Surface Cut</em>, <em>Draw Tube</em>, <em>Fast Marching</em>, <em>Watershed</em>, and <em>Split Volume</em>.</li>
+<li><strong><a href="https://extensions.slicer.org/view/MarkupsToModel/35457/win/amd64">MarkupsToModel</a></strong> — Generates 3D surface models (<code>vtkPolyData</code>) from fiducial points, closed curves, and planes for surgical planning and anatomical region definition.</li>
+<li><strong><a href="https://extensions.slicer.org/view/MONAILabel/35457/win/amd64">MONAILabel</a></strong> — Interactive AI-assisted annotation and active learning client for connecting to local MONAI Label inference servers.</li>
+<li><strong><a href="https://extensions.slicer.org/view/SlicerRT/35457/win/amd64">SegmentComparison</a> (<code>SlicerRT</code>)</strong> — Quantitative segmentation evaluation tools from the SlicerRT suite for computing <strong>Dice Similarity Coefficient</strong> and <strong>Hausdorff Distance</strong> metrics between ground-truth and predicted segmentations.</li>
+</ol>
+<hr />
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Anchor link to this section">&para;</a></h2>
+<p>You can launch 3D Slicer from your desktop:</p>
+<ul>
+<li>Double-click the <strong>3D Slicer 5.12.4</strong> shortcut on your desktop.</li>
+<li>By default, the shortcut starts in your project analytical workspace (<code>V:\</code>).</li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Save Outputs and Scenes to Your Project Drive (<code>V:\</code>)</p>
+<p>Always save your segmented NIfTI/NRRD volumes, MRML scenes (<code>.mrb</code> / <code>.mrml</code>), and exported tables to your project drive (<code>V:\&lt;project-name&gt;\</code>). The local <code>C:</code> drive (including the local DICOM cache) is not backed up across sessions.</p>
+</div>
+<hr />
+<h2 id="how-to-guides">How-To Guides<a class="headerlink" href="#how-to-guides" title="Anchor link to this section">&para;</a></h2>
+<h3 id="import-and-inspect-dicom-studies">Import and inspect DICOM studies<a class="headerlink" href="#import-and-inspect-dicom-studies" title="Anchor link to this section">&para;</a></h3>
+<ol>
+<li>Click the <strong>DCM</strong> (<strong>DICOM</strong>) button in the top toolbar.</li>
+<li>Click <strong>Import DICOM files</strong>, browse to your study folder on <code>V:\</code>, and click <strong>Import</strong>.</li>
+<li>Select the imported patient/study in the DICOM browser and click <strong>Examine</strong> then <strong>Load</strong>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Local DICOM Database for Fast Indexing</p>
+<p>3D Slicer is pre-configured to store its SQLite DICOM index locally at <code>C:\Users\&lt;username&gt;\AppData\Local\slicer.org\DICOMDatabase</code> so indexing remains fast and avoids network file-locking issues. Keep your raw imaging datasets on <code>V:\</code>.</p>
+</div>
+<h3 id="run-automated-segmentation-with-totalsegmentator">Run automated segmentation with TotalSegmentator<a class="headerlink" href="#run-automated-segmentation-with-totalsegmentator" title="Anchor link to this section">&para;</a></h3>
+<ol>
+<li>Load your CT or MRI volume into Slicer from <code>V:\</code>.</li>
+<li>Open the <strong>Modules</strong> dropdown menu and select <strong>Segmentation → TotalSegmentator</strong>.</li>
+<li>Select your loaded scan as the <strong>Input volume</strong>.</li>
+<li>Ensure the <strong>Fast (3mm)</strong> checkbox is ticked (workstations come pre-configured with the light <code>3 mm</code> model weights).</li>
+<li>Create a new <strong>Output segmentation</strong> node and click <strong>Apply</strong>.</li>
+<li>On a workstation with a 4 GB+ NVIDIA GPU, fast whole-body segmentation completes in approximately 20–30 seconds.</li>
+</ol>
+<h3 id="run-inference-with-the-nnunet-module">Run inference with the nnUNet module<a class="headerlink" href="#run-inference-with-the-nnunet-module" title="Anchor link to this section">&para;</a></h3>
+<ol>
+<li>Load your input volume into Slicer.</li>
+<li>Open <strong>Modules → Segmentation → nnUNet</strong>.</li>
+<li>Under <strong>nnUNet Run Settings</strong>, the module is already pre-configured with:</li>
+<li><strong>Model path</strong>: <code>C:/ProgramData/TotalSegmentator/weights/Dataset297_TotalSegmentator_total_3mm_1559subj/nnUNetTrainer_4000epochs_NoMirroring__nnUNetPlans__3d_fullres</code></li>
+<li><strong>Device</strong>: <code>cuda</code></li>
+<li><strong>Folds</strong>: <code>0</code></li>
+<li><strong>Checkpoint name</strong>: <code>checkpoint_final.pth</code></li>
+<li>Select your <strong>Input volume</strong> and click <strong>Apply</strong>.</li>
+<li>If you bring your own custom trained <code>nnU-Net</code> weights on <code>V:\</code>, click the <code>...</code> button next to <strong>Model path</strong> and select the folder containing your model's <code>dataset.json</code>, <code>plans.json</code>, and <code>fold_&lt;N&gt;</code> directory.</li>
+</ol>
+<h3 id="compare-two-segmentations-dice--hausdorff-metrics">Compare two segmentations (Dice &amp; Hausdorff metrics)<a class="headerlink" href="#compare-two-segmentations-dice--hausdorff-metrics" title="Anchor link to this section">&para;</a></h3>
+<ol>
+<li>Open <strong>Modules → Radiotherapy → Segment Comparison</strong> (provided by <code>SlicerRT</code>).</li>
+<li>Select your reference segmentation and the segmentation to compare.</li>
+<li>Choose an output table and click <strong>Compute Dice similarity metrics</strong> and <strong>Compute Hausdorff distance metrics</strong>.</li>
+</ol>
+<h3 id="run-headless-batch-processing-from-powershell">Run headless batch processing from PowerShell<a class="headerlink" href="#run-headless-batch-processing-from-powershell" title="Anchor link to this section">&para;</a></h3>
+<p>You can automate volume processing or batch segmentation scripts from <strong>PowerShell</strong> using <code>Slicer.exe</code> or <code>PythonSlicer.exe</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Run a Python script inside Slicer without opening the main window</span>
+<span class="p">&amp;</span> <span class="s2">"C:\Program Files\Slicer 5.12.4\Slicer.exe"</span> <span class="p">-</span><span class="n">-launcher-no-splash</span> <span class="p">-</span><span class="n">-no-main-window</span> <span class="p">-</span><span class="n">-python-script</span> <span class="s2">"V:\my-project\scripts\batch_segment.py"</span>
+</code></pre></div>
+<hr />
+<h2 id="settings-and-troubleshooting">Settings and Troubleshooting<a class="headerlink" href="#settings-and-troubleshooting" title="Anchor link to this section">&para;</a></h2>
+<ul>
+<li><strong>Settings roam across workstations</strong>: <br>
+Your module preferences and UI settings in <code>%APPDATA%\slicer.org</code> follow your user profile, while large pretrained weights (<code>C:\ProgramData\TotalSegmentator\weights</code>) and the DICOM SQLite database (<code>%LOCALAPPDATA%</code>) stay on fast local storage.</li>
+<li><strong>Out of GPU memory (<code>CUDA out of memory</code>)</strong>:<br>
+ Close unused 3D views, enable the <strong>Fast (3mm)</strong> option in TotalSegmentator, or request an <strong>8 GB+ vGPU</strong> profile if running full-resolution (<code>1.5 mm</code>) segmentations.</li>
+<li><strong>Need an additional extension or pretrained model?</strong><br>
+ Because workstations operate offline, extensions and Python wheels cannot be installed from the internet. Contact the helpdesk at <a href="mailto:tre@glasgow.com?subject=3D%20Slicer%20Extension%20Request">tre@glasgow.com</a> to request staging a new extension or model weight archive on the internal mirror.</li>
+</ul>
+<hr />
+<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Anchor link to this section">&para;</a></h2>
+<ul>
+<li><a href="../python-core/">Python Core</a> — Custom image analysis and tabular post-processing in Python.</li>
+<li><a href="../jupyter/">Jupyter Notebooks</a> — Interactive notebooks for statistical analysis of segmentation metrics.</li>
+<li><a href="../../faq/data-transfer/">Data Transfer Guidelines</a> — Importing imaging datasets and exporting approved research outputs.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.tooltips", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
