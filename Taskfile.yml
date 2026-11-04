@@ -18,6 +18,8 @@ vars:
 
 tasks:
   proj/init:
+    aliases:
+      - init
     desc: Initialize the project
     cmds:
       - '{{.UV_BIN}} tool install {{.UV_WITHS}} {{.UV_TOOL_ID}} --force'
