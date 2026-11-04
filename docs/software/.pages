@@ -2,4 +2,5 @@ title: Software
 nav:
   - python-core.md
   - jupyter.md
+  - slicer.md
   - libreoffice.md
