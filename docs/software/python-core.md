@@ -51,6 +51,101 @@ After we review your request, the packages will be made available to all users a
 
 ---
 
+## How-To Guides
+
+All Python operations run entirely in user space without requiring local administrative privileges.
+
+### 1. Install a Python Interpreter
+
+List available versions from the internal mirror and install your chosen version using `uv`:
+
+```powershell
+# List available Python versions on the internal mirror
+uv python list
+
+# Install the default curated Python runtime
+uv python install 3.12.13
+```
+
+You can install multiple versions side-by-side (such as `3.12` and `3.13`) without conflict. Python runtimes are placed in `%LOCALAPPDATA%\uv\python\` for maximum local I/O performance.
+
+---
+
+### 2. Initialize a Project Environment
+
+Always initialize your research projects on your project analytical workspace drive (`V:\`):
+
+```powershell
+# 1. Create and enter your project directory on the analytical workspace drive
+mkdir V:\my_analysis
+cd V:\my_analysis
+
+# 2. Initialize project configuration and create a virtual environment
+uv init
+uv venv --python 3.12
+```
+
+---
+
+### 3. Install Packages
+
+Add analytical libraries to your project using `uv add` (this automatically updates `uv.lock` for strict reproducibility):
+
+```powershell
+uv add pandas polars jupyterlab matplotlib scipy
+```
+
+For existing projects with a `requirements.txt`:
+
+```powershell
+uv pip install -r requirements.txt
+```
+
+#### Pre-Configured System `pip.ini`
+
+A system-wide configuration is pre-deployed at `C:\ProgramData\pip\pip.ini` (or `/etc/pip.conf` on Linux). When working inside notebooks or standard shells, executing:
+
+```python
+%pip install <package-name>
+```
+
+or from PowerShell:
+
+```powershell
+pip install <package-name>
+```
+
+will automatically resolve and install packages from the secure internal Glasgow TRE mirror without requiring manual repository flags.
+
+---
+
+### 4. Run Analysis or Launch JupyterLab
+
+Execute workloads directly through `uv run` to ensure execution strictly within the isolated project environment:
+
+```powershell
+# Run an analysis script
+uv run script.py
+
+# Launch JupyterLab bound to the project environment
+uv run jupyter lab
+
+# Run an ad-hoc command with ephemeral dependencies
+uv run --python 3.12 --with pandas script.py
+```
+
+---
+
+### 5. Verify Your Environment
+
+Confirm that your Python environment is operational:
+
+```powershell
+uv run python -c "import sys; print(f'Python {sys.version} ready')"
+```
+
+---
+
 ## Available Python Releases
 
 !!! info "Supported Python Versions"

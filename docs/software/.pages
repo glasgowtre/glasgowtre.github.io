@@ -2,5 +2,8 @@ title: Software
 nav:
   - python-core.md
   - jupyter.md
+  - r.md
   - slicer.md
   - libreoffice.md
+  - wsl.md
+  - nvidia-gpu.md
