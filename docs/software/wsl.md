@@ -119,3 +119,10 @@ wsl --shutdown
 ## Air-Gapped Software Delivery Notice
 
 All WSL packages and distribution images are securely mirrored from internal storage (`storage.dc1.glasgowtre.ac.uk:9021`). Direct external internet access is disabled. If your research workflow requires additional Linux packages, toolchains, or container runtimes within WSL, contact your **Glasgow TRE Representative** or email [tre@glasgow.com](mailto:tre@glasgow.com?subject=WSL%20Software%20Request).
+
+---
+
+## Related Documentation
+
+- [Python Core](python-core.md) — Windows-native Python runtime and package management with `uv`.
+- [NVIDIA vGPU Acceleration](nvidia-gpu.md) — GPU acceleration in the Glasgow TRE environment.

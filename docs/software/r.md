@@ -134,3 +134,11 @@ If your project requires CRAN or Bioconductor packages that are not present in t
 1. Submit a package request ticket through your **Glasgow TRE Representative** or email [tre@glasgow.com](mailto:tre@glasgow.com?subject=R%20Package%20Request).
 2. Include the package name, requested version, dependencies, and analytical rationale.
 3. Once vetted for security and license compliance, packages are mirrored internally for all project members.
+
+---
+
+## Related Documentation
+
+- [Python Core](python-core.md) — Python runtime and analytical libraries.
+- [JupyterLab StandAlone](jupyter.md) — Interactive notebook environments and custom kernels.
+- [LibreOffice](libreoffice.md) — Quick inspection of tabular CSV/Excel files.

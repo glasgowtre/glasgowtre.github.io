@@ -173,3 +173,12 @@ Understanding where data and configurations reside ensures performance and avoid
 - **Kernel shows "Disconnected" or fails to start**: Restart JupyterLab or run `& "C:\Program Files\JupyterLab\Launch-JupyterLab.ps1" -NoLaunch` in PowerShell to re-verify the userspace environment.
 - **Package installation error (`403 Forbidden` / `Not Found`)**: The requested library is not present on the internal Glasgow TRE package mirror.
 - **Requesting new packages**: Contact the helpdesk at [tre@glasgow.com](mailto:tre@glasgow.com?subject=JupyterLab%20Package%20Request) with the package name, version, and research justification.
+
+---
+
+## Related Documentation
+
+- [Python Core](python-core.md) — Manage analytical environments, runtimes, and libraries with Astral `uv`.
+- [NVIDIA vGPU Acceleration](nvidia-gpu.md) — GPU acceleration for PyTorch, TensorFlow, and deep learning notebooks.
+- [3D Slicer](slicer.md) — Medical imaging visualization and AI segmentation.
+- [R Runtime](r.md) — Statistical computing and package management with `renv`.

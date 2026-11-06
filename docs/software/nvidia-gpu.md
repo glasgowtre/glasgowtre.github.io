@@ -96,3 +96,11 @@ Deep learning frameworks place extreme read/write demands on filesystems when lo
 
 - **Missing GPU or Driver Error**: If `nvidia-smi` reports no devices found or a driver mismatch, contact the service desk.
 - **Requesting Larger vGPU Profiles**: If your research project requires additional VRAM (e.g., upgrading from 4 GB to 8 GB+ or 16 GB+ for full-resolution 3D medical segmentation or large language model inference), submit an infrastructure request to your **Glasgow TRE Representative** or email [tre@glasgow.com](mailto:tre@glasgow.com?subject=vGPU%20Allocation%20Request).
+
+---
+
+## Related Documentation
+
+- [Python Core](python-core.md) — PyTorch and TensorFlow setup with `uv`.
+- [JupyterLab StandAlone](jupyter.md) — Interactive GPU-accelerated computing and notebook workflows.
+- [3D Slicer](slicer.md) — GPU-accelerated medical volume rendering and MONAI / TotalSegmentator AI segmentation.
