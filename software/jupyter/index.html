@@ -16,18 +16,18 @@
         <link rel="prev" href="../python-core/">
       
       
-        <link rel="next" href="../slicer/">
+        <link rel="next" href="../r/">
       
       
         
       
       
       <link rel="icon" href="../../images/uog_logos/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
-        <title>Jupyter Notebooks - GlasgowTRE Handbook</title>
+        <title>JupyterLab StandAlone - GlasgowTRE Handbook</title>
       
     
     
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#jupyterlab-standalone" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -110,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jupyter Notebooks
+              JupyterLab StandAlone
             
           </span>
         </div>
@@ -423,6 +428,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -504,6 +515,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JupyterLab StandAlone
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -512,7 +543,7 @@
   <span class="md-ellipsis">
     
   
-    Jupyter Notebooks
+    JupyterLab StandAlone
   
 
     
@@ -522,6 +553,285 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-offering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Offering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version--curated-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version &amp; Curated Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#air-gapped-operation--self-healing-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Air-Gapped Operation &amp; Self-Healing Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workstation-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Workstation Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How-To Guides
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How-To Guides">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-packages-inside-notebooks-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install Packages Inside Notebooks (%pip)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-an-isolated-project-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create an Isolated Project Virtual Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-register-a-project-environment-as-a-jupyter-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Register a Project Environment as a Jupyter Kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-running-r-notebooks-in-jupyterlab-irkernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Running R Notebooks in JupyterLab (IRkernel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gpu-acceleration-in-notebooks-pytorch--cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GPU Acceleration in Notebooks (PyTorch / CUDA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-manage-and-remove-registered-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Manage and Remove Registered Kernels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-command-line-control-via-jlab-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Command-Line Control via jlab CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-self-healing-launcher-diagnostic-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Self-Healing Launcher Diagnostic Controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-working-with-imported-external-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Working with Imported External Notebooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting--support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting &amp; Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requesting-additional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting Additional Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R Runtime
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -570,6 +880,62 @@
     
   
     LibreOffice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Subsystem for Linux (WSL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nvidia-gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NVIDIA vGPU Acceleration
   
 
     
@@ -813,6 +1179,248 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-offering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Offering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version--curated-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version &amp; Curated Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#air-gapped-operation--self-healing-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Air-Gapped Operation &amp; Self-Healing Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workstation-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Workstation Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How-To Guides
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How-To Guides">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-packages-inside-notebooks-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install Packages Inside Notebooks (%pip)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-an-isolated-project-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create an Isolated Project Virtual Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-register-a-project-environment-as-a-jupyter-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Register a Project Environment as a Jupyter Kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-running-r-notebooks-in-jupyterlab-irkernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Running R Notebooks in JupyterLab (IRkernel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gpu-acceleration-in-notebooks-pytorch--cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GPU Acceleration in Notebooks (PyTorch / CUDA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-manage-and-remove-registered-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Manage and Remove Registered Kernels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-command-line-control-via-jlab-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Command-Line Control via jlab CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-self-healing-launcher-diagnostic-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Self-Healing Launcher Diagnostic Controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-working-with-imported-external-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Working with Imported External Notebooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting--support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting &amp; Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requesting-additional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting Additional Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -877,10 +1485,268 @@
 
 
 
-  <h1>Jupyter Notebooks</h1>
+<h1 id="jupyterlab-standalone">JupyterLab StandAlone<a class="headerlink" href="#jupyterlab-standalone" title="Anchor link to this section">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section">&para;</a></h2>
+<h4 id="service-offering">Service Offering<a class="headerlink" href="#service-offering" title="Anchor link to this section">&para;</a></h4>
+<p>Glasgow TRE provides <strong>JupyterLab StandAlone</strong> as an integrated interactive computing environment for Python and R data science, statistical modeling, machine learning exploration, and reporting. It comes pre-configured with a curated Python analytical virtual environment out of the box, eliminating complex setup procedures while allowing researchers to install additional packages, create custom kernels, and isolate project environments without administrative privileges.</p>
+<h4 id="version--curated-environment">Version &amp; Curated Environment<a class="headerlink" href="#version--curated-environment" title="Anchor link to this section">&para;</a></h4>
+<ul>
+<li><strong>JupyterLab StandAlone 4.6.3</strong> (64-bit desktop application)</li>
+<li><strong>Default Curated Kernel</strong>: <code>Python 3.12 (default-tre-jupyter-env)</code> pre-loaded with core analytical libraries: <code>pip</code>, <code>jupyterlab</code>, <code>ipykernel</code>, <code>pandas</code>, <code>polars</code>, <code>matplotlib</code>, and <code>scipy</code>.</li>
+<li><strong>Pre-Configured Internal Mirrors</strong>: Configured to resolve Python wheels directly from internal Glasgow TRE mirrors (<code>repo.hlz.glasgowtre.ac.uk</code>). Direct external internet downloads are disabled.</li>
+</ul>
+<h4 id="air-gapped-operation--self-healing-architecture">Air-Gapped Operation &amp; Self-Healing Architecture<a class="headerlink" href="#air-gapped-operation--self-healing-architecture" title="Anchor link to this section">&para;</a></h4>
+<p>Workstations feature an automated self-healing launcher wrapper (<code>Launch-JupyterLab.ps1</code>). Upon every launch, the wrapper verifies that the curated virtual environment, Jupyter kernel specification, and starter welcome notebook (<code>Welcome_to_GlasgowTRE.ipynb</code>) exist in the user profile. If any component is absent or damaged, the launcher repairs it dynamically before starting the interface.</p>
+<hr />
+<h2 id="recommended-workstation-specifications">Recommended Workstation Specifications<a class="headerlink" href="#recommended-workstation-specifications" title="Anchor link to this section">&para;</a></h2>
+<p>Interactive notebook analysis and data science pipelines can demand significant memory and compute resources, especially when processing large datasets or deep learning models:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Resource</th>
+<th style="text-align: left;">Recommended Specification</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>System Memory (RAM)</strong></td>
+<td style="text-align: left;"><strong>16 GB to 32 GB</strong></td>
+<td style="text-align: left;">16 GB is sufficient for standard tabular data analysis (<code>pandas</code>, <code>polars</code>). 32 GB+ is recommended for in-memory joins, genomic arrays, or computer vision datasets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Processor (vCPU)</strong></td>
+<td style="text-align: left;"><strong>4 to 8 vCPUs</strong></td>
+<td style="text-align: left;">Accelerates multi-threaded operations in <code>polars</code>, <code>numpy</code>, and parallelized kernel execution.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPU Acceleration (vGPU)</strong></td>
+<td style="text-align: left;"><strong>Optional (4 GB to 16 GB VRAM)</strong></td>
+<td style="text-align: left;">Required when running PyTorch, TensorFlow, or JAX deep learning models within notebook cells.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Local System Disk (<code>C:</code>)</strong></td>
+<td style="text-align: left;"><strong>50 GB+ free</strong></td>
+<td style="text-align: left;">Accommodates userspace virtual environments (<code>%LOCALAPPDATA%\virtualenvs</code>), package wheel caches, and scratch space.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Anchor link to this section">&para;</a></h2>
+<p>You can launch JupyterLab StandAlone using any of the following methods:</p>
+<ul>
+<li><strong>Desktop Shortcut</strong>: Double-click the <strong>JupyterLab</strong> shortcut on your desktop (<code>C:\Users\Public\Desktop\JupyterLab.lnk</code>).</li>
+<li><strong>Start Menu</strong>: Search for and select <strong>JupyterLab</strong>.</li>
+<li><strong>PowerShell</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">&amp;</span> <span class="s2">"C:\Program Files\JupyterLab\Launch-JupyterLab.ps1"</span>
+</code></pre></div></li>
+</ul>
+<p>Upon launch, JupyterLab automatically opens into your project analytical workspace (preferred drive <code>V:\&lt;project-name&gt;\</code>, falling back to personal <code>Documents</code> if the project share is unmounted) and displays the starter <strong><code>Welcome_to_GlasgowTRE.ipynb</code></strong> notebook with your curated kernel active.</p>
+<div class="admonition caution">
+<p class="admonition-title">Save Research Notebooks and Data to the Analytical Project Workspace (<code>V:\</code>)</p>
+<p>Always store your notebooks (<code>.ipynb</code>), analytical scripts, and datasets on your assigned project drive (<code>V:\&lt;project-name&gt;\</code>). Local machine storage (<code>C:</code>) is not backed up across sessions or maintenance re-imaging.</p>
+</div>
+<hr />
+<h2 id="how-to-guides">How-To Guides<a class="headerlink" href="#how-to-guides" title="Anchor link to this section">&para;</a></h2>
+<h3 id="1-install-packages-inside-notebooks-pip">1. Install Packages Inside Notebooks (<code>%pip</code>)<a class="headerlink" href="#1-install-packages-inside-notebooks-pip" title="Anchor link to this section">&para;</a></h3>
+<p>You can install additional analytical libraries directly from a running notebook cell without leaving JupyterLab or opening a terminal:</p>
+<ol>
+<li>Open your notebook in JupyterLab.</li>
+<li>In a code cell, run the <code>%pip</code> magic command:
+   <div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">seaborn</span> <span class="n">statsmodels</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
+</code></pre></div></li>
+<li>Packages are automatically retrieved and installed from the secure internal Glasgow TRE package mirror (<code>repo.hlz.glasgowtre.ac.uk</code>).</li>
+<li>Once installed, restart the notebook kernel (<strong>Kernel → Restart Kernel…</strong>) to import the newly installed packages.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Pre-configured System <code>pip.ini</code></p>
+<p>The system-wide configuration (<code>C:\ProgramData\pip\pip.ini</code>) automatically directs <code>%pip</code> and terminal <code>pip</code> commands to the internal mirror with trusted host verification, requiring no extra command-line flags.</p>
+</div>
+<hr />
+<h3 id="2-create-an-isolated-project-virtual-environment">2. Create an Isolated Project Virtual Environment<a class="headerlink" href="#2-create-an-isolated-project-virtual-environment" title="Anchor link to this section">&para;</a></h3>
+<p>When working on a research project with distinct package version requirements:</p>
+<ol>
+<li>Open <strong>PowerShell</strong> or <strong>Windows Terminal</strong>.</li>
+<li>Navigate to your project directory on the analytical workspace drive:
+   <div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">V</span><span class="p">:\</span><span class="n">my_analysis</span>
+</code></pre></div></li>
+<li>Initialize the project and create an isolated virtual environment with <code>uv</code>:
+   <div class="highlight"><pre><span></span><code><span class="n">uv</span> <span class="n">init</span>
+<span class="n">uv</span> <span class="n">venv</span> <span class="p">-</span><span class="n">-python</span> <span class="n">3</span><span class="p">.</span><span class="n">12</span>
+</code></pre></div></li>
+<li>Add the analytical packages your project requires, including <code>ipykernel</code>:
+   <div class="highlight"><pre><span></span><code><span class="n">uv</span> <span class="n">add</span> <span class="n">pandas</span> <span class="n">polars</span> <span class="n">matplotlib</span> <span class="n">scipy</span> <span class="n">ipykernel</span>
+</code></pre></div></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Consolidated Virtual Environments Directory</p>
+<p>JupyterLab Desktop is configured with its environment discovery path (<code>pythonEnvsPath</code>) pointing to your consolidated virtual environment base directory (<code>$env:LOCALAPPDATA\virtualenvs</code>). Environments created in this directory or via JupyterLab Desktop's <strong>Manage Python environments</strong> interface will reside alongside <code>default-tre-jupyter-env</code> and be automatically discovered by JupyterLab:</p>
+<div class="highlight"><pre><span></span><code><span class="n">uv</span> <span class="n">venv</span> <span class="s2">"$env:LOCALAPPDATA\virtualenvs\my_custom_env"</span> <span class="p">-</span><span class="n">-python</span> <span class="n">3</span><span class="p">.</span><span class="n">12</span>
+</code></pre></div>
+</div>
+<hr />
+<h3 id="3-register-a-project-environment-as-a-jupyter-kernel">3. Register a Project Environment as a Jupyter Kernel<a class="headerlink" href="#3-register-a-project-environment-as-a-jupyter-kernel" title="Anchor link to this section">&para;</a></h3>
+<p>To make your custom virtual environment selectable in the JupyterLab Launcher and notebook kernel switcher:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Run ipykernel registration from your project virtual environment</span>
+<span class="n">uv</span> <span class="n">run</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="p">-</span><span class="n">-user</span> <span class="p">-</span><span class="n">-name</span> <span class="s2">"my_analysis"</span> <span class="p">-</span><span class="n">-display-name</span> <span class="s2">"Python (My Analysis)"</span>
+</code></pre></div>
+<p>The kernel specification is saved in <code>%APPDATA%\jupyter\kernels\my_analysis\</code> and will appear immediately in the JupyterLab Launcher kernel selector.</p>
+<hr />
+<h3 id="4-running-r-notebooks-in-jupyterlab-irkernel">4. Running R Notebooks in JupyterLab (<code>IRkernel</code>)<a class="headerlink" href="#4-running-r-notebooks-in-jupyterlab-irkernel" title="Anchor link to this section">&para;</a></h3>
+<p>Researchers can run interactive R notebooks directly inside JupyterLab StandAlone using the <code>IRkernel</code> package:</p>
+<ol>
+<li>Launch an interactive R session in PowerShell:
+   <div class="highlight"><pre><span></span><code><span class="n">R</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-no-save</span>
+</code></pre></div></li>
+<li>Register the R kernel for your user profile:
+   <div class="highlight"><pre><span></span><code><span class="c1"># Install IRkernel if not already present</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"IRkernel"</span><span class="p">)</span>
 
-<p>There's nothing here yet. Stay tuned.</p>
-<p><img alt="A cat" src="https://placecats.com/300/200" /></p>
+<span class="c1"># Register kernel spec in %APPDATA%\jupyter\kernels\ir</span>
+<span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ir_tre"</span><span class="p">,</span><span class="w"> </span><span class="n">display_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"R 4.6.1 (Glasgow TRE)"</span><span class="p">)</span>
+<span class="nf">q</span><span class="p">()</span>
+</code></pre></div></li>
+<li>Open or refresh JupyterLab. An <strong>R 4.6.1 (Glasgow TRE)</strong> notebook icon will appear in the Launcher alongside Python.</li>
+</ol>
+<hr />
+<h3 id="5-gpu-acceleration-in-notebooks-pytorch--cuda">5. GPU Acceleration in Notebooks (PyTorch / CUDA)<a class="headerlink" href="#5-gpu-acceleration-in-notebooks-pytorch--cuda" title="Anchor link to this section">&para;</a></h3>
+<p>If your workstation is allocated an NVIDIA vGPU profile, you can verify and utilize GPU acceleration directly inside a notebook cell:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PyTorch Version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CUDA Available:  </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Device Name:     </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Memory Allocated: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">memory_allocated</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MB"</span><span class="p">)</span>
+</code></pre></div>
+<p>Refer to the <a href="../nvidia-gpu/">NVIDIA vGPU Acceleration</a> guide for full driver and framework configuration details.</p>
+<hr />
+<h3 id="6-manage-and-remove-registered-kernels">6. Manage and Remove Registered Kernels<a class="headerlink" href="#6-manage-and-remove-registered-kernels" title="Anchor link to this section">&para;</a></h3>
+<p>To view all active registered kernels:</p>
+<div class="highlight"><pre><span></span><code><span class="n">uv</span> <span class="n">run</span> <span class="n">jupyter</span> <span class="n">kernelspec</span> <span class="n">list</span>
+</code></pre></div>
+<p>To remove a project kernel when an analysis is completed or no longer required:</p>
+<div class="highlight"><pre><span></span><code><span class="n">uv</span> <span class="n">run</span> <span class="n">jupyter</span> <span class="n">kernelspec</span> <span class="n">remove</span> <span class="s2">"my_analysis"</span> <span class="o">-f</span>
+</code></pre></div>
+<hr />
+<h3 id="7-command-line-control-via-jlab-cli">7. Command-Line Control via <code>jlab</code> CLI<a class="headerlink" href="#7-command-line-control-via-jlab-cli" title="Anchor link to this section">&para;</a></h3>
+<p>JupyterLab StandAlone includes a dedicated command-line utility (<code>jlab</code>) for automation and opening workspaces:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Open current directory in JupyterLab</span>
+<span class="n">jlab</span> <span class="p">.</span>
+
+<span class="c"># Open a specific notebook directly</span>
+<span class="n">jlab</span> <span class="n">V</span><span class="p">:\</span><span class="n">my_analysis</span><span class="p">\</span><span class="n">notebook</span><span class="p">.</span><span class="n">ipynb</span>
+
+<span class="c"># Open with an explicit Python virtual environment</span>
+<span class="n">jlab</span> <span class="p">-</span><span class="n">-python-path</span> <span class="s2">"$env:LOCALAPPDATA\virtualenvs\default-tre-jupyter-env\Scripts\python.exe"</span>
+
+<span class="c"># List discovered Python environments</span>
+<span class="n">jlab</span> <span class="n">env</span> <span class="n">list</span>
+
+<span class="c"># Inspect application settings and configuration</span>
+<span class="n">jlab</span> <span class="n">config</span> <span class="n">list</span>
+
+<span class="c"># Inspect application diagnostic logs</span>
+<span class="n">jlab</span> <span class="n">logs</span> <span class="n">show</span>
+</code></pre></div>
+<hr />
+<h3 id="8-self-healing-launcher-diagnostic-controls">8. Self-Healing Launcher Diagnostic Controls<a class="headerlink" href="#8-self-healing-launcher-diagnostic-controls" title="Anchor link to this section">&para;</a></h3>
+<p>The launcher wrapper provides diagnostic parameters for troubleshooting:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Verify or repair virtual environments and kernels without launching the GUI</span>
+<span class="p">&amp;</span> <span class="s2">"C:\Program Files\JupyterLab\Launch-JupyterLab.ps1"</span> <span class="n">-BootstrapOnly</span>
+
+<span class="c"># Inspect the launcher execution log</span>
+<span class="nb">Get-Content</span> <span class="s2">"$env:LOCALAPPDATA\GlasgowTRE\logs\jupyter-launch.log"</span> <span class="n">-Tail</span> <span class="n">50</span>
+</code></pre></div>
+<hr />
+<h3 id="9-working-with-imported-external-notebooks">9. Working with Imported External Notebooks<a class="headerlink" href="#9-working-with-imported-external-notebooks" title="Anchor link to this section">&para;</a></h3>
+<p>Notebooks developed outside Glasgow TRE often reference generic kernel names (such as <code>python3</code>) that do not exist locally. When opening an imported notebook:</p>
+<ol>
+<li>If a prompt indicates that the kernel is not found, click the <strong>Kernel selector</strong> in the top-right corner of the notebook toolbar.</li>
+<li>Select your active curated kernel: <strong><code>Python 3.12 (default-tre-jupyter-env)</code></strong> (or any custom project kernel you have registered).</li>
+</ol>
+<hr />
+<h2 id="storage-best-practices">Storage Best Practices<a class="headerlink" href="#storage-best-practices" title="Anchor link to this section">&para;</a></h2>
+<p>Understanding where data, environments, and configurations reside ensures performance and prevents profile synchronization failures:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Storage Domain</th>
+<th style="text-align: left;">Location</th>
+<th style="text-align: left;">Intended Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Analytical Workspace (<code>V:</code>)</strong></td>
+<td style="text-align: left;"><code>V:\&lt;project-name&gt;</code></td>
+<td style="text-align: left;">Research notebooks, datasets, scripts, exports. Network share backed up and shared across project members.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Local Machine Storage (<code>%LOCALAPPDATA%</code>)</strong></td>
+<td style="text-align: left;"><code>%LOCALAPPDATA%\virtualenvs</code><br><code>%LOCALAPPDATA%\uv</code></td>
+<td style="text-align: left;">Python runtime installations, virtual environment directories, package caches, launcher logs. Fast local SSD storage supporting NTFS junctions.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Personal Roaming Space (<code>%APPDATA%</code>)</strong></td>
+<td style="text-align: left;"><code>%APPDATA%\jupyterlab-desktop</code><br><code>%APPDATA%\jupyter\kernels</code></td>
+<td style="text-align: left;">Lightweight configuration (<code>settings.json</code>), registered kernel specs. Roams with your Active Directory profile across workstations.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Avoid Creating Virtual Environments on Network Shares or Roaming Profiles</p>
+<p>High-file-count directories (such as Python <code>virtualenvs</code> or build caches) and directories requiring NTFS directory junctions or symlinks MUST NOT be placed on network drives (<code>V:</code>) or roaming profiles (<code>%APPDATA%</code>, <code>Documents</code>, <code>Desktop</code>). SMB shares do not support NTFS junctions (<code>os error 1</code>) and degrade performance. Always locate virtual environments in <code>%LOCALAPPDATA%</code>.</p>
+</div>
+<hr />
+<h2 id="troubleshooting--support">Troubleshooting &amp; Support<a class="headerlink" href="#troubleshooting--support" title="Anchor link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Symptom</th>
+<th style="text-align: left;">Probable Cause</th>
+<th style="text-align: left;">Recommended Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Kernel shows "Disconnected" or fails to start</strong></td>
+<td style="text-align: left;">Damaged kernel spec or virtual environment in user profile.</td>
+<td style="text-align: left;">Run <code>&amp; "C:\Program Files\JupyterLab\Launch-JupyterLab.ps1" -BootstrapOnly</code> to self-heal the environment.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>%pip</code> fails with <code>403 Forbidden</code> / <code>Not Found</code></strong></td>
+<td style="text-align: left;">Requested library is missing from the internal Glasgow TRE mirror.</td>
+<td style="text-align: left;">Submit a package request ticket to your TRE representative.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>os error 1: Incorrect function</code> during <code>uv venv</code></strong></td>
+<td style="text-align: left;">Attempting to create a virtual environment on an SMB network share (<code>V:</code> or roaming profile).</td>
+<td style="text-align: left;">Create virtual environments strictly within <code>%LOCALAPPDATA%\virtualenvs\</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Launcher log reports environment initialization error</strong></td>
+<td style="text-align: left;">Corrupted Python runtime cache.</td>
+<td style="text-align: left;">Inspect <code>$env:LOCALAPPDATA\GlasgowTRE\logs\jupyter-launch.log</code> and delete corrupted subfolder in <code>$env:LOCALAPPDATA\uv\python</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="requesting-additional-packages">Requesting Additional Packages<a class="headerlink" href="#requesting-additional-packages" title="Anchor link to this section">&para;</a></h2>
+<p>If your project requires packages not currently available on the internal PyPI mirror:</p>
+<ol>
+<li>Submit a package request through your <strong>Glasgow TRE Representative</strong> or email <a href="mailto:tre@glasgow.com?subject=JupyterLab%20Package%20Request">tre@glasgow.com</a>.</li>
+<li>Specify the package name, requested version, and analytical rationale.</li>
+<li>Once security and compliance reviews are completed, packages are mirrored internally for all project members.</li>
+</ol>
+<hr />
+<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Anchor link to this section">&para;</a></h2>
+<ul>
+<li><a href="../python-core/">Python Core</a> — Manage analytical environments, runtimes, and libraries with Astral <code>uv</code>.</li>
+<li><a href="../r/">R Runtime</a> — Statistical computing and package management with <code>renv</code>.</li>
+<li><a href="../nvidia-gpu/">NVIDIA vGPU Acceleration</a> — GPU acceleration for PyTorch, TensorFlow, and deep learning notebooks.</li>
+<li><a href="../slicer/">3D Slicer</a> — Medical imaging visualization and AI segmentation.</li>
+</ul>
 
 
 
@@ -946,7 +1812,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.tooltips", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
