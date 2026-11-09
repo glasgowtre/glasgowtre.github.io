@@ -16,7 +16,7 @@
         <link rel="prev" href="../jupyter/">
       
       
-        <link rel="next" href="../slicer/">
+        <link rel="next" href="../r-studio/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>R Runtime - GlasgowTRE Handbook</title>
+        <title>R - GlasgowTRE Handbook</title>
       
     
     
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              R Runtime
+              R
             
           </span>
         </div>
@@ -516,7 +516,7 @@
   <span class="md-ellipsis">
     
   
-    JupyterLab StandAlone
+    JupyterLab Desktop
   
 
     
@@ -553,7 +553,7 @@
   <span class="md-ellipsis">
     
   
-    R Runtime
+    R
   
 
     
@@ -571,7 +571,7 @@
   <span class="md-ellipsis">
     
   
-    R Runtime
+    R
   
 
     
@@ -620,6 +620,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pre-installed-analytical-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Installed Analytical Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#version--configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -647,17 +658,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-workstation-specifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended Workstation Specifications
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -670,21 +670,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-interactive-launch" class="md-nav__link">
+  <a href="#launching-r" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Interactive Launch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-executing-r-scripts-non-interactively-rscript" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Executing R Scripts Non-Interactively (Rscript)
+        Launching R
       
     </span>
   </a>
@@ -709,22 +698,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-managing-project-libraries-with-renv" class="md-nav__link">
+  <a href="#ingesting-research-data-formats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Managing Project Libraries with renv
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Managing Project Libraries with renv">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#initialize-renv-in-your-project-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initialize renv in Your Project Directory
+        Ingesting Research Data Formats
       
     </span>
   </a>
@@ -732,10 +709,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#snapshot-and-restore-dependencies" class="md-nav__link">
+  <a href="#managing-project-reproducibility-with-renv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Snapshot and Restore Dependencies
+        Managing Project Reproducibility with renv
       
     </span>
   </a>
@@ -746,81 +723,15 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configuring-the-internal-cran-mirror" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workstation-specifications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Configuring the Internal CRAN Mirror
+        Recommended Workstation Specifications
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-installing-pre-approved-local-binary-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Installing Pre-Approved Local Binary Packages
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-running-r-in-jupyterlab-standalone-irkernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Running R in JupyterLab StandAlone (IRkernel)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-recommended-analytical-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Recommended Analytical Workflows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Recommended Analytical Workflows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reading-large-datasets-efficiently" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading Large Datasets Efficiently
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generating-and-exporting-publication-figures" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generating and Exporting Publication Figures
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -884,6 +795,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../r-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RStudio IDE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../slicer/" class="md-nav__link">
         
   
@@ -920,34 +859,6 @@
     
   
     LibreOffice
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../wsl/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Windows Subsystem for Linux (WSL)
   
 
     
@@ -1252,6 +1163,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pre-installed-analytical-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Installed Analytical Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#version--configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1279,17 +1201,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-workstation-specifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended Workstation Specifications
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1302,21 +1213,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-interactive-launch" class="md-nav__link">
+  <a href="#launching-r" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Interactive Launch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-executing-r-scripts-non-interactively-rscript" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Executing R Scripts Non-Interactively (Rscript)
+        Launching R
       
     </span>
   </a>
@@ -1341,22 +1241,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-managing-project-libraries-with-renv" class="md-nav__link">
+  <a href="#ingesting-research-data-formats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Managing Project Libraries with renv
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Managing Project Libraries with renv">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#initialize-renv-in-your-project-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initialize renv in Your Project Directory
+        Ingesting Research Data Formats
       
     </span>
   </a>
@@ -1364,10 +1252,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#snapshot-and-restore-dependencies" class="md-nav__link">
+  <a href="#managing-project-reproducibility-with-renv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Snapshot and Restore Dependencies
+        Managing Project Reproducibility with renv
       
     </span>
   </a>
@@ -1378,81 +1266,15 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configuring-the-internal-cran-mirror" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#recommended-workstation-specifications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Configuring the Internal CRAN Mirror
+        Recommended Workstation Specifications
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-installing-pre-approved-local-binary-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Installing Pre-Approved Local Binary Packages
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-running-r-in-jupyterlab-standalone-irkernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Running R in JupyterLab StandAlone (IRkernel)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-recommended-analytical-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Recommended Analytical Workflows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Recommended Analytical Workflows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reading-large-datasets-efficiently" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading Large Datasets Efficiently
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generating-and-exporting-publication-figures" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generating and Exporting Publication Figures
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1568,17 +1390,141 @@
 <h1 id="r-runtime--package-management">R Runtime &amp; Package Management<a class="headerlink" href="#r-runtime--package-management" title="Anchor link to this section">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section">&para;</a></h2>
 <h4 id="service-offering">Service Offering<a class="headerlink" href="#service-offering" title="Anchor link to this section">&para;</a></h4>
-<p>Glasgow TRE provides the <strong>R statistical computing runtime</strong> for epidemiological analysis, biostatistics, econometrics, bioinformatics, and reproducible data science. R is installed machine-wide with 64-bit binaries pre-configured in the system <code>PATH</code>, enabling interactive terminal analysis, non-interactive batch scripting via <code>Rscript</code>, R Markdown reporting, and project library isolation using <code>renv</code>.</p>
+<p>Glasgow TRE provisions workstations with the <strong>R statistical computing runtime</strong> for researchers who require statistical modeling, data science, and analytical programming.</p>
+<p>Provisioned Windows 11 workstations have <strong>R 4.6.1</strong> installed machine-wide with 64-bit binaries pre-configured in the system <code>PATH</code>. This enables interactive console analysis, batch scripting via <code>Rscript</code>, and execution through external analytical IDEs such as <a href="../jupyter/">JupyterLab StandAlone</a>.</p>
+<h4 id="pre-installed-analytical-libraries">Pre-Installed Analytical Libraries<a class="headerlink" href="#pre-installed-analytical-libraries" title="Anchor link to this section">&para;</a></h4>
+<p>To support immediate, offline data processing from the moment you log in, the provisioned R environment includes a pre-installed, pre-compiled suite of top-level libraries and their dependencies in the system library:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Package</th>
+<th style="text-align: left;">Version Category</th>
+<th style="text-align: left;">Primary Analytical Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>renv</code></strong></td>
+<td style="text-align: left;">Environment Isolation</td>
+<td style="text-align: left;">Reproducible project-local dependency management and lockfile tracking.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dplyr</code></strong></td>
+<td style="text-align: left;">Data Transformation</td>
+<td style="text-align: left;">Grammar of data manipulation (filtering, mutating, grouping, summarizing).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>ggplot2</code></strong></td>
+<td style="text-align: left;">Data Visualization</td>
+<td style="text-align: left;">Declarative grammar of graphics for exploratory data analysis and figures.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>tidyr</code></strong></td>
+<td style="text-align: left;">Data Reshaping</td>
+<td style="text-align: left;">Tidying data structures (pivoting longer/wider, nesting, missing value handling).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>data.table</code></strong></td>
+<td style="text-align: left;">High-Performance Ingestion</td>
+<td style="text-align: left;">Fast, multi-threaded aggregation, grouping, and disk streaming via <code>fread()</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>readr</code></strong></td>
+<td style="text-align: left;">Tabular Ingestion</td>
+<td style="text-align: left;">Fast parsing of rectangular text data (<code>.csv</code>, <code>.tsv</code>, <code>.txt</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>readxl</code></strong></td>
+<td style="text-align: left;">Spreadsheet Ingestion</td>
+<td style="text-align: left;">Direct extraction of tabular data from legacy (<code>.xls</code>) and modern (<code>.xlsx</code>) Excel sheets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>haven</code></strong></td>
+<td style="text-align: left;">Statistical Data Ingestion</td>
+<td style="text-align: left;">Importing cohorts saved in SAS (<code>.sas7bdat</code>), SPSS (<code>.sav</code>), or Stata (<code>.dta</code>) formats.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>arrow</code></strong></td>
+<td style="text-align: left;">Columnar &amp; Parquet Storage</td>
+<td style="text-align: left;">High-throughput zero-copy reads, dataset partitioning, and Apache Parquet ingestion.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="version--configuration">Version &amp; Configuration<a class="headerlink" href="#version--configuration" title="Anchor link to this section">&para;</a></h4>
 <ul>
 <li><strong>R 4.6.1</strong> (64-bit release for Windows)</li>
 <li><strong>Primary Executables in System <code>PATH</code></strong>:</li>
 <li><code>C:\Program Files\R\R-4.6.1\bin\x64\R.exe</code> — Interactive R console</li>
 <li><code>C:\Program Files\R\R-4.6.1\bin\x64\Rscript.exe</code> — Scripting and batch execution front-end</li>
-<li><strong>Userspace Operation</strong>: All analytical scripts, project library environments, and package installations execute in userspace without requiring local administrative privileges.</li>
+<li><strong>Userspace Operation</strong>: All user analytical scripts, project library environments, and cache directories execute within userspace without requiring local administrative privileges.</li>
 </ul>
 <h4 id="offline--air-gapped-operation">Offline &amp; Air-Gapped Operation<a class="headerlink" href="#offline--air-gapped-operation" title="Anchor link to this section">&para;</a></h4>
 <p>Workstations operate within a strictly isolated, air-gapped network enclave. Direct internet access to public CRAN or Bioconductor mirrors is blocked by firewall policy. All package installations resolve from internal Glasgow TRE package mirrors or pre-vetted local binary <code>.zip</code> archives.</p>
+<hr />
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Anchor link to this section">&para;</a></h2>
+<h3 id="launching-r">Launching R<a class="headerlink" href="#launching-r" title="Anchor link to this section">&para;</a></h3>
+<p>You can launch R in several ways depending on your workflow:</p>
+<ol>
+<li><strong>PowerShell / Terminal</strong>:
+   Open Windows PowerShell or Windows Terminal and invoke <code>R</code> for the interactive console:
+   <div class="highlight"><pre><span></span><code><span class="nb">R</span>
+</code></pre></div></li>
+<li><strong>Batch Script Execution</strong>:
+   Execute standalone research scripts non-interactively using <code>Rscript</code>:
+   <div class="highlight"><pre><span></span><code><span class="n">Rscript</span> <span class="s2">"V:\my-project\scripts\analysis.R"</span>
+</code></pre></div></li>
+<li><strong>JupyterLab Notebooks</strong>:
+   Open <a href="../jupyter/">JupyterLab StandAlone</a> from your desktop shortcut and select the <strong>R</strong> kernel.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Verify Installed Core Libraries</p>
+<p>You can verify that all bundled top-level libraries are ready for use by running this check in PowerShell:
+<div class="highlight"><pre><span></span><code><span class="n">Rscript</span> <span class="n">-e</span> <span class="s2">"libs &lt;- c('renv', 'dplyr', 'ggplot2', 'tidyr', 'data.table', 'readr', 'readxl', 'haven', 'arrow'); invisible(sapply(libs, library, character.only = TRUE)); cat('All core R libraries loaded successfully.\n')"</span>
+</code></pre></div></p>
+</div>
+<hr />
+<h2 id="how-to-guides">How-To Guides<a class="headerlink" href="#how-to-guides" title="Anchor link to this section">&para;</a></h2>
+<h3 id="ingesting-research-data-formats">Ingesting Research Data Formats<a class="headerlink" href="#ingesting-research-data-formats" title="Anchor link to this section">&para;</a></h3>
+<p>The bundled libraries support direct reading of all standard research formats without requiring additional packages:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">readxl</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">haven</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+
+<span class="c1"># 1. Delimited Text / CSV (readr or data.table)</span>
+<span class="n">df_csv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">"V:/my-project/data/cohort.csv"</span><span class="p">)</span>
+<span class="n">dt_fast</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="s">"V:/my-project/data/large_cohort.csv"</span><span class="p">)</span>
+
+<span class="c1"># 2. Excel Workbooks (readxl)</span>
+<span class="n">df_excel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_excel</span><span class="p">(</span><span class="s">"V:/my-project/data/clinical_table.xlsx"</span><span class="p">,</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Cohort1"</span><span class="p">)</span>
+
+<span class="c1"># 3. Statistical Legacy Formats (haven)</span>
+<span class="n">df_spss</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_sav</span><span class="p">(</span><span class="s">"V:/my-project/data/survey.sav"</span><span class="p">)</span>
+<span class="n">df_stata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_dta</span><span class="p">(</span><span class="s">"V:/my-project/data/longitudinal.dta"</span><span class="p">)</span>
+<span class="n">df_sas</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_sas</span><span class="p">(</span><span class="s">"V:/my-project/data/registry.sas7bdat"</span><span class="p">)</span>
+
+<span class="c1"># 4. Columnar Apache Parquet (arrow)</span>
+<span class="n">df_parquet</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_parquet</span><span class="p">(</span><span class="s">"V:/my-project/data/genomics.parquet"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="managing-project-reproducibility-with-renv">Managing Project Reproducibility with <code>renv</code><a class="headerlink" href="#managing-project-reproducibility-with-renv" title="Anchor link to this section">&para;</a></h3>
+<p>To ensure study reproducibility without conflicting with other projects, initialize an <code>renv</code> environment inside your project workspace on the <code>V:</code> drive:</p>
+<ol>
+<li>In R, navigate to your project directory and initialize <code>renv</code>:
+   <div class="highlight"><pre><span></span><code><span class="nf">setwd</span><span class="p">(</span><span class="s">"V:/my-project"</span><span class="p">)</span>
+<span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">()</span>
+</code></pre></div></li>
+<li><code>renv</code> creates a project-local library while linking to existing pre-installed system packages, saving disk space.</li>
+<li>Once your analysis scripts are validated, snapshot your environment:
+   <div class="highlight"><pre><span></span><code><span class="n">renv</span><span class="o">::</span><span class="nf">snapshot</span><span class="p">()</span>
+</code></pre></div>
+   This generates a portable <code>renv.lock</code> file in <code>V:\my-project\</code> that documents the exact package dependency graph.</li>
+</ol>
+<div class="admonition caution">
+<p class="admonition-title">Do Not Locate Virtual Environments on SMB Roaming Shares</p>
+<p>Always keep temporary build directories and package caches in local machine storage (<code>%LOCALAPPDATA%</code>). Roaming profiles (<code>%APPDATA%</code>) and SMB shares do not support NTFS directory junctions and degrade file access latency.</p>
+</div>
 <hr />
 <h2 id="recommended-workstation-specifications">Recommended Workstation Specifications<a class="headerlink" href="#recommended-workstation-specifications" title="Anchor link to this section">&para;</a></h2>
 <p>Statistical computations in R, particularly data wrangling on large tabular cohorts or fitting complex mixed-effects models, are primarily memory-bound:</p>
@@ -1613,120 +1559,6 @@
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Anchor link to this section">&para;</a></h2>
-<h3 id="1-interactive-launch">1. Interactive Launch<a class="headerlink" href="#1-interactive-launch" title="Anchor link to this section">&para;</a></h3>
-<p>Open <strong>PowerShell</strong>, <strong>Windows Terminal</strong>, or <strong>Command Prompt</strong> and verify that the R runtime is available:</p>
-<div class="highlight"><pre><span></span><code><span class="c"># Verify R interpreter version</span>
-<span class="n">R</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-version</span>
-
-<span class="c"># Verify R scripting front-end version</span>
-<span class="n">Rscript</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-version</span>
-</code></pre></div>
-<p>To launch an interactive R console session:</p>
-<div class="highlight"><pre><span></span><code><span class="n">R</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-no-save</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Exiting the R Console</p>
-<p>To exit an interactive R session, type <code>q()</code> and press Enter. When prompted <code>Save workspace image? [y/n/c]:</code>, enter <code>n</code> to avoid leaving stale <code>.RData</code> files in your working directory.</p>
-</div>
-<hr />
-<h3 id="2-executing-r-scripts-non-interactively-rscript">2. Executing R Scripts Non-Interactively (<code>Rscript</code>)<a class="headerlink" href="#2-executing-r-scripts-non-interactively-rscript" title="Anchor link to this section">&para;</a></h3>
-<p>Execute standalone analysis scripts or inline code expressions using <code>Rscript</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c"># Run a script from your analytical project workspace</span>
-<span class="n">Rscript</span> <span class="n">V</span><span class="p">:\</span><span class="n">my-project</span><span class="p">\</span><span class="n">analysis</span><span class="p">.</span><span class="nb">R</span>
-
-<span class="c"># Execute an inline R expression</span>
-<span class="n">Rscript</span> <span class="n">-e</span> <span class="s2">"cat('Hello from R in Glasgow TRE\n')"</span>
-
-<span class="c"># Pass arguments to an R script</span>
-<span class="n">Rscript</span> <span class="n">V</span><span class="p">:\</span><span class="n">my-project</span><span class="p">\</span><span class="n">process_cohort</span><span class="p">.</span><span class="nb">R </span><span class="p">-</span><span class="n">-cohort-id</span> <span class="n">42</span> <span class="p">-</span><span class="n">-export-dir</span> <span class="n">V</span><span class="p">:\</span><span class="n">my-project</span><span class="p">\</span><span class="n">outputs</span>
-</code></pre></div>
-<hr />
-<h2 id="how-to-guides">How-To Guides<a class="headerlink" href="#how-to-guides" title="Anchor link to this section">&para;</a></h2>
-<h3 id="1-managing-project-libraries-with-renv">1. Managing Project Libraries with <code>renv</code><a class="headerlink" href="#1-managing-project-libraries-with-renv" title="Anchor link to this section">&para;</a></h3>
-<p>To ensure analytical reproducibility and prevent library version conflicts between projects, use <code>renv</code> to maintain isolated project-specific package libraries:</p>
-<h4 id="initialize-renv-in-your-project-directory">Initialize <code>renv</code> in Your Project Directory<a class="headerlink" href="#initialize-renv-in-your-project-directory" title="Anchor link to this section">&para;</a></h4>
-<ol>
-<li>Navigate to your project directory on the analytical workspace drive (<code>V:\</code>):
-   <div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">V</span><span class="p">:\</span><span class="n">my-project</span>
-</code></pre></div></li>
-<li>Start R and initialize <code>renv</code>:
-   <div class="highlight"><pre><span></span><code><span class="c1"># Inside project directory in R</span>
-<span class="nf">install.packages</span><span class="p">(</span><span class="s">"renv"</span><span class="p">)</span>
-<span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">()</span>
-</code></pre></div></li>
-<li><code>renv</code> creates a project-local library and an <code>renv.lock</code> file that records the exact package versions and sources.</li>
-</ol>
-<h4 id="snapshot-and-restore-dependencies">Snapshot and Restore Dependencies<a class="headerlink" href="#snapshot-and-restore-dependencies" title="Anchor link to this section">&para;</a></h4>
-<p>Before sharing your code with collaborators or submitting results for air-lock egress review, snapshot your environment:</p>
-<div class="highlight"><pre><span></span><code><span class="n">renv</span><span class="o">::</span><span class="nf">snapshot</span><span class="p">()</span>
-</code></pre></div>
-<p>When a collaborator opens the project on their workstation, they can recreate the exact environment with:</p>
-<div class="highlight"><pre><span></span><code><span class="n">renv</span><span class="o">::</span><span class="nf">restore</span><span class="p">()</span>
-</code></pre></div>
-<hr />
-<h3 id="2-configuring-the-internal-cran-mirror">2. Configuring the Internal CRAN Mirror<a class="headerlink" href="#2-configuring-the-internal-cran-mirror" title="Anchor link to this section">&para;</a></h3>
-<p>Workstations resolve packages through the internal Glasgow TRE package mirror:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Set repository to the internal CRAN mirror</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">CRAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"https://storage.dc1.glasgowtre.ac.uk:9021/public/software/r/cran"</span><span class="p">))</span>
-</code></pre></div>
-<p>To make this permanent across all your R sessions, add this line to your personal <code>.Rprofile</code> located in your profile directory (<code>%USERPROFILE%\Documents\.Rprofile</code> or <code>%APPDATA%\.Rprofile</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># %USERPROFILE%\Documents\.Rprofile</span>
-<span class="nf">local</span><span class="p">({</span>
-<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">getOption</span><span class="p">(</span><span class="s">"repos"</span><span class="p">)</span>
-<span class="w">  </span><span class="n">r</span><span class="p">[</span><span class="s">"CRAN"</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"https://storage.dc1.glasgowtre.ac.uk:9021/public/software/r/cran"</span>
-<span class="w">  </span><span class="nf">options</span><span class="p">(</span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">)</span>
-<span class="p">})</span>
-</code></pre></div>
-<hr />
-<h3 id="3-installing-pre-approved-local-binary-packages">3. Installing Pre-Approved Local Binary Packages<a class="headerlink" href="#3-installing-pre-approved-local-binary-packages" title="Anchor link to this section">&para;</a></h3>
-<p>If you have been supplied with approved binary package zip archives through the data transfer air-lock:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install a pre-approved Windows binary package</span>
-<span class="nf">install.packages</span><span class="p">(</span><span class="s">"C:/path/to/package_archive.zip"</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"win.binary"</span><span class="p">)</span>
-</code></pre></div>
-<div class="admonition important">
-<p class="admonition-title">Windows Requires Binary Packages (<code>type = 'win.binary'</code>)</p>
-<p>Standard Windows research workstations do not include full C/C++/Fortran build toolchains (Rtools). Always install pre-compiled Windows binary packages (<code>.zip</code>) rather than source tarballs (<code>.tar.gz</code>).</p>
-</div>
-<hr />
-<h3 id="4-running-r-in-jupyterlab-standalone-irkernel">4. Running R in JupyterLab StandAlone (<code>IRkernel</code>)<a class="headerlink" href="#4-running-r-in-jupyterlab-standalone-irkernel" title="Anchor link to this section">&para;</a></h3>
-<p>You can run interactive R notebooks side-by-side with Python in JupyterLab StandAlone:</p>
-<ol>
-<li>Launch R in PowerShell:
-   <div class="highlight"><pre><span></span><code><span class="n">R</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-no-save</span>
-</code></pre></div></li>
-<li>Install and register the <code>IRkernel</code> package:
-   <div class="highlight"><pre><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">"IRkernel"</span><span class="p">)</span>
-<span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ir_tre"</span><span class="p">,</span><span class="w"> </span><span class="n">display_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"R 4.6.1 (Glasgow TRE)"</span><span class="p">)</span>
-<span class="nf">q</span><span class="p">()</span>
-</code></pre></div></li>
-<li>Launch JupyterLab from your desktop or Start Menu. The <strong>R 4.6.1 (Glasgow TRE)</strong> notebook option will appear in the Launcher.</li>
-</ol>
-<hr />
-<h3 id="5-recommended-analytical-workflows">5. Recommended Analytical Workflows<a class="headerlink" href="#5-recommended-analytical-workflows" title="Anchor link to this section">&para;</a></h3>
-<h4 id="reading-large-datasets-efficiently">Reading Large Datasets Efficiently<a class="headerlink" href="#reading-large-datasets-efficiently" title="Anchor link to this section">&para;</a></h4>
-<p>When working with tabular health data, use modern column-oriented libraries instead of base R <code>read.csv()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Fast CSV ingestion with data.table</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
-<span class="n">cohort</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="s">"V:/my-project/data/cohort.csv"</span><span class="p">)</span>
-
-<span class="c1"># Parquet file ingestion with arrow</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>
-<span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_parquet</span><span class="p">(</span><span class="s">"V:/my-project/data/genomic_matrix.parquet"</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="generating-and-exporting-publication-figures">Generating and Exporting Publication Figures<a class="headerlink" href="#generating-and-exporting-publication-figures" title="Anchor link to this section">&para;</a></h4>
-<p>Always save rendered plots directly to your project workspace (<code>V:\</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-
-<span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">cohort</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bmi</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outcome</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Glasgow TRE Cohort Analysis"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Age"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BMI"</span><span class="p">)</span>
-
-<span class="c1"># Save high-resolution figure to analytical project workspace</span>
-<span class="nf">ggsave</span><span class="p">(</span><span class="s">"V:/my-project/outputs/figure1.png"</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span>
-</code></pre></div>
 <hr />
 <h2 id="storage-best-practices">Storage Best Practices<a class="headerlink" href="#storage-best-practices" title="Anchor link to this section">&para;</a></h2>
 <p>Understanding where R stores packages, temporary files, and configurations is essential to prevent latency and roaming profile sync issues:</p>
@@ -1807,6 +1639,7 @@
 <li><a href="../python-core/">Python Core</a> — Python runtime and package management with Astral <code>uv</code>.</li>
 <li><a href="../jupyter/">JupyterLab StandAlone</a> — Interactive notebook environment supporting both Python and R kernels.</li>
 <li><a href="../libreoffice/">LibreOffice</a> — Tabular spreadsheet viewing for quick data inspection.</li>
+<li><a href="../../faq/data-transfer/">Data Transfer Guidelines</a> — Importing data and exporting approved results.</li>
 </ul>
 
 
