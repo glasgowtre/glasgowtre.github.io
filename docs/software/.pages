@@ -3,7 +3,8 @@ nav:
   - python-core.md
   - jupyter.md
   - r.md
+  - r-studio.md
   - slicer.md
   - libreoffice.md
-  - wsl.md
+#  - wsl.md 
   - nvidia-gpu.md

@@ -8,70 +8,96 @@ title: NVIDIA vGPU Acceleration
 
 #### Service Offering
 
-Glasgow TRE provisions high-performance research workstations with **NVIDIA virtual GPU (vGPU)** hardware acceleration. This enables GPU-accelerated computing for deep learning inference and training, computer vision, 3D medical volume rendering (such as 3D Slicer), and GPU-accelerated Python libraries (`torch`, `tensorflow`, `jax`, `rapids`, `cupy`).
+Glasgow TRE provisions is able to offer research workstations with **GPU** hardware acceleration based on NVIDIA's vGPU technology.<br>
 
-#### Driver Architecture & Licensing
+This allows the researcher to to request the right amount of GPU resource (from 4 GB to 96(2x48) GB) that is appropriate for their work.  
 
-- **Driver Release Train**: Version **580** (Display Driver version **582.78**, DCH 64-bit)
-- **Delegated License Service (NLS/DLS)**: vGPU licenses are automatically managed and renewed via the internal Glasgow TRE Delegated License Service. Workstations obtain licenses on startup without requiring manual researcher intervention.
+Virtual machines have full access to CUDA cores and CUDA v13 framework for:
 
----
+-  deep learning and GPU-accelerated computing and training
+-  computer vision, 
+-  3D medical volume rendering (such as 3D Slicer), and
+-  GPU-accelerated Python libraries (`torch`, `tensorflow`, `jax`, `rapids`, `cupy`).
 
-## GPU Monitoring & CLI Commands
-
-Open **PowerShell** or **Windows Terminal** to inspect GPU hardware status, utilization, and memory allocation:
-
-### 1. Basic Status & Driver Overview
-
-```powershell
-nvidia-smi
-```
-
-This displays the active GPU model (e.g. NVIDIA L40S vGPU profile), driver version, CUDA version support, power draw, and VRAM utilization.
-
-### 2. Continuous Monitoring
-
-Query real-time GPU compute and memory utilization metrics every 2 seconds:
-
-```powershell
-nvidia-smi --query-gpu=utilization.gpu,utilization.memory,memory.used,memory.total --format=csv -l 2
-```
-
-### 3. Verify vGPU License Status
-
-Confirm that the workstation is licensed with the internal license manager:
-
-```powershell
-nvidia-smi -q | Select-String -Pattern "vGPU Software License Status" -Context 0,2
-```
-
-Expected output indicates `Status: Licensed`.
 
 ---
 
-## Machine Learning Framework Integration
+### Cuda Version
 
-Verify CUDA availability within your analytical environments:
+NVIDIA vGPU drivers are installed on the host hypervisor and are compatible with CUDA v13.0.
 
-### PyTorch CUDA Check
 
-```powershell
-python -c "import torch; print('CUDA Available:', torch.cuda.is_available()); print('Device Name:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
-```
+### GPU Acceleration in Python
 
-### TensorFlow GPU Check
 
-```powershell
-python -c "import tensorflow as tf; print('GPUs Available:', tf.config.list_physical_devices('GPU'))"
-```
+To utilize GPU acceleration within Jupyter notebooks and Python environments, your virtual environment must have an **NVIDIA CUDA-enabled PyTorch build** rather than the standard CPU-only build.
 
-### JAX GPU Devices Check
+!!! note "PyTorch CPU vs. GPU Builds"
 
-```powershell
-python -c "import jax; print('JAX Devices:', jax.devices())"
-```
+    PyTorch distributes distinct binary wheel variants for CPU and GPU architectures.<br> Package managers (`uv`, `pip`) **will** resolve to the CPU-only package unless explicitly directed to the CUDA build. 
 
 ---
+#### 1. Acquiring the Correct PyTorch Build (GPU vs. CPU-only)
+
+
+* **GPU-enabled build (`torch==x.y.z+cuXXX`)**: Bundles pre-compiled CUDA kernels and NVIDIA runtime libraries (e.g., `+cu130`). This build allows PyTorch to offload tensor operations directly to GPU hardware.
+
+* **CPU-only build (`torch==x.y.z` or `torch==x.y.z+cpu`)**: Contains no CUDA runtime binaries or GPU kernels. If installed, PyTorch will run entirely on the system CPU *even if your workstation has an NVIDIA vGPU attached and `nvidia-smi` shows the driver is active.*
+
+
+
+!!! warning  "Installing CUDA-enabled PyTorch"
+    When installing PyTorch inside your project virtual environment, explicitly specify the **CUDA release tag** hosted on our internal repository:
+
+    ```powershell
+    # Using uv (recommended)
+    uv pip install "torch==2.14.1+cu130" "torchvision==0.29.1+cu130"
+
+    # Using pip
+    pip install "torch==2.14.1+cu130" "torchvision==0.29.1+cu130"
+    ```
+!!! warning "Avoid Accidental CPU Overwrites by Companion Packages"
+    Libraries such as `torchvision`, `torchaudio`, or third-party packages (e.g., `timm`, `monai`, `transformers`) often declare a generic dependency on `torch`. 
+    
+    If you install them separately without pinning, `pip` may attempt to satisfy their dependency by installing the latest standard CPU wheel from the mirror, overwriting your GPU build. Always install companion packages together with the matching `+cu130` build, or install them with `--no-deps` if their metadata conflicts.
+
+#### 2. Verifying GPU Availability in a Notebook Cell
+
+Run the following snippet inside a Jupyter notebook cell to verify that your environment has loaded the CUDA-compiled PyTorch binary and can communicate with the GPU:
+```python
+import torch
+print(f"PyTorch Version:  {torch.__version__}")
+print(f"CUDA Runtime:     {torch.version.cuda}")
+print(f"CUDA Available:   {torch.cuda.is_available()}")
+if torch.cuda.is_available():
+    device_id = 0
+    print(f"Device Count:     {torch.cuda.device_count()}")
+    print(f"Device Name:      {torch.cuda.get_device_name(device_id)}")
+    print(f"Compute Cap:      {torch.cuda.get_device_capability(device_id)}")
+    
+    # Run a quick tensor computation on the GPU
+    x = torch.randn(1000, 1000, device="cuda")
+    y = torch.matmul(x, x)
+    
+    print(f"Memory Allocated: {torch.cuda.memory_allocated(device_id) / (1024**2):.2f} MB")
+    print(f"Memory Reserved:  {torch.cuda.memory_reserved(device_id) / (1024**2):.2f} MB")
+    print("GPU tensor operation successful!")
+else:
+    print("\nWARNING: PyTorch is running in CPU-only mode.")
+    if "+cu" not in torch.__version__:
+        print("Reason: You have installed a CPU-only PyTorch wheel. Reinstall with a +cuXXX variant.")
+    else:
+        print("Reason: The PyTorch build has CUDA support, but no compatible NVIDIA GPU driver was detected.")
+```
+---
+
+#### 3. Troubleshooting Common Issues
+| Symptom | Cause | Resolution |
+| :--- | :--- | :--- |
+| `torch.__version__` does not have `+cuXXX` (e.g. `2.5.1` or `2.5.1+cpu`) | A CPU-only wheel was installed. | Run `uv pip install --force-reinstall "torch==2.14.1+cu130"` (or your required CUDA version). |
+| `torch.cuda.is_available()` returns `False` despite having a `+cuXXX` version | The VM has no vGPU profile assigned, or the NVIDIA Windows Display Driver is not loaded. | Open PowerShell and run `nvidia-smi`. If `nvidia-smi` fails, contact the TRE Helpdesk to allocate a vGPU. |
+| `RuntimeError: operator torchvision::... does not exist` | ABI mismatch between `torch` and `torchvision`. | `torchvision` C++ extensions must be compiled against the exact PyTorch C++ ABI. Ensure both use matching CUDA variants (e.g., `torch==2.14.1+cu130` and `torchvision==0.29.1+cu130`). |
+
 
 ## Critical Storage Best Practices for Deep Learning
 
@@ -79,8 +105,8 @@ Deep learning frameworks place extreme read/write demands on filesystems when lo
 
 !!! danger "Never Store Deep Learning Model Weights or Caches on Network Shares (`V:\`) or Roaming Profiles (`%APPDATA%`)"
 
-    - **Do NOT place caches on network mounts (`V:\` or SMB shares)**: Framework caches (Hugging Face `HF_HOME`, PyTorch `TORCH_HOME`, or training checkpoints) require high-throughput random I/O and POSIX filesystem locking. Network SMB shares suffer from latency and lack robust file locking, leading to corrupt weights and halted jobs.
-    - **Do NOT place large models in Roaming folders (`%APPDATA%`, `Desktop`, `Documents`)**: Active Directory Roaming Profiles synchronize these folders across the network during user logon and logoff. Saving gigabytes of model checkpoints here causes logoff hangs and profile synchronization failures.
+    - **Do NOT place caches on network mounts (`V:\` or SMB shares)**: <br>Framework caches (Hugging Face `HF_HOME`, PyTorch `TORCH_HOME`, or training checkpoints) require high-throughput random I/O and POSIX filesystem locking. Network SMB shares suffer from latency and lack robust file locking, leading to corrupt weights and halted jobs.
+    - **Do NOT place large models in Roaming folders (`%APPDATA%`, `Desktop`, `Documents`)**:<br> Active Directory Roaming Profiles synchronize these folders across the network during user logon and logoff. Saving gigabytes of model checkpoints here causes logoff hangs and profile synchronization failures.
 
 ### Recommended Storage Strategies
 
@@ -95,8 +121,7 @@ Deep learning frameworks place extreme read/write demands on filesystems when lo
 ## Support & Requesting GPU Capacity
 
 - **Missing GPU or Driver Error**: If `nvidia-smi` reports no devices found or a driver mismatch, contact the service desk.
-- **Requesting Larger vGPU Profiles**: If your research project requires additional VRAM (e.g., upgrading from 4 GB to 8 GB+ or 16 GB+ for full-resolution 3D medical segmentation or large language model inference), submit an infrastructure request to your **Glasgow TRE Representative** or email [tre@glasgow.com](mailto:tre@glasgow.com?subject=vGPU%20Allocation%20Request).
-
+- **Requesting Larger vGPU Profiles**: If your research project requires additional VRAM (e.g., upgrading from 4 GB to 8 GB+ or 16 GB+ contact  **Glasgow TRE Helpdesk** at email [tre@glasgow.com](mailto:tre@glasgow.com?subject=vGPU%20Allocation%20Request) or contact your TRE representative.
 ---
 
 ## Related Documentation

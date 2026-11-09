@@ -1,5 +1,5 @@
 ---
-title: R Runtime
+title: R
 ---
 
 # R Runtime & Package Management
@@ -8,7 +8,25 @@ title: R Runtime
 
 #### Service Offering
 
-Glasgow TRE provides the **R statistical computing runtime** for epidemiological analysis, biostatistics, econometrics, bioinformatics, and reproducible data science. R is installed machine-wide with 64-bit binaries pre-configured in the system `PATH`, enabling interactive terminal analysis, non-interactive batch scripting via `Rscript`, R Markdown reporting, and project library isolation using `renv`.
+Glasgow TRE provisions workstations with the **R statistical computing runtime** for researchers who require statistical modeling, data science, and analytical programming.
+
+Provisioned Windows 11 workstations have **R 4.6.1** installed machine-wide with 64-bit binaries pre-configured in the system `PATH`. This enables interactive console analysis, batch scripting via `Rscript`, and execution through external analytical IDEs such as [JupyterLab StandAlone](jupyter.md).
+
+#### Pre-Installed Analytical Libraries
+
+To support immediate, offline data processing from the moment you log in, the provisioned R environment includes a pre-installed, pre-compiled suite of top-level libraries and their dependencies in the system library:
+
+| Package | Version Category | Primary Analytical Purpose |
+| :--- | :--- | :--- |
+| **`renv`** | Environment Isolation | Reproducible project-local dependency management and lockfile tracking. |
+| **`dplyr`** | Data Transformation | Grammar of data manipulation (filtering, mutating, grouping, summarizing). |
+| **`ggplot2`** | Data Visualization | Declarative grammar of graphics for exploratory data analysis and figures. |
+| **`tidyr`** | Data Reshaping | Tidying data structures (pivoting longer/wider, nesting, missing value handling). |
+| **`data.table`** | High-Performance Ingestion | Fast, multi-threaded aggregation, grouping, and disk streaming via `fread()`. |
+| **`readr`** | Tabular Ingestion | Fast parsing of rectangular text data (`.csv`, `.tsv`, `.txt`). |
+| **`readxl`** | Spreadsheet Ingestion | Direct extraction of tabular data from legacy (`.xls`) and modern (`.xlsx`) Excel sheets. |
+| **`haven`** | Statistical Data Ingestion | Importing cohorts saved in SAS (`.sas7bdat`), SPSS (`.sav`), or Stata (`.dta`) formats. |
+| **`arrow`** | Columnar & Parquet Storage | High-throughput zero-copy reads, dataset partitioning, and Apache Parquet ingestion. |
 
 #### Version & Configuration
 
@@ -16,11 +34,91 @@ Glasgow TRE provides the **R statistical computing runtime** for epidemiological
 - **Primary Executables in System `PATH`**:
   - `C:\Program Files\R\R-4.6.1\bin\x64\R.exe` — Interactive R console
   - `C:\Program Files\R\R-4.6.1\bin\x64\Rscript.exe` — Scripting and batch execution front-end
-- **Userspace Operation**: All analytical scripts, project library environments, and package installations execute in userspace without requiring local administrative privileges.
+- **Userspace Operation**: All user analytical scripts, project library environments, and cache directories execute within userspace without requiring local administrative privileges.
 
 #### Offline & Air-Gapped Operation
 
 Workstations operate within a strictly isolated, air-gapped network enclave. Direct internet access to public CRAN or Bioconductor mirrors is blocked by firewall policy. All package installations resolve from internal Glasgow TRE package mirrors or pre-vetted local binary `.zip` archives.
+
+---
+
+## Getting Started
+
+### Launching R
+
+You can launch R in several ways depending on your workflow:
+
+1. **PowerShell / Terminal**:
+   Open Windows PowerShell or Windows Terminal and invoke `R` for the interactive console:
+   ```powershell
+   R
+   ```
+2. **Batch Script Execution**:
+   Execute standalone research scripts non-interactively using `Rscript`:
+   ```powershell
+   Rscript "V:\my-project\scripts\analysis.R"
+   ```
+3. **JupyterLab Notebooks**:
+   Open [JupyterLab StandAlone](jupyter.md) from your desktop shortcut and select the **R** kernel.
+
+!!! tip "Verify Installed Core Libraries"
+
+    You can verify that all bundled top-level libraries are ready for use by running this check in PowerShell:
+    ```powershell
+    Rscript -e "libs <- c('renv', 'dplyr', 'ggplot2', 'tidyr', 'data.table', 'readr', 'readxl', 'haven', 'arrow'); invisible(sapply(libs, library, character.only = TRUE)); cat('All core R libraries loaded successfully.\n')"
+    ```
+
+---
+
+## How-To Guides
+
+### Ingesting Research Data Formats
+
+The bundled libraries support direct reading of all standard research formats without requiring additional packages:
+
+```r
+library(dplyr)
+library(readr)
+library(readxl)
+library(haven)
+library(arrow)
+library(data.table)
+
+# 1. Delimited Text / CSV (readr or data.table)
+df_csv <- read_csv("V:/my-project/data/cohort.csv")
+dt_fast <- fread("V:/my-project/data/large_cohort.csv")
+
+# 2. Excel Workbooks (readxl)
+df_excel <- read_excel("V:/my-project/data/clinical_table.xlsx", sheet = "Cohort1")
+
+# 3. Statistical Legacy Formats (haven)
+df_spss  <- read_sav("V:/my-project/data/survey.sav")
+df_stata <- read_dta("V:/my-project/data/longitudinal.dta")
+df_sas   <- read_sas("V:/my-project/data/registry.sas7bdat")
+
+# 4. Columnar Apache Parquet (arrow)
+df_parquet <- read_parquet("V:/my-project/data/genomics.parquet")
+```
+
+### Managing Project Reproducibility with `renv`
+
+To ensure study reproducibility without conflicting with other projects, initialize an `renv` environment inside your project workspace on the `V:` drive:
+
+1. In R, navigate to your project directory and initialize `renv`:
+   ```r
+   setwd("V:/my-project")
+   renv::init()
+   ```
+2. `renv` creates a project-local library while linking to existing pre-installed system packages, saving disk space.
+3. Once your analysis scripts are validated, snapshot your environment:
+   ```r
+   renv::snapshot()
+   ```
+   This generates a portable `renv.lock` file in `V:\my-project\` that documents the exact package dependency graph.
+
+!!! caution "Do Not Locate Virtual Environments on SMB Roaming Shares"
+
+    Always keep temporary build directories and package caches in local machine storage (`%LOCALAPPDATA%`). Roaming profiles (`%APPDATA%`) and SMB shares do not support NTFS directory junctions and degrade file access latency.
 
 ---
 
@@ -34,174 +132,6 @@ Statistical computations in R, particularly data wrangling on large tabular coho
 | **Processor (vCPU)** | **4 to 8 vCPUs** | Speeds up vectorized matrix operations, parallel computing (`parallel`, `future`), and `data.table` multi-threaded sorting. |
 | **Project Storage (`V:\`)** | **Variable by project** | Persistent, backed up analytical share for storing datasets (`.csv`, `.parquet`, `.rds`), scripts, and `renv.lock` files. |
 | **Local Disk (`C:`)** | **30 GB+ free** | Required for local R package caches (`%LOCALAPPDATA%`) and temporary disk buffering. |
-
----
-
-## Getting Started
-
-### 1. Interactive Launch
-
-Open **PowerShell**, **Windows Terminal**, or **Command Prompt** and verify that the R runtime is available:
-
-```powershell
-# Verify R interpreter version
-R.exe --version
-
-# Verify R scripting front-end version
-Rscript.exe --version
-```
-
-To launch an interactive R console session:
-
-```powershell
-R.exe --no-save
-```
-
-!!! tip "Exiting the R Console"
-
-    To exit an interactive R session, type `q()` and press Enter. When prompted `Save workspace image? [y/n/c]:`, enter `n` to avoid leaving stale `.RData` files in your working directory.
-
----
-
-### 2. Executing R Scripts Non-Interactively (`Rscript`)
-
-Execute standalone analysis scripts or inline code expressions using `Rscript`:
-
-```powershell
-# Run a script from your analytical project workspace
-Rscript V:\my-project\analysis.R
-
-# Execute an inline R expression
-Rscript -e "cat('Hello from R in Glasgow TRE\n')"
-
-# Pass arguments to an R script
-Rscript V:\my-project\process_cohort.R --cohort-id 42 --export-dir V:\my-project\outputs
-```
-
----
-
-## How-To Guides
-
-### 1. Managing Project Libraries with `renv`
-
-To ensure analytical reproducibility and prevent library version conflicts between projects, use `renv` to maintain isolated project-specific package libraries:
-
-#### Initialize `renv` in Your Project Directory
-
-1. Navigate to your project directory on the analytical workspace drive (`V:\`):
-   ```powershell
-   cd V:\my-project
-   ```
-2. Start R and initialize `renv`:
-   ```r
-   # Inside project directory in R
-   install.packages("renv")
-   renv::init()
-   ```
-3. `renv` creates a project-local library and an `renv.lock` file that records the exact package versions and sources.
-
-#### Snapshot and Restore Dependencies
-
-Before sharing your code with collaborators or submitting results for air-lock egress review, snapshot your environment:
-
-```r
-renv::snapshot()
-```
-
-When a collaborator opens the project on their workstation, they can recreate the exact environment with:
-
-```r
-renv::restore()
-```
-
----
-
-### 2. Configuring the Internal CRAN Mirror
-
-Workstations resolve packages through the internal Glasgow TRE package mirror:
-
-```r
-# Set repository to the internal CRAN mirror
-options(repos = c(CRAN = "https://storage.dc1.glasgowtre.ac.uk:9021/public/software/r/cran"))
-```
-
-To make this permanent across all your R sessions, add this line to your personal `.Rprofile` located in your profile directory (`%USERPROFILE%\Documents\.Rprofile` or `%APPDATA%\.Rprofile`):
-
-```r
-# %USERPROFILE%\Documents\.Rprofile
-local({
-  r <- getOption("repos")
-  r["CRAN"] <- "https://storage.dc1.glasgowtre.ac.uk:9021/public/software/r/cran"
-  options(repos = r)
-})
-```
-
----
-
-### 3. Installing Pre-Approved Local Binary Packages
-
-If you have been supplied with approved binary package zip archives through the data transfer air-lock:
-
-```r
-# Install a pre-approved Windows binary package
-install.packages("C:/path/to/package_archive.zip", repos = NULL, type = "win.binary")
-```
-
-!!! important "Windows Requires Binary Packages (`type = 'win.binary'`)"
-
-    Standard Windows research workstations do not include full C/C++/Fortran build toolchains (Rtools). Always install pre-compiled Windows binary packages (`.zip`) rather than source tarballs (`.tar.gz`).
-
----
-
-### 4. Running R in JupyterLab StandAlone (`IRkernel`)
-
-You can run interactive R notebooks side-by-side with Python in JupyterLab StandAlone:
-
-1. Launch R in PowerShell:
-   ```powershell
-   R.exe --no-save
-   ```
-2. Install and register the `IRkernel` package:
-   ```r
-   install.packages("IRkernel")
-   IRkernel::installspec(name = "ir_tre", display_name = "R 4.6.1 (Glasgow TRE)")
-   q()
-   ```
-3. Launch JupyterLab from your desktop or Start Menu. The **R 4.6.1 (Glasgow TRE)** notebook option will appear in the Launcher.
-
----
-
-### 5. Recommended Analytical Workflows
-
-#### Reading Large Datasets Efficiently
-
-When working with tabular health data, use modern column-oriented libraries instead of base R `read.csv()`:
-
-```r
-# Fast CSV ingestion with data.table
-library(data.table)
-cohort <- fread("V:/my-project/data/cohort.csv")
-
-# Parquet file ingestion with arrow
-library(arrow)
-df <- read_parquet("V:/my-project/data/genomic_matrix.parquet")
-```
-
-#### Generating and Exporting Publication Figures
-
-Always save rendered plots directly to your project workspace (`V:\`):
-
-```r
-library(ggplot2)
-
-p <- ggplot(cohort, aes(x = age, y = bmi, color = outcome)) +
-  geom_point(alpha = 0.6) +
-  theme_minimal() +
-  labs(title = "Glasgow TRE Cohort Analysis", x = "Age", y = "BMI")
-
-# Save high-resolution figure to analytical project workspace
-ggsave("V:/my-project/outputs/figure1.png", plot = p, width = 8, height = 6, dpi = 300)
-```
 
 ---
 
@@ -247,3 +177,4 @@ If your research requires CRAN or Bioconductor packages that are not currently a
 - [Python Core](python-core.md) — Python runtime and package management with Astral `uv`.
 - [JupyterLab StandAlone](jupyter.md) — Interactive notebook environment supporting both Python and R kernels.
 - [LibreOffice](libreoffice.md) — Tabular spreadsheet viewing for quick data inspection.
+- [Data Transfer Guidelines](../faq/data-transfer.md) — Importing data and exporting approved results.

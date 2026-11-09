@@ -4,6 +4,7 @@ version: '3'
 
 env:
   PATH: '{{.HOME}}/.local/bin:{{.PATH}}'
+  NO_MKDOCS_2_WARNING: 1
 
 vars:
   UV_BIN:
@@ -26,6 +27,7 @@ tasks:
 
   docs/serve:
     desc: Run the local docs server
+    aliases: [serve]
     cmds:
       - '{{.MKDOCS_BIN}} serve'
 
