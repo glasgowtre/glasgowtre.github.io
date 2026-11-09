@@ -4,6 +4,7 @@ nav:
   - jupyter.md
   - r.md
   - r-studio.md
+  - postgresql.md
   - slicer.md
   - libreoffice.md
 #  - wsl.md 
